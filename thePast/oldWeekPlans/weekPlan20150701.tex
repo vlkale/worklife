@@ -1,0 +1,408 @@
+\documentclass[serif, mathserif, final]{beamer}
+\mode<presentation>{\usetheme{Lankton}} 
+\usepackage[orientation=landscape,size=a0,scale=1.6, debug]{beamerposter}
+%\usepackage[orientation=landscape,size=a0,scale=1.4,debug]{beamerposter}
+%\usepackage[absolute,overlay]{textpos} % <-- can  use this to position text (solves problem of earlier yesterday with poster placement). 
+
+%\documentclass[serif,mathserif,final]{beamer}
+%\mode<poster>{\usetheme{RicePoster}}
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\usepackage{ulem}
+\usepackage{caption}
+\usepackage{courier}
+
+\usepackage{verbatim}
+
+%\usepackage[usenames,dvipsnames]{xcolor}    
+\usepackage{listings}
+
+\usepackage{float}
+\usepackage{subfig}
+\setbeamertemplate{caption}[numbered] 
+
+\usepackage{calendar}
+\usepackage{geometry}
+
+%\graphicspath{{./figures/}}                                                   
+%\usepackage{beamerposter}
+%\graphicspath{{./figures/}} 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\deadline}[1]{#1}
+\newcommand{\dl}[1]{#1}
+\newcommand{\comments}[1]{}
+
+%\graphicspath{{./figures/}}
+%\usepackage[orientation=landscape,size=a0,scale=1.6,debug]{beamerposter}
+
+%-- Header and footer information ----------------------------------
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this should be 
+\newcommand{\footright}{April 2015}
+
+%------------------------------------------------------------------
+%-- Main Document ------------------------------------------------- 
+\title{Month-Week-Day Plan} 
+\author{Vivek Kale$^1$}
+\institute{$^1$ University of Illinois at Urbana-Champaign}  
+\date{\today}
+
+% TODO: make the below document neater 
+% TODO: consider stretching center column 
+% TODO: check how to fit week daily plan together. 
+\begin{document}
+    
+%    \begin{block}{Month-by-month}
+%      \begin{itemize} 
+%      \item \small \textit{May:} Work: finish paper  + Work: comm:
+%        finish resume and cover letter.  
+%      \item \small \textit{June:} Work: code org and plan + Work:
+%        finish code + worklife: org + worklife: finish emotional int +
+%        Comm: experiences + Comm: TM. 
+%      \item \small \textit{July:} Work: library, Work:comm: job
+%        introductions, Comm: meet people.       
+%      \item \small \textit{August:} Work: library documentation and
+%        experimentation, Work: comm: resume prep + Work:comm:linkedIn
+%        + Work: comm: interviewing skills, Comm: stay in touch
+%        through phone ... 
+%      \item \small \textit{September:} Work: paper writing +
+%        Work:comm: interviewing + Comm: stay in touch - dating? -think
+%        about this ... 
+%      \end{itemize}
+%    \end{block}
+
+% TODO: prioritize 
+% \begin{column}{0.33\linewidth} {\textbf{\underline{Month Plan for
+% August 2014}}}      %-- Block 1-1 
+
+\begin{frame}{} 
+  \begin{columns} 
+    %-- Column 1 --------------------------------------------------- 
+    \begin{column}{0.25\linewidth} %{\textbf{\underline{Week
+      %Aspects(new name)}}}
+      \begin{block}{Habits}
+        \begin{itemize}
+          \tiny \item \tiny 
+        \item \tiny 
+        \item \tiny 
+        \item \tiny 
+        \end{itemize}
+      \end{block}
+      %-- Block 1-1 
+      \begin{block}{Happiness} 
+        \begin{enumerate}
+          \tiny \item \tiny Think about happy thoughts about meeting
+          someone else.  
+        \item \tiny 
+        \end{enumerate}
+      \end{block} 
+
+      \begin{block}{Stresses}
+        % Recognize emotions / recognize (precisely) what you're worried about -> methods for eliminating worry. 
+        % clean out old worries, put them in pastWorries doc.  
+        % remember to define precisely 
+        % order from top-to bottom
+        \begin{itemize}
+        \item \tiny Work: worrying about interviewing: just
+          focus on the work. 
+        \item \tiny Worrying about gal: think about talking to
+          others 
+        \item \tiny 
+          % \item \tiny Comm: Worrying about not losing it (check this/ define this better) : work on sheet.  
+          % there's much more to be done.  She may not be interested
+          % because it's a brother. 
+        \end{itemize} 
+      \end{block}
+ 
+      \begin{block}{Real-time Confidence}
+        \begin{itemize}
+          \tiny \item \tiny If you do something sloppy, don't
+          think about it and don't say sorry. 
+        \item \tiny don't think someone is trying to hurt you if
+          they say something.
+        \item \tiny know the paths of least stress. 
+        \item \tiny if mom does something, don't let that bite you. 
+        \end{itemize}
+      \end{block}
+      
+     %-- Block 1-3
+      \begin{block}{Life notes} 
+        \begin{itemize} 
+          \tiny \item \tiny Level 0+1: focus on finding Happiness. 
+        \item \tiny Level 2: 
+        \item \tiny Level 4.1: Writing: prefer standard to offbeat. 
+        \item \tiny Level 4.2: Body Language: lips relaxed
+        \item \tiny Level 4.3: Vocal Variety: shout. 
+        \item \tiny TM: work on speech for submission to blog, increasing intentionality. 
+        \item \tiny Mgmt/habits: finish chapter 1 reading notes and habits. 
+        \end{itemize}     
+      \end{block}
+    \end{column} %2 
+    
+    %-- Column 2 --------------------------------------------- 
+    \begin{column}{0.50\linewidth}
+      %{\textbf{\underline{Week TODO}}} 
+      % NOTE: Current policy is to comment out days as they come. 
+      % TODO: put in the regular routines here for each day, in the schedule box. 
+      %--- Block 2-1
+      \begin{block}{Week Summary} 
+        {\tiny \textbf{Week Plan:}work: withdraw hipc paper + work:
+          take care of IWOMP paper changes, Work: finish up travel
+          to HLF, Work: finish work for start (Work:comm: Maria +
+          Work:comm: start), worklife: finish mgmt + worklife:finish
+          social int. + worklife: finish mgmt. }
+        {\tiny \textbf{Weekend Plan:} BMM } 
+
+      \end{block}
+      
+      \begin{block}{Running TODO} % find a better name 
+
+
+%  \begin{Form}
+%    \q{First Name}
+%    \q{Last Name}
+%    \q{Email}
+%   \end{Form} 
+        
+        \begin{enumerate} 
+        \item \small Comm: coordinate to meet people. 
+        \item \small Comm: send message to Udatta Kaka. 
+          % curr -->  
+        \doneTask{ Work: admin: finish the letter  = Work:admin: find
+          way to sign powerpoint  + Work:admin:send to Amy Pruitt} \te{1
+            hour}. 
+        \item \small Work: admin: flight. 
+        \item \small worklife: finish social intelligence chapter. 
+        \item \small worklife: finish slides for management  =
+          worklife: toastmasters. 
+        \item \small worklife: review all of wl cheat sheet  + worklife:
+          revisions for worklife cheat sheet. 
+        \item \small Mgmt:Spaces: haircut 
+        \item \small Mgmt:Spaces:  
+          \doneTask{ Work:comm: finish the germany travel stuff. }
+
+
+        \item \small Work: update/send message to Prof. Gropp. 
+        \item \small worklife: finish emot. int. book and add in
+          \te{10 mins} 
+        \item \small Mgmt:Spaces: Jury duty           
+        \item \small Comm: update the fb picture . \te{10 mins} 
+
+
+        \item \small worklife: consider portrait of who you are now. 
+        \item \small worklife: experiences sheet add.
+        \end{enumerate} 
+      \end{block} 
+      
+      \begin{block}{Week Daily Schedule}
+        
+        % howto: arrange items from running todo into the below
+        % sheet management document. 
+        \begin{columns} 
+          \column{0.14\textwidth}{\textbf{\small \underline{Mon}}}
+          \textbf{\small todo} \\ 
+          \begin{itemize}
+            \tiny \item \tiny 
+          \item \tiny 
+          \end{itemize} 
+          \textbf{\small schedule} \\
+          \begin{enumerate} 
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \end{enumerate} 
+
+          \column{0.14\textwidth}{\textbf{\small \underline{Tue}}}
+          \textbf{\small todo} \\
+          \begin{itemize}
+            \tiny \item \tiny 
+            
+          \end{itemize}  
+          \textbf{\small schedule}\\ 
+          \begin{enumerate} 
+            \tiny \item \tiny
+          \end{enumerate} 
+          
+          \column{0.14\textwidth}{\textbf{\small {\underline{Wed}}}}
+          \textbf{\small todo} \\
+          \begin{itemize}
+            \tiny \item \tiny 
+          \end{itemize}
+          \textbf{\small schedule} \\
+          \begin{enumerate}
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \end{enumerate} 
+          \column{0.14\textwidth}{\textbf{\small{\underline{Thu}}}}
+          \textbf{\small todo}\\
+          \begin{itemize} 
+            \tiny \item \tiny Work:comm: confirm meeting. 
+          \item \tiny worklife: integrate all of chapter 7 and 8. 
+          \item \tiny worklife: happiness 
+          \item \tiny Mgmt:Spaces: map out area 
+          \item \tiny Mgmt:Spaces: check time 
+          \end{itemize}
+          \textbf{\small schedule}\\
+          \begin{enumerate} 
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \end{enumerate} 
+          
+          \column{0.14\textwidth}{\textbf{\small{\underline{Fri}}}}
+          \textbf{\small todo}\\ 
+          \begin{itemize}
+            \tiny \item \tiny -  \deadline{ }   \timeEst{} \priority{} 
+          \end{itemize}
+          \textbf{\small schedule}\\
+          \begin{enumerate}
+
+            \tiny \item \tiny 8-9AM: Regular Routines 
+         
+          \end{enumerate}
+          
+          \column{0.14\textwidth}{\textbf{\small \underline{Sat}}}
+          \textbf{\small todo}\\
+          \begin{itemize}
+          \item \tiny worklife: TM stuff 
+          \item \tiny Mgmt:Spaces: get alcohol from liquor store. 
+            
+          \item \tiny Comm: add people from bmm \te{20 mins} 
+          \item \tiny Comm: message people from bmm - Reena and Amit
+            Hasolkar  \te{20mins} 
+          \end{itemize}
+          \textbf{\small schedule}\\ 
+          \begin{enumerate}
+            \tiny \item \tiny 7-7:30PM = food + organize.  
+            \tiny \item \tiny 7:30PM -8PM = go to PF chang's and get
+            alcohol. 
+            \tiny \item \tiny 8PM -9PM = TM prep. 
+            \tiny \item \tiny 9:45PM - 10:30PM = go out 
+            \tiny \item \tiny 2AM -3AM =  message Samir + add people
+            from BMM
+          \end{enumerate}
+          
+          \column{0.14\textwidth}{\textbf{\small \underline{Sun}}}
+          \textbf{\small todo}\\
+          \begin{itemize} 
+          \item \tiny Work:comm: get ref letter from Maria Garzaran 
+          \item \tiny Mgmt:Spaces: figure out return trip  
+          \item \tiny Comm: add people from convention 
+          \item \tiny Mgmt:webpresence: update fb pic 
+            
+          \end{itemize}
+          \textbf{\small schedule}\\
+          \begin{enumerate} 
+            \tiny \item \tiny 
+          \end{enumerate} 
+        \end{columns}
+      \end{block}
+    \end{column}%2
+    
+    %-- Column 3 --------------------------------------------------- 
+    \begin{column}{0.20\linewidth}
+      %-- Block 3-1 
+      % On Sunday morn, put a quick synopsis of top news items                  
+      % here.  Categorize as Comm and Money.      
+      \begin{block}{News}
+    \begin{itemize} 
+      
+    \item \tiny Healthcare plan 
+      \tiny \item \tiny Wimbledon 
+    \end{itemize}
+      \end{block}
+      \begin{block}{Weather} 
+        \begin{itemize}
+        \item \tiny Los Angeles - 70s 
+        \end{itemize}
+      \end{block} 
+      \begin{block}{Clothes plan} 
+        \begin{itemize} 
+          \tiny \item \tiny Monday
+        \item \tiny Tuesday
+        \item \tiny Wednesday
+        \item \tiny Thursday
+        \item \tiny Friday
+        \end{itemize} 
+      \end{block}
+      %-- Block 3-2
+      
+      %-- Block 3-3
+      \begin{block}{Situations}
+        \begin{itemize}
+          
+        \item \tiny \textit{BMM2015(Wedding)}: Pre-: registration
+          packet, if meet w/ vk, stand straight no smile, and walk. 
+          Post-: 
+
+
+        \item \tiny \textit{Mixer Thursday:} Pre-: Clothes ready Post-: 
+        \item \tiny \textit{Cruise:} Pre-:  Post-: 
+        \item \tiny \textit{Speed Dating:} Pre-:  Post-: 
+
+        \item \tiny \textit{Club Nite at Fire N Ice}: Pre-:  Post-: 
+        \item \tiny \textit{SnehaBandhan} Pre-: Post-: 
+
+
+
+        \item \tiny \textit{Mem. Day Atul and Ridhima} Pre-: 
+        \item \tiny \textit{Graduation:} Pre-:   Post-: 
+        \item \tiny \textit{Party } Pre-:  Post-: 
+          \item \tiny \textit{Meet for Passport:} 
+          \item \tiny \textit{Sirius XM Radio:} 
+          \item \tiny \textit{Meet with Atul at Dublin} Pre-: put concealer, add de-odorant, Post-:  
+
+          \item \tiny \textit{Meet with Prof. Gropp} Pre-:  Post-:
+            don't belabor any points like .. and the last part
+            conclusion. , don't talk too much when asked about the
+            intro... conclusion (?) ,
+            Talk less about Amanda, Focus on points (stay on
+            topic,be intentional about the diagram when asked,
+            science: don't get too carried away),
+          \item \tiny \textit{Talk with Meridee} Pre-:  Post-:
+            good to stay on point.
+            
+          \item \tiny \textit{Meet with postdocs}
+          \item \tiny \textit{Meet with Jon Freund:} Pre- 
+          \item \tiny \textit{Presentation} 
+            
+          \item \tiny \textit{Movie}: 
+
+          \item \tiny \textit{ Graduation party }:  J Kukreti: 51.00 ,
+            Rakesh Uncle : 101.00 
+            udatta kaka: 101.00
+            Kapoors: 31.00
+
+          \item \tiny \textit{Meet with Prof. Gropp: } Post-:
+                 don't get caught up with umm's, don't have to say tm
+                 at the end, Could have a plan when meeting (even if
+                 it's last minute, could recognize last minute and what to
+                 do in that case). 
+
+               \item \tiny \textit{Meet with Amy Pruitt} : Post-:
+                 stay consistent, Good to just be relaxed, don't get
+                 too caught up with start date explanation , but ok
+                 because you were relaxed. 
+
+               \item \tiny \textit{Travel planning } Post: planning
+                 hotel , use experience from before to plan current .
+    \end{itemize}
+  \end{block}
+\end{column}%3 
+\end{columns}
+
+\end{frame}
+\end{document}

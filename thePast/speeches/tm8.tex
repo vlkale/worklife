@@ -1,0 +1,65 @@
+\documentclass{beamer}
+%\usetheme[
+%          titlepagelogo=bold50-illinois,% Logo for the first page
+%          pageofpages=of,% String used between the current page and the total page count
+%          titleline=true,% Show a line below the frame title
+%          ]{TorinoTh}
+
+\usetheme{Luebeck}
+
+\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{ulem}
+\usepackage{color}
+\usepackage{xspace}
+
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTask}[1]{\item \small \sout{#1}}
+
+\newcommand{\MyName}{Vivek~Kale}
+
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+
+\newcommand{\comments}[1]{}
+
+\title{Toastmaster's Speech}
+\author{\MyName}
+\date{\today}
+
+\title[Toastmaster]{Toastmaster's Speech}
+\author[Vivek Kale]{%
+  Vivek~Kale\inst{1}}
+\institute[University of Illinois at Urbana-Champaign]{
+  \inst{1}%
+  Department of Computer Science\\
+  University of Illinois at Urbana-Champaign
+}
+\date[DLT 2014]{\today}
+\subject{Comm}
+
+%\pgfdeclaremask{ILLINOIS}{bold50}
+%\pgfdeclareimage[mask=ILLINOIS,width=1cm]{bold50}{bold50}
+%\logo{\vbox{\vskip0.1cm\hbox{\pgfuseimage{bold50}}}}
+
+\begin{document}
+
+%\AtBeginSection[]
+%{
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents[part=1, pausesections]
+%\end{frame}
+%}
+%\titlepage
+
+%\section{Toastmaster's Speech}
+%\input{./content_toastmasters}
+
+\input{./content_tm8}
+%\input{./content_famVsFriends}
+
+\end{document}

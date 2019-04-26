@@ -1,0 +1,329 @@
+\documentclass[]{beamer}
+\usetheme{Luebeck}
+\useoutertheme{infolines}
+\usepackage{inputenc}
+
+\usepackage{graphicx}
+\usepackage[square,numbers]{natbib}
+\usepackage[final]{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage{hyperref}
+
+\usepackage{booktabs} % For \toprule, \midrule and \bottomrule
+\usepackage{microtype}
+\usepackage{csvsimple}
+\usepackage{framed} % used for putting boxes around content easily
+\usepackage{type1cm}
+\usepackage{amsmath,amsfonts,amssymb,xspace}
+\usepackage{tikz}
+\usepackage{beamerthemesplit} 
+\usepackage{graphicx,ragged2e,pgffor}
+
+\usepackage{ulem}
+\usepackage{courier}
+\usepackage{verbatim,listings,float} %TODO: order these 
+
+%\usepackage{dtklogos}
+\usepackage{tikz}
+\usetikzlibrary{mindmap,shadows}
+
+\setbeamertemplate{caption}[numbered]
+\usepackage{etoolbox}
+
+\usepackage{lipsum}
+\usepackage{multicol}
+
+\def\PRES{1}
+\def\POSTER{1}
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+\resetcounteronoverlays{saveenumi}
+
+\usepackage{fancyvrb}
+
+\newenvironment{mdn}%
+    {\VerbatimEnvironment\begin{VerbatimOut}{tmp.markdown}}%
+    {\end{VerbatimOut}%
+        \immediate\write18{pandoc tmp.markdown -t latex -o tmp.tex}%
+        \input{tmp.tex}}
+
+
+
+\usepackage[fencedCode, hybrid]{markdown}
+
+\markdownSetup{rendererPrototypes={
+ link = {\href{#2}{#1}},
+ headingThree = {\begin{frame}\frametitle{#1}},
+ headingFour = {\begin{block}{#1}},
+ horizontalRule = {\end{block}}
+}}
+
+
+
+\usepackage{catchfilebetweentags}
+
+\makeatletter
+\newread\pin@file
+\newcounter{pinlineno}
+\newcommand\pin@accu{}
+\newcommand\pin@ext{pintmp}
+% inputs #3, selecting only lines #1 to #2 (inclusive)
+\newcommand*\partialinput [3] {%
+  \IfFileExists{#3}{%
+    \openin\pin@file #3
+    % skip lines 1 to #1 (exclusive)
+    \setcounter{pinlineno}{1}
+    \@whilenum\value{pinlineno}<#1 \do{%
+      \read\pin@file to\pin@line
+      \stepcounter{pinlineno}%
+    }
+    % prepare reading lines #1 to #2 inclusive
+    \addtocounter{pinlineno}{-1}
+    \let\pin@accu\empty
+    \begingroup
+    \endlinechar\newlinechar
+    \@whilenum\value{pinlineno}<#2 \do{%
+      % use safe catcodes provided by e-TeX's \readline
+      \readline\pin@file to\pin@line
+      \edef\pin@accu{\pin@accu\pin@line}%
+      \stepcounter{pinlineno}%
+    }
+    \closein\pin@file
+    \expandafter\endgroup
+    \scantokens\expandafter{\pin@accu}%
+  }{%
+    \errmessage{File `#3' doesn't exist!}%
+  }%
+}
+\makeatother
+
+%\url{http://tex.stackexchange.com/q/78041/86}
+%\documentclass{beamer}
+%\url{http://tex.stackexchange.com/q/78041/86}
+
+\usepackage{pgfpages}
+\usepackage{pgf}
+
+\pgfpagesdeclarelayout{9 on 1}
+{
+  \edef\pgfpageoptionheight{\the\paperheight}
+  \edef\pgfpageoptionwidth{\the\paperwidth}
+  \edef\pgfpageoptionborder{0pt}
+}
+{
+  \pgfpagesphysicalpageoptions
+  {
+    logical pages=9,
+    physical height=\pgfpageoptionheight,
+    physical width=\pgfpageoptionwidth
+  }
+  \def\pgfpgtemp{}
+  \foreach \i in {1,...,3} {
+    \foreach \j in {1,...,3} {
+      \pgfmathtruncatemacro\n{(\j-1)*3 + \i}
+      \pgfmathsetmacro\ri{1- (\i - .5)/3}
+      \pgfmathsetmacro\rj{(\j - .5)/3}
+      \edef\temp{%
+        \noexpand\pgfpageslogicalpageoptions{\n}
+      {
+        border code=\noexpand\pgfsetlinewidth{1pt}\noexpand\pgfstroke,
+        border shrink=\noexpand\pgfpageoptionborder,
+        resized width=1.2\noexpand\pgfphysicalwidth,
+        resized height=.345\noexpand\pgfphysicalheight,
+        center=\noexpand\pgfpoint{\rj\noexpand\pgfphysicalwidth}{\ri\noexpand\pgfphysicalheight}
+      }
+      }
+      \expandafter\expandafter\expandafter\gdef\expandafter\expandafter\expandafter\pgfpgtemp\expandafter\expandafter\expandafter{\expandafter\pgfpgtemp\temp}
+    }
+  }
+  \pgfpgtemp
+}
+
+\pgfpagesuselayout{9 on 1}[a0paper, border shrink=0.5mm, landscape]
+
+%\begin{document}
+
+%\foreach \k in {1,...,20} {
+
+%\begin{frame}{Frame \k}
+
+%This is frame \k.
+%It is exciting.
+%\end{frame}
+%}
+
+%\usepackage[hidelinks,pdfencoding=auto]{hyperref}
+% Information boxes
+\newcommand*{\info}[4][16.3]{%
+  \node [ annotation, #3, scale=0.65, text width = #1em,
+          inner sep = 2mm ] at (#2) {%
+  \list{$\bullet$}{\topsep=0pt\itemsep=0pt\parsep=0pt
+    \parskip=0pt\labelwidth=8pt\leftmargin=8pt
+    \itemindent=0pt\labelsep=2pt}%
+    #4
+  \endlist
+  };
+}
+
+
+%TODO: remove unneeded items 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+%TODO: consider changing the name of this macro to be what it's
+%used for below
+
+\newcommand{\projectTask}{\tiny \item \tiny}
+\newcommand{\pitem}{\tiny \item \tiny}
+\newcommand{\ptask}{\tiny \item \tiny}
+\newcommand{\mpitem}{\tiny \item \tiny}
+\newcommand{\doneTaskNoItemNewLine}[1]{\sout{#1}}
+
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:}\textit{#1}}
+
+\newcommand{\deadline}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dl}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:}\textit{#1}}
+
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}} 
+\newcommand{\comments}[1]{}
+
+
+%TODO: think of document as adding around ...
+%TODO: consider changing the below so you only use the text in the
+%document 
+%TODO: change Week plans 
+%TODO: consider putting making each frames have its own document. 
+%TODO: decide where social intelligence goes. 
+%TODO: decide how to separate work from life in social intelligence
+%notes.
+
+\newcommand{\footleft}{Mgmt-WorkLife-monthweekPlan} % figure what this should be 
+\newcommand{\footright}{May 2019}
+
+%-- Main Document -------------------------------------------------
+%\title{Month-Week-Day Plan}\author{Vivek Kale$^1$}\institute{$^1$ University of Illinois at Urbana-Champaign}\date{\today}
+
+\begin{document}
+
+\section{Summary}
+\input{summarySlide.tex}
+
+\section{Job Search}
+\input{./workLifeMgr/content_jobSearch_plan}
+
+\section{Long-term planning}
+
+
+%\input{./workLifeMgr/content_year_plan.tex}
+
+\begin{frame}{Year Plan}{2019}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{ypn}
+\end{frame}
+
+
+\begin{frame}{Six-month Plan}{Jan through June 2019}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{spn}
+\end{frame}
+
+
+\section{Project plans}
+\relax
+
+%\begin{markdown}
+%\markdownInput{./workLifeMgr/content_projectslist.md}
+%\end{markdown}
+
+
+\section{Projects}
+%TODO: get rid of dependencies of Project Name here. 
+
+\begin{frame}{Project CCI}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{cci}
+\end{frame}
+\begin{markdown}
+\begin{frame}{Project:Dmy}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{dmy}
+\end{frame}
+\end{markdown}
+\begin{frame}{Project:UDS}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{uds}
+\end{frame}
+\section{Planning}
+\begin{frame}{Month Plan}
+\input{./workLifeMgr/content_monthPlan_plan}
+\end{frame}
+\begin{frame}{Regular Routines}
+\input{./workLifeMgr/content_regularRoutines_plan}
+\end{frame}
+\begin{frame}{Weekend Plans}
+\input{./workLifeMgr/content_weekendPlans_plan}
+\end{frame}
+
+\section{Week Plan}
+\input{./workLifeMgr/content_worries_plan} 
+\begin{frame}{Lessons} 
+\end{frame}
+\section{News}
+\input{./workLifeMgr/content_news}
+%\input{./workLifeMgr/weather}
+
+\section{Week Plan}
+\begin{markdown}
+\begin{frame}{Week Plan Summary}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{wps}
+\end{frame}
+\end{markdown}
+
+\begin{markdown}
+\begin{frame}[allowframebreaks]{Running To DO}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{rtd}
+\end{frame}
+\end{markdown}
+
+\section{Daily Plans}
+\begin{markdown} 
+\begin{frame}{Day Plans}
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{dpn}
+\end{frame} 
+\end{markdown}
+
+%\section{Social Life}
+
+\section{Situations}
+
+\input{./workLifeMgr/content_situations_plan}
+
+\section{Friends And Rel}
+\input{workLifeMgr/content_friendsrel_plan.tex}
+
+\section{Meeting Information}
+\input{./workLifeMgr/content_meeting_information}
+\section{Dating and Relationships}
+\input{./workLifeMgr/content_rel_plan}
+\section{My Information} 
+%\input{./workLifeMgr/content_my_information}
+
+\begin{markdown} %TODO: figure out how to distribute information ought to be distributed within these slides
+\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{myi}
+\end{markdown}
+
+\end{document}

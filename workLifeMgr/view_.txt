@@ -1,0 +1,29 @@
+echo "getting rid of old pdf's and generated docs"
+make clean;
+
+echo "compiling all pdfs"
+make
+
+#echo "opening paper todo"
+#open paper-todo.pdf
+#echo "opening yearWeek Plan "
+#open yearWeeksPlanCurr.pdf
+
+
+
+
+echo "opening weekPlanDoc.pdf"
+open weekPlanDoc.pdf
+
+echo "opening monthPlanDoc.pdf"
+open monthPlanDoc.pdf
+
+
+#echo "opening Organization guide"
+#open concrete*.pdf
+#echo "opening 3 tiers documentation "
+#open threeTiersShort.pdf
+
+% echo "opening exp documentation"
+% open exp-docs.pdf
+

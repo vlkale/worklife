@@ -1,0 +1,348 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;\red26\green26\blue26;
+}
+\margl1440\margr1440\vieww10800\viewh7280\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs32 \cf2 \cb3 \
+\
+\pard\pardeftab720
+
+\i\b \cf2 Using Lightweight Scheduling to Improve Performance of HPC Codes on Next-generation Clusters of SMPs
+\i0\b0 \
+\
+\
+\pard\pardeftab720
+
+\b \cf2 Abstract
+\b0 :\
+- Load balance is a general problem coming not just from application but from architecture, e.g., OS noise.\'a0\
+- We designed a scheduler to handle this problem.\'a0\
+- By doing this, we achieve 23.5% gains, and 56% gains on for an n-body.\'a0\
+\
+\
+
+\b Introduction:\'a0
+\b0 \
+- Load balancing problem for HPC codes, coming from application \'a0\
+- Problem with load balancing is that there is a cost to data movement.\'a0\
+- Can't use runtime-based solution such as locality-aware scheduling, due to each application-architecture pair having a different balance point of load balance and locality.\'a0\
+- Prime contribution: Tune the tradeoff between load balance and locality. The tuning parameter in the scheduler for doing this is called the static fraction. We refer to the basic scheduling strategy as lightweight scheduling.\
+\
+\
+
+\b Chapter 1: Basic Lightweight Scheduling:\'a0
+\b0 \
+- Baseline data to explain problem.\'a0\
+- Basic lightweight scheduling with auto-tuning approach.\'a0\
+- Experimentation and theoretical analysis with CALU and CAQR factorization\
+- Explanation of impact to Dense Linear Algebra kernels.\'a0\
+\
+\
+
+\b Chapter 2: Weighted Locality-sensitive Scheduling:
+\b0 \
+\'a0- Use a per-thread static fraction, adjust weights of each thread's static fraction based on core speeds in previous application time step.\'a0\
+\
+\
+
+\b Chapter 3: Slack-conscious Scheduling:
+\b0 \
+- Model-guided optimization \'a0of static fraction.\'a0\
+- Slack-conscious adjustment of static fraction.\'a0\
+\
+\
+
+\b Chapter 4: Locality-optimized Scheduling:
+\b0 \
+- Many dimensions of tradeoffs between load balance and locality.\'a0\
+\'a0 \'a0a. Staggered static/dynamic scheduling: helps improve spatial locality while maintaining load balance\'a0\
+\'a0 \'a0b. Constraint-based scheduling: reduces contention of shared memory interconnect by ensure all threads don't stealing the same tasklet.\'a0\
+\'a0 \'a0c. Multiple queues: each time a thread attempts to steal, it selectively chooses the best thread to steal from, i.e., the one that will incur least scheduler overhead , rather than randomly selecting (as done in work-stealing scheme)\
+\'a0\'a0\
+\
+
+\b Chapter 5: Combining all Schedulers:
+\b0 \
+- Guide to combining our schedulers for use in runtime.\'a0\
+- Multi-parameter tuning of combined schedulers\'a0\
+- Corner cases to be aware of\'a0\
+\
+-  add in notes about schedulers here. \
+\
+\
+
+\b Chapter 6: Literature Survey:
+\b0 \
+- Work-stealing\'a0\
+- Auto-tuning \'a0\
+- Measurement-based load balancing\'a0\
+- Locality-aware scheduling\
+- Exascale runtimes\'a0\
+\
+\
+
+\b Chapter 7: Conclusions:\'a0
+\b0 \
+- Showed a general methodology for improving tradeoff between load balance and locality.\'a0\
+- Can apply to MPI+MPI-shm codes, MPI+X codes, or any hybrid codes such as\
+- Through improved within-node performance predictability, can be beneficial for next-generation clusters of SMPs.\'a0\
+\
+\
+Introduction:  \
+\
+apps need to be cost-effective. \
+\
+\pard\pardeftab720
+\cf4 \cb1 from performance irregularities. \
+\pard\pardeftab720
+\cf2 \cb3 \
+Problem: \
+\
+HPC apps suffer from load imbalance not just from architecture but application. \
+\
+\pard\pardeftab720
+\cf4 \cb1 load balance and power.  \cf2 \cb3 balance load and locality two  dimensions.  The reason is that increasing costs of chips will cause ..\
+\pard\pardeftab720
+\cf2 \
+What we Did: \
+\
+Because there is load balance and locality, we tune the static fraction. \
+\
+The search space is limited though, and this becomes complicated on larger machines. \
+\
+To really get at the optimizations, we further optimize this. \
+- full Scheduling \
+\
+What we Got: \
+Research Goals : \
+n-body \
+45% over static \
+15% over guided \
+\
+stencil \
+25% over static \
+10% over guided\
+\
+Conclusions: \
+  - what we learned, and can derive from this . \
+  - broader impact , e.g., scaling \
+  - Future work,  call to action: \
+\
+\
+\
+In the below, I have given an explanation of the basic lightweight scheduling technique, so that it can be used to explain the remainder of the text. With this, I explain each of the 4 schedulers used in the graphs I sent you, giving a description of the scheduler, the components of the scheduler (in all 4 schedulers below, each of the components are schedulers themselves), and the scheduling scheme. \'a0\
+\
+There are other schedulers, such as n-stage scheduling that I\'92ve developed along the way. These additional schedulers should be noted in the thesis chapters (for n-stage scheduling, it would be chapter 1), but the below should cover the main schedulers used in the thesis.\
+\
+\
+Lightweight scheduling, which we refer to as LightweightSched, is a loop scheduling strategy operating across threads of an MPI process, where each thread first does pre-defined iterations statically, and then does the remaining iterations dynamically. The number of iterations executed statically, referred to as the static fraction, can be adjusted per threaded computation region and per MPI process. This static fraction scheduling parameter is exposed to the application programmer.\'a0\
+\
+\pard\pardeftab720
+\cf2 \ul \ulc2 uSched:\'a0\ulnone \
+\
+This scheduler first obtains the load imbalance due to the application, and then uses model-guided optimization to incorporate the adjustment of the static fraction due to noise. Using these two values, we use the formula to determine the static fraction. We finally try different static fractions around this static fraction to obtain the static fraction used for this scheduler.\'a0\
+\
+Specifically, this scheduler consists of the following pieces:\'a0\
+\
+\'a0- ModelGuidedNoiseDequeue-LightweightSched: This is the model-guided optimization of static fraction, given load imbalance due to noise. This strategy uses the noise event length and dequeue overhead estimate to determine the best static fraction. For uSched, we use parts of this code, but don\'92t actually use the static fraction obtained. This is the strategy used in the slack-conscious scheduling paper, and is based on the formula 2 in section 3 of that paper. This is referred to as Static-Hybrid in that work. This is a contribution over the formula proposed in the IPDPS paper, which didn\'92t take into account the scheduler overheads, only the noise event length. \'a0\
+\
+\'a0- ModelGuidedAppImbDequeue-LightweightSched: This is the model-guided optimization of static fraction, given load imbalance due to the application. This strategy uses the additional duration due to application load imbalance and dequeue overhead estimate, \'a0to determine the best static fraction. For uSched, we use parts of this code, but don\'92t actually use the static fraction obtained. This is based on the strategy from the slack-conscius scheduling paper, but is used in the context of application load imbalance.\'a0\
+\
+\'a0- best-static-fraction-lightweightSched: for a particular application run, we try different static fractions, in increments of 0.01 by default; this can be adjusted by the application programmer (requires knowledge of iteration granularity). This is explained in the subsection 2 results section of the slack-conscious scheduling paper. This is the strategy used in the IPDPS paper and EuroMPI paper, and is referred to in that work as "mixed static/dynamic scheduling\'94. This strategy experimentally tries different static fractions for nodes 0 (executed before the application starts). From this, the best performing static fraction is found. This static fraction is used for all nodes. \'a0\
+\
+The scheduler is put together and works as follows:\'a0\
+\
+1. For each node in a run, we obtain the noise and dequeue overhead.\'a0We obtain the noise event length as determined in the slack-conscious scheduling paper. In the slack-conscious scheduling paper, we referred to this value as delta, but here we will call it delta_noise to distinguish between\'a0load imbalance due to noise and load imbalance due to any other source. We obtain dequeue overhead by running a tight loop.\'a0\
+\
+2. For each run, \'a0we\'a0obtain the load imbalance due to the application by running the static scheduling and running dynamic scheduling, taken from the code of ModelGuidedAppImbDequeue-LightweightSched.\'a0Specifically, we run the application code with OpenMP static scheduling on process 0, and then run the application code with OpenMP dynamic scheduling on node 0.\'a0The scheduler overhead is computed by multiplying the iterations per thread d by the time per dequeue operation t_q, where t_q is obtained from step 1 above. \'a0Here, let us denote the time for static scheduled run is t_staticSchedTime, the time for the dynamic scheduled run is t_dynamic, and the time for scheduler overhead is ovhdTime. \'a0\'a0\
+\
+The magnitude of additional duration induced by load imbalance coming the application, delta_app, is t_staticSchedTime - t_dynamicSchedTime - t_ovhdTime.\'a0\
+\
+Additionally, from this, we can estimate the parallel time T_p as t_dynamicSched - t_ovhdTime.\'a0\
+\
+3. The total (and worst-case) load imbalance during a\'a0timestep\'a0(call it delta_tot)\'a0is determined by taking the sum of delta_app + delta_noise. Using delta_tot, along with the expected time per timestep T_p, we then simply compute the final static fraction\'a0by plugging delta_tot and T_p into it for the\'a0formula 2 shown for lightweight\'a0scheduling, which is for\'a0within-node, i.e., non-slack-conscious scheduling.\
+\
+The static fraction obtained is fs_tot.\'a0\
+\
+4. We then apply the best static fraction as above, except that we only use different static fractions from 0.05 to 0.05. \'a0\
+\
+\'a0We try different static fractions 0.05 below and 0.05 above given initial static fraction fs_tot. \'a0We do this in pre-specified increments of 0.01 by default; this can be adjusted by the application\'a0\
+programmer (requires knowledge of iteration granularity).\
+\
+This is fs_tot_tuned, and is the static fraction used for lightweightSched makes uSched.\'a0\
+\
+\
+\
+\
+Note that all the calculations above are done at compile time. Note that we couldn\'92t just obtain fs_tot by summing fs_app and fs_noise, because fs_app\'92s T_p \'a0and fs_noise\'92s T_p are different - one is the T_p\'a0of the noise. \'a0\
+\
+\
+\ul callpath_fd:\'a0\ulnone \
+\
+This uses callpath_fd, which are optimizations over the uSched.\'a0\
+\
+Specifically, this scheduler consists of the following piece:\'a0\
+\
+- callpath_fd: this is based on MPI slack that was described in the slack-conscious scheduling paper. MPI slack is the deadline that each process have to finish their work, before they extend the application\'92s critical path, thereby increasing the cost of application execution. This is in chapter 3 of the thesis.\'a0\
+\
+\
+The scheduler is put together and works as follows:\'a0\
+\
+0. On each process, start with the static fraction fs from uSched.\'a0\
+\
+1. \'a0a. On each process, retrieve that process's invocation of the last MPI collective, where the invocation of the last MPI collective is retrieved through the callsite slack-prediction method. (see paper for details on implementation of this).\'a0\
+\'a0 \'a0 \'a0b. Given the identifier of the last the MPI collective call invoked, estimate that collective call's slack value from the history of slack values stored by the slack-conscious runtime. The slack estimate is based on the slack value recorded in the previous MPI collective invocation, as is done in the cited work of Adagio. *\'a0\
+\
+2. \'a0On each process, adjust its dynamic fraction based on the slack value. This adjustment is done using the formula 5 in section 3 of the slack-conscious paper (final formula defining the slack-conscious dynamic) and implementation of section 4 of the slack-conscious scheduling paper. The static fraction used in the loop bound is 1- f_d.\'a0\
+\
+Note that the dynamic fraction was used to simplify the section 3 and make it more intuitive, and also to significantly reduce the calculations needed in the runtime to do the slack-conscious adjustments on each MPI region. \'a0\
+\
+Further information from MPI can be used to adjust the scheduler, but we leave this as future work. Also, more complicated analysis for the slack estimate can be done, but this is left as future work / related work (Torsten and Todd said they were interested in looking further into this).\'a0\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\ul vSched:\ulnone \
+\
+This combines staggered static/dynamic scheduling, constrained static/dynamic scheduling, and multiple queues from the recent EuroMPI poster/paper. \'a0The focus of this scheduler is to use different dimensions of the tradeoff between load balance and locality to improve upon basic static/dynamic scheduling. \'a0\
+\
+Specifically, the scheduler consists of the following pieces:\'a0\
+- locopt-lightweightSched: locality-optimized mixed static/dynamic scheduling is from the EuroMPI paper, and consists of the following:\'a0\
+\
+	\'a0 \'a0			\'a0 A. staggered static/dynamic scheduling: \'a0(put text from vSched paper here) \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 B. constrained static/dynamic scheduling: \'a0(put text from vSched paper here)\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 C. non-randomized topology-conscious work-stealing: \'a0(put text from vSched paper here)\'a0\
+\
+\
+- w-lightWeightSched: weighted locality-sensitive scheduling: uses a per-thread static fraction to adjust the weights of each scheduler, based on completion times of static fraction for each thread from previous timesteps. \'a0 The implementation from the HiPC paper is integrated into the vSched library.\'a0\
+\
+\
+\
+\
+The scheduler is put together and works as follows:\'a0\
+\
+0. Start with the static fraction obtained from uSched.\'a0\
+\
+1. Apply the Staggered static/dynamic scheduling: \'a0The dynamic iterations are staggered across threads, as in item A in the description of locOpt-lightWeightSched\
+\
+2. Apply the queue to steal from, as item C in the description of locOpt-lightweightSched\
+\
+3. Using weighted locality-sensitive scheduling: During runtime, we adjust the per-thread static fraction based on the speeds of the individual cores, as The start and end indices are adjusted through the vSched library.\'a0\
+\
+4. Constrained static/dynamic scheduling: we tune the constraint here after we have adjusted the weights, as in part B of loc-opt-uSched description above. \'a0\
+\
+\
+\
+Note that we leave the generation and integration of other ideas for future work. variable-sized tasklets: Other options for varying tasklet size can be used, but we don\'92t work with that here.\'a0\
+\
+\
+\
+\
+\ul Full:\ulnone \
+\
+The\'a0full\'a0scheduling\'a0is the vSched, i.e., locality-optimized scheduling, with the callsite_fd, i.e., slack-conscious\'a0scheduling, added into it.\'a0\
+\
+This is discussed in chapter 5 of the thesis.\'a0\
+\
+\
+The scheduler is put together and works as follows:\'a0\
+\
+0. Start with the static fraction obtained from uSched.\'a0\
+\
+1. Stagger the iterations:\'a0\
+\
+2. Specify the queue to steal from:\'a0\
+\
+3. Using weighted locality-sensitive scheduling: During runtime, we adjust the per-thread static fraction based on the speeds of the individual cores.\'a0\
+\
+4. \'a0a. On each process, retrieve that process's invocation of the last MPI collective, where the invocation of the last MPI collective is retrieved through the callsite slack-prediction method. (see paper for details on implementation of this).\'a0\
+\'a0 \'a0 \'a0b. Given the identifier of the last the MPI collective call invoked, estimate that collective call's slack value from the history of slack values stored by the slack-conscious runtime. The slack estimate is based on the slack value of the previous application timestep, as is done in the cited work of Adagio. *\'a0\
+\
+5. \'a0On each process, adjust its dynamic fraction based on the slack value. This adjustment is done using the formula 5 in section 3 of the slack-conscious paper (final formula defining the slack-conscious dynamic) and implementation of section 4 of the slack-conscious scheduling paper.\'a0\
+\
+It's important to be careful here that we divide the slack adjustment based on the weighted static fraction across threads. This is simply the slack-conscious static fraction applied to the per-thread static fraction.\'a0\
+\
+The static fraction used in the loop bound is 1- f_d. Note that the dynamic fraction was used to simplify the section 3 and make it more intuitive, and also to significantly reduce the calculations needed in the runtime to do the slack-conscious adjustments in each MPI region. \'a0\
+\
+7. Constrained static/dynamic scheduling: we tune the constraint here after we have adjusted the weights, and applied the slack adjustment.\'a0\
+\
+\
+Note that the steps 0-3 are the same as that of vSched; after the weighting is done, we adjust the per-thread static fractions based on slack. Also, note that step 4 is the same as that of step 1 is callsite_fd. Additionally, step 5 is the same as step 2 in callsite_fd, except that we apply the slack adjustment formula to the per-thread static fraction of a process, rather than all threads of an MPI process getting the same slack adjustment, which is what is done in the slack-conscious scheduling paper.\'a0\
+\
+\
+\
+\
+I. Can we\'a0improve performance of HPC applications on next-generation clusters of SMPs by balancing the tradeoff between load balance and locality?\'a0\
+\
+A. Do the\'a0techniques that can be designed\'a0work well?\'a0\
+\'a0 \'a0 1. Does our core scheduling strategies work well?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - Show results with static/dynamic scheduling (base): This is shown in final figure 12 of EuroMPI2010 paper and figures 5 in IPDPS paper.\'a0\
+\
+\'a0 \'a0 2. Do our strategies work well with tuning runtime and model-guided?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - Show results with model-guided optimization, i.e., static-hybrid, uSched, and show results for slack-conscious tuning, i.e., callsite_fd: This is shown in Figure ___ slack-conscious scheduling paper.\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - Show improvements of slack-conscious scheduling over "best static fraction", to show need for performance model and runtime guided over the basic method of lightweight scheduling: This is shown in Figure 6 of Slack-conscious Scheduling paper.\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - Show results for improvements of callsite_fd over static scheduling: This is shown in bar graphs of fourth quadrant of SC poster.\'a0\
+\
+\'a0 3. Do our locality-optimized scheduling strategies work well?\'a0\
+\'a0 \'a0 \'a0 \'a0 a. How much benefit do we get from using vSched over static/dynamic scheduling?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - Show results of vSched over static/dynamic scheduling: This is shown in Figure ___ EuroMPI poster paper.\'a0\
+\
+\'a0 \'a0 \'a0 \'a0 b. How much benefit do we get from using vSched over static scheduling?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - Show performance gains of Vsched over static Scheduling: This is shown in bar graph of fourth quadrant of SC poster: \'a0\
+\'a0\
+\'a0 4. Can we combine and tune schedulers to provide further benefit?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0- Show results with "full"\'a0scheduling: This is shown in fourth quadrant of bar graph of SC poster.\'a0\
+\
+B. Does our software (library implementation + runtime) incur large overheads?\'a0\
+\
+1. How much is Library implementation overhead?\'a0\
+\'a0 \'a0 \'a0 \'a0- vSched library implementation overhead: This is shown in Figure 2 of slack-conscious scheduling paper.\'a0\
+2. How much is runtime overhead?\'a0\
+\'a0 \'a0 \'a0 - Show data on callsite, call path, and gencoll ovhd: This is shown in Figure 5 of slack-conscious scheduling paper.\'a0\
+\'a0 \'a0 \'a0 - Show data on callsite, callpath, and gencoll\'a0error: This is shown in Figure 6 of slack-conscious scheduling paper.\'a0\
+\
+C. Does it provide adequate gains for different\'a0applications characteristic in HPC?\'a0\
+\'a0 - Show different apps, i.e., n-body, reg.\'a0mesh, miniFE: This is shown in quadrant 4 of SC poster. \'a0<-- this is where we need SNAP weak-scaling.\
+\
+\'a0- Define metrics for understanding load imbalance characteristics,\'a0and explain differences in load imbalance characteristics for different apps. Show minife vs n-body. \'a0\
+\
+- Show results with different problem sizes: \'a0<--- This is where we need to get NAS benchmarks.\'a0\
+\
+D. Does it provide adequate gains for different architectures?\'a0\
+\'a0 \'a0 - Show comparison of performance of apps across architectures: cab, bw, seq. : This is shown in bar graphs of quadrant 4 of the SC poster. <-- Note: this is where I think we are missing nbody on BG/Q.\'a0\
+\'a0 \'a0- Show NAS on different architectures: This is shown in\'a0table 1 and table 2 in the third quadrant of SC poster.\'a0\
+\'a0 \'a0- Show the benefits of slack-conscious vs.\'a0best static fraction: This is shown in figure 10 of the\'a0slack-conscious paper.\'a0\
+ \
+\'a0 \'a01. Can our strategy work for any architecture with larger number of cores?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - Show perf. model graph\'a0with different architectural parameters: This is shown in Figure ___ of slack-conscious sched paper.\'a0\
+\
+\'a0 \'a02.\'a0 Is our technique beneficial for scaling to\'a0exa-scale machines?\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 - \'a0Show histograms showing performance variations, and that our technique reduces performance variation: \'a0This is shown in the histograms from the EuroMPI 2010\'a0paper, the histograms in quad 3 of the poster on CALU, and the table of performance variations in quad 3 of the SC poster. \'a0\
+\
+D. How well do we balance load balance\'a0and locality?\'a0\
+\'a0 \'a0 \'a0- \'a0Show cost\'a0of thread idle time vs scheduling overhead for different strategies: This is shown in Figures 13 and 14 of the slack-conscious scheduling paper.\'a0\
+\
+E. Does it work well against industry standards?\'a0\
+\'a0 \'a01. Does it work well over Guided scheduling?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 - Show percent gains of full sched over guided scheduling: This is shown in percent gains in main bar graphs over dynamic and guided sched in fourth quadrant of SC poster.\'a0\
+\
+\'a0 \'a02. Does it work well over MKL and DPLASMA?\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0- Show mixed static/dynamic\'a0CALU\'a0against MKL\'a0and Dplasma: This is shown in Figure __ \'a0and Figure ___ in IPDPS paper.\'a0\
+\
+F. Can our approach minimize code\'a0changes?\'a0\
+\'a0 \'a0 1. How many lines of code changed?\'a0 Show \'a0... \'a0: This is shown in fourth quadrant of SC poster\
+\'a0 \'a0 2. What percent lines of code changed?\'a0 Show ... \'a0: This is shown in fourth quadrant of SC poster.\'a0\
+\'a0 \'a0 3. How many lines of code changed per loop? \'a0 Show ... : This is shown in fourth quadrant of SC poster.\'a0\
+\
+\
+\
+Comm: take away picture.   not about you - should have pic with friends. \
+}

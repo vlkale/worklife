@@ -1,0 +1,125 @@
+\documentclass[9pt]{article}
+
+\newcommand{\comments}[1]{}  
+
+%Summary: this serves as the intermediary between the logical word outline
+%and the mindmap. The idea is to give the specific purpusose. The
+%mindmap should tie in the general purpose and structure the lower
+%level nodes. 
+
+\usepackage{outlines}
+\usepackage{enumitem}
+\usepackage{color}
+\setenumerate[1]{label=\Roman*.}
+\setenumerate[2]{label=\Alph*.}
+\setenumerate[3]{label=\roman*.}
+\setenumerate[4]{label=\alph*.}
+
+\newcommand{\fontSize}{\tiny}
+\newcommand{\todo}[1]{\textcolor{blue}{[TODO: #1]}}
+
+\begin{document}
+
+%TODO: add points to application timestep 
+%TODO: check transition for GPU 
+%TODO: L0: check 'this needed'
+
+%TODO: L4: clean up 
+
+\textbf{Low-Overhead Loop Scheduling Depth Talk Outline}
+
+%General Goal: to tell people what I've done.
+
+%Specific Goal: to tell people what I've done.
+
+\begin{outline}[enumerate]
+  \fontSize \1 {\fontSize Opening Matter} 
+  \fontSize \2 {\fontSize Title } 
+  \fontSize \3 {\fontSize Summary: Hi, my name is Vivek Kale. This
+    describes the worklife cheatsheet. At the end of this, I hope you
+    see that this is useful and what I'm going  to do improve
+    it. \todo{make this clearer}.}
+  \fontSize \3 {\fontSize Working with Professor Bill Gropp.} 
+\fontSize \1 {\fontSize Motivation:}
+\fontSize \2 {\fontSize  Opening / introduction: exp. examples,
+  happiness}
+\fontSize \3 {\fontSize Exp. Quickly explain model program.} 
+\fontSize \3 {\fontSize happiness. }
+\fontSize \3 {\fontSize  }
+\fontSize \2 {\fontSize Example MPI Program.} 
+\fontSize \3 {\fontSize Quick explanation of program.} 
+\fontSize \3 {\fontSize Example program should have no performance
+  problem to deal with.}  
+\fontSize \3 {\fontSize Application Timeline Schematics: app/OS
+  imbalance.}  
+
+\fontSize \1 {\fontSize Key1: Importance } 
+\fontSize \2 {\fontSize Key1.1: Habits} 
+\fontSize \2 {\fontSize Key1.2: Long-term static}
+\fontSize \2 {\fontSize Key1.3: M1}
+\fontSize \3 {\fontSize Worry elimination}
+\fontSize \3 {\fontSize Work}
+\fontSize \3 {\fontSize Knowledge} 
+\fontSize \3 {\fontSize Managment} 
+\fontSize \1 {\fontSize Key2: Comm} 
+\fontSize \2 {\fontSize Key2.1: S1} 
+\fontSize \3 {\fontSize Comm org}
+\fontSize \3 {\fontSize General skills}
+\fontSize \3 {\fontSize Specific situations}
+\fontSize \2 {\fontSize Key2.2: real-time/dynamic}
+\fontSize \3 {\fontSize Dress}
+\fontSize \3 {\fontSize Body language} 
+\fontSize \3 {\fontSize Vocal variety} 
+\fontSize \2 {\fontSize Key2.3: Experience}
+
+%TODO: clean up 
+\fontSize \3 {\fontSize Guidelines before any situation} 
+\fontSize \3 {\fontSize Work /interview}
+\fontSize \3 {\fontSize rel/date}  
+\fontSize \3 {\fontSize More general situations} 
+%TODO: put real-world experience here.
+
+%TODO:  could consider putting experience/project in conclusion as
+%example case study 
+%TODO: even better : think about  putting this into  experiences 
+
+\fontSize \1 { \fontSize Current Active project  / } 
+\fontSize \1 {\fontSize Conclusions and Closing Matter:}
+\fontSize \2 {\fontSize Conclusions}
+  %TODO : make point more clear 
+  \fontSize \3 {\fontSize Multi-core optimized version reduces thread
+    idle time - has some benefit.} 
+  \fontSize \3 {\fontSize OpenACC does significantly better than MPI version, as
+    well as an OpenMP version.} 
+  %TODO:  
+  \fontSize \3 {\fontSize Further work will be done to check feasibility on
+    future architectures.}
+\fontSize \2 {\fontSize References relevant to this work} 
+\fontSize \2 {\fontSize Acknowledgements - don't talk about, just
+  show. }  
+
+%\fontSize \1 { \fontSize Current work is done for improving GPUs.}
+%\fontSize \1 { \fontSize  Staggered Scheduling improves spatial
+%  locality by putting dynamic loop iterations close to static ones.} 
+
+%{ \fontAt large scales this could have better performance
+% improvement. -across-node: can also handle transient} 
+
+% Nodes have accelerators -  We have just started exploring this for
+% the PlasComCM code  - John Larson and Simon. Also, worked with 
+% Nodes today tend to have accelerators - what about G - Xeon Phi -
+% examples of accelerators current clusters:  lanl mic, llnl gpu  
+% For something like Xeon Phi, we expect the same techniques will work
+% effectively. But what about GPUs? 
+
+% At least today, there may not be importance of variability for
+% GPUs. 
+%\fontSize \2 {\fontSize More clusters have GPUs - PlasComCM suitability for GPUs} 
+%\fontSize \3 {\fontSize Explain experimental setup, and note that data resident on device.}
+%\fontSize \3 {\fontSize Main Result: Using a GPU on aselect kernel for
+%  PlasComCM improves performance 3x over optimized multi-core strategy.}
+% - John
+
+
+\end{outline}
+\end{document}

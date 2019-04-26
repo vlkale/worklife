@@ -1,0 +1,357 @@
+\documentclass[serif,mathserif,final]{beamer}
+
+\mode<presentation>{\usetheme{Lankton}} 
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,eulervm,xspace}
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\setbeamertemplate{caption}[numbered]
+
+%\documentclass[11pt]{article}
+
+\usepackage{ulem}
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\item \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\item \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\item  \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\item  \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\deadline}[1]{#1}
+\newcommand{\comments}[1]{}
+
+\graphicspath{{./figures/}}
+\usepackage[orientation=landscape,size=a0,scale=1.6,debug]{beamerposter}
+
+%-- Header and footer information ----------------------------------
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this should be 
+\newcommand{\footright}{June 2014}
+\title{Month-Week-Day Plan} 
+\author{Vivek Kale$^1$$^2$}
+\institute{$^1$ University of Illinois at Urbana-Champaign \quad}  
+
+%------------------------------------------------------------------
+%-- Main Document ------------------------------------------------- 
+
+\begin{document} 
+\begin{frame}{}
+  \begin{columns}[t]
+
+    %-- Column 1 ---------------------------------------------------
+
+% Question:  where should this be? Merged here or elsewhere? 
+\comments{
+    \begin{column}{0.33\linewidth} {\textbf{\underline{Month Plan for June 2014}}}
+      %-- Block 1-1 
+      \begin{block}{ \small Week 1: June 2 - June 9} 
+        \begin{itemize} 
+          \tiny \item \tiny Work: Amanda's code stuff: plan discussion with her, and do the coding.  
+        \item \tiny Work: thesis organization.
+        \item \tiny Work: software organization : PAPI, data sets.
+        \item \tiny Mgmt: Spaces: finish off spaces from last week, make basic notes on avoiding ``generation of garbage''.  
+        \end{itemize} 
+      \end{block} 
+
+      \begin{block}{ \small Week 2: June 10 - June 17 } 
+        \begin{itemize} 
+          \tiny \item \tiny
+        \item \tiny 
+          \tiny  \item \tiny Mgmt: Spaces:  make rules for reduction of garbage generation for closet spaces, reduction of garbage generation in general (might go under spaces vulnerability)
+        \end{itemize} 
+      \end{block} 
+      
+      \begin{block}{ \small Week 3: June 17 - June 24 } 
+        \begin{itemize} 
+
+        \item \tiny 
+        \item \tiny 
+         \item \tiny 
+        \end{itemize} 
+      \end{block} 
+      
+      \begin{block}{ \small Week 4: June 24 - July 1st } 
+        \begin{itemize} 
+       \tiny  \item \tiny 
+        \item \tiny 
+        \item \tiny 
+        \end{itemize} 
+      \end{block} 
+    \end{column}%1 
+}
+
+%-- Column 1 ---------------------------------------------------  
+\begin{column}{0.27\linewidth} {\textbf{\underline{Week Plan}}} 
+
+  %-- Block 1-1
+  \begin{block}{\textit Stresses} 
+    \begin{itemize} 
+      \small \item \small 
+    \item \small friends of Atul's better(?)
+    \item \small email -done  
+ %  \item \small anger that you are below parents 
+    \item \small [ find others ]
+    \end{itemize} 
+  \end{block} 
+
+  %-- Block 1-2 
+  \begin{block}{\textit Situations} 
+    \begin{itemize} 
+    \small \item \small Atul's b-party : Pre- :    Post- :   
+    \item \small Hormozd's thesis defense : Pre-:  Post- : 
+    \end{itemize} 
+  \end{block} 
+
+  %-- Block 1-3
+  \begin{block}{\textit Habits } 
+    \begin{itemize} 
+    \small \item \small move feet less
+    \item \small back straight 
+    \item \small lips relaxed 
+    \end{itemize} 
+  \end{block} 
+
+  %-- Block 1-4
+  \begin{block}{\textit Clothes plan } 
+    \begin{itemize} 
+      \small \item \small - 
+    \item \small Thursday: wear t-shirt 
+    \item \small Friday: wear a blue polo shirt
+    \end{itemize} 
+  \end{block} 
+
+  %-- Block 1-5
+  \begin{block}{\textit Food plan } 
+    \begin{itemize} 
+      \small \item \small Skip meals this week to take out fat from weekend 
+    \item \small Avoid snacks from Hormozd's thesis 
+    \item \small don't eat too much if you go to chicago 
+
+
+    \end{itemize} 
+  \end{block} 
+
+\end{column} %2 
+
+%-- Column 2 --------------------------------------------- 
+\begin{column}{0.27\linewidth}{\textbf{\underline{Daily Plan}}} 
+
+% NOTE: Current policy is to comment out days as they come. 
+
+% TODO: put in the regular routines here for each day, in the schedule box. 
+
+  %--- Block 2-1
+
+\comments{
+\begin{block}{\small Monday } 
+\textbf{todo} \\
+  \begin{itemize} 
+  \tiny \item \tiny Mgmt: Spaces: clean room 
+  \item \tiny - 
+  \item \tiny -
+  \end{itemize} 
+
+\textbf{schedule} 
+  \begin{enumerate} 
+ \tiny  \item \tiny
+  \item \tiny -
+  \item \tiny -
+  \end{enumerate} 
+\end{block} 
+
+\begin{block} {\small Tuesday} 
+\textbf{todo} \\
+  \begin{itemize} 
+  \item \tiny Discussion with Amanda \priority{U, quick} \timeEst{2 hours} 
+  \item \tiny \doneTask{reply to Prof Gropp} \priority{U, quick} \timeEst{10 mins}  
+  \item \tiny Code startup with PAPI, send message to Tanzima. \timeEst{3 hours} 
+  \item \tiny Organization of code in repo. \timeEst{1 hour} \priority{IU, weighty} 
+  \item \tiny Work: fix code, with graphs added \priority{quick} \timeEst{2 hours} 
+  \item \tiny Mgmt: reg. routines: add in bathroom instructions again , with modifications to shower soap +  Mgmt: Spaces: Clean bathroom, organize spaces 
+  \item \tiny Mgmt: Spaces: put in spaces for closet + Mgmt: Spaces: put up tags in Laundry + Mgmt: Spaces: fold laundry.  \priority{quick} \timeEst{20 mins} 
+  \item \tiny Comm: send message to Divya \timeEst{30 mins} \priority{UI} 
+  \end{itemize} 
+  
+\underline{\textbf{schedule}}\\
+\begin{itemize}
+\regItem{7:00AM - 8:00AM: weights}
+\regItem{8:00AM - 9:00AM: regular routines for morning}
+\regItem{9:00AM - 10:00AM: meeting} 
+\item \tiny 
+\item \tiny 
+\item \tiny 
+\regItem{9:30-10PM: fb social, linkedIn social, read self-improvement/comm books}
+\regItem{10:00PM - 10:30PM: regular routines for night} 
+\end{itemize} 
+\end{block} 
+
+
+\begin{block} {\small Wednesday}
+\textbf{todo} \\
+  \begin{itemize} 
+  \item \tiny Work: Organization of code in repo \timeEst{1 hour} \priority{IU, weighty} 
+  \item \tiny Work: add graphs generation to code  \priority{tedious} \timeEst{2 hours} 
+    
+  \item \tiny \doneTask{Work: get on BW} \timeEst{10 mins} \priority{quick} 
+  \item \tiny Work: try to run a simple job on BW (need to get script) \timeEst{10 mins} 
+  \item \tiny \doneTask{Work: get llnl accounts back up : talk to admins to do this, and then talk to others such as Karen, or try Tami} 
+ 
+  \item \tiny Work: install macports (install xcode for dependency). \timeEst{20 mins} \priority{HardButMakesLifeMuchEasier} 
+  \item \tiny Work: install git using macports \timeEst{10 mins} \priority{makesLifeMuchEasier} 
+
+  \item \tiny \doneTask {Work: prep for tomorrow's meeting } 
+  \item \tiny Comm: send message to Sumi 
+  \end{itemize} 
+
+\textbf{schedule} \\
+  \begin{enumerate} 
+    \regItem{7:00AM - 8:00AM: weights}
+    \regItem{8:00AM - 9:00AM: regular routines for morning}
+  \item \tiny Mgmt: Health: write down excercise routine 
+  \item \tiny Mgmt: Spaces: get clean laundry ironed
+    \regItem{10:00PM - 10:30PM: regular routines for night}
+  \end{enumerate} 
+\end{block} 
+
+
+
+\begin{block}{\small Thursday} 
+\textbf{todo} \\
+\begin{itemize} 
+  \item \tiny Mgmt: Spaces:webPresence: update profile pic with brother, make limited profile, add jimmy john's things \priority{U} \timeEst{30 mins}. 
+
+  \item \tiny Work: send Prof. Gropp the notes post-meeting. \priority{U} \timeEst{1 hour} 
+
+  \item \tiny send email to Bronis, Clea, and lc-support@llnl.gov to reactivate account. Include address, phone, affiliation. \timeEst{45 mins} \priority{IU}
+
+  \item \tiny Work: look for post-docs (SUNY, Princeton(already looked through website of Professors), MIT, ORNL), and write on the thesis slides. \timeEst{1.5 hrs}  \priority{U, do this to show that you have a job to speed graduation up}  
+
+  \item \tiny Work: finish related work organization \priority{UI} \timeEst{1.5 hours} 
+  \item \tiny Work: find other papers, and read related work. Need 100 citations or so.  \timeEst{40 hours  - 1 week}     
+  \item \tiny Work: add in modeling stuff from IPDPS2010 paper, as Prof Gropp suggested. 
+  \item \tiny Work: discuss comparisons to guided. Add comparison to TBB. 
+
+  \item \tiny Comm: attend Toastmasters at 200 W. Green Street tonight. 
+
+  \item \tiny \doneTask{Work: get the paper .tex file for the cloud stuff. }
+  \item \tiny Work: figure out conference to submit cloud to (BigData or EuroPar workshop - look for others) \timeEst{20 mins} \deadline{Wednesday} 
+
+\end{itemize} 
+
+\textbf{schedule} \\
+  \begin{enumerate} 
+    \regItem{7:00AM - 8:00AM: weights}
+    \regItem{8:00AM - 9:00AM: regular routines for morning}
+  \item \tiny Mgmt: Health: write down excercise routine 
+  \item \tiny Mgmt: Spaces: get clean laundry ironed
+
+\item \tiny 5:30PM - 6PM = finish summary for meeting 
+\item \tiny 6:15PM - 8:00PM = toastmasters 
+\item \tiny 8PM - 8:45PM = excercise 
+
+\item \tiny 9:30-11PM = send Prof. Gropp an email update. 
+\regItem{10:00PM - 10:30PM: regular routines for night}
+  \end{enumerate}
+\end{block}
+} // end comments 
+\begin{block} {\small Friday} 
+
+\textbf{todo} 
+\begin{itemize} 
+\item \tiny 
+\item \tiny
+\end{itemize} 
+
+\textbf{schedule}
+\begin{enumerate} 
+\tiny \item \tiny 9:00PM - 9:30PM  =  update profile pic with brother, add jimmy john's post.
+
+\item \tiny 11:20AM -11:35PM = get paper and update this into thesis \timeEst{15-20 mins} 
+\item 11:35PM - 12PM = send email to Bronis and Clea, with lc-support, to get accounts reactivated. \timeEst{30 mins} \priority{UI, HelpsToGetOtherThingsDone} \deadline{Friday 4PM}  
+
+\item \tiny 12PM - 1PM  = related work organization finish, finish meeting summary, finish organization of thesis. 
+
+\item 1PM - 2:30PM = take notes on Hormozd's thesis 
+
+\item \tiny 10:30PM - 11:30PM = go through modeling and update this in svn -- carries over to next day.
+
+\item 11:30PM - 12:30PM =  get code done (?) 
+
+\item 12:30PM - 1:30AM = organize tasks for the next week.
+
+\item 1:30AM - 2:30AM = Figure out any other worklife to be done. Make plan to finish self-improvement books on worklife(
+including making inferences, depth,etc), and to incorporate into worklife doc (along with practicing etc.) 
+
+\end{enumerate} 
+\end{block}
+
+
+%Block 2-3
+
+\begin{block} {\small \textbf{\underline{Regular Routines}} }
+\underline{\textbf{Morning}}
+\begin{itemize}
+\item \tiny Brush Teeth \timeEst{4 mins}
+\item \tiny Mouthwash, Clean tongue - it helps with breath\timeEst{1mins} 
+\item \tiny Eating small breakfast
+\item \tiny Check your schedule for meetings / appointments for that day: Is anything urgent? \timeEst{5 mins}
+\item \tiny Excercise: 1 hour ( Stretch for 10 mins, Treadmill for 30 mins , Lift weights or Yoga 1 hour, Meditation for 10 mins)
+\item \tiny Shave (at least every other day) \timeEst{5 mins}
+\item \tiny Shower : (shampoo+conditioner, acne wash,  soap on underarms/underbody)
+\timeEst{10 mins}
+\item \tiny dry hair, dry face, arms, legs, back, stomach \timeEst{3 mins}
+\item \tiny Clothing: belt, check collar, shirt not half-tucked, matching socks \timeEst{5 mins}
+\item \tiny Comb hair, hair gel optional \timeEst{ 1 min}
+\item \tiny Check Keys/Wallet/Cell/Badge (get a bucket) \timeEst{1 min}
+\item \tiny Open meds cabinet, get water, take medicines \timeEst{1 min}
+\item \tiny Wear lenses and rinse out case \timeEst{ 2 mins}
+\item \tiny Deodorant or cologne depending on the day \timeEst{1 min}
+\item \tiny Wash your face with a face wash - it helps with acne \timeEst{3 mins}
+\item \tiny Moisturize - apply lotion \timeEst{ 2 min}
+\item \tiny Neti pot / clean out sinuses - if you’re feeling congested \timeEst{5 min}
+\item \tiny clean out ears, nose \timeEst{5 mins}
+\item \tiny Remember to lock door \timeEst{1 mins}
+\end{itemize}
+
+\underline{\textbf{Evening}}
+
+\begin{enumerate}
+\item \tiny Call family: 30 mins
+\item \tiny meet friends: 20 mins
+\item \tiny Cleaning dishes / cleaning house: 10 mins
+\item \tiny Lay out clothes for the next day, iron if necessary
+\item \tiny start laundry if needed: 10 mins,
+\item \tiny Collect anything you’ll need for the next day (e.g. dry cleaning to drop off): 5 mins,
+\item \tiny Check Facebook/linkedin/google+: 10 mins, matrimony stuff: 10 mins,
+\item \tiny Food for lunch/dinner the next day: 10 mins
+\end{enumerate}
+
+\underline{\textbf{Night before bed}}
+\begin{enumerate}
+\item  \tiny Finish computer stuff \timeEst{5 mins}
+\item  \tiny Get into sleeping clothes \timeEst{1 mins}
+\item  \tiny Before sleeping: brush teeth, floss \timeEst{ 2 min}
+\item  \tiny Properly wash and put away contacts \timeEst{ 2 mins}
+\item  \tiny Review the days good things \timeEst{ 10 min}
+\item  \tiny Light Reading \timeEst{ 10 min}
+\item  \tiny Prayer \timeEst{10 mins}
+\end{enumerate}
+
+\end{block}
+
+\end{column}%3 
+
+\end{columns} 
+
+\end{frame} 
+
+\end{document}

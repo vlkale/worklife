@@ -1,0 +1,129 @@
+We need a code to demonstrate and evaluate an overdecomposition
+approach, applied to multicore nodes.
+
+This should include inter/intra-node performance, and should also
+compare to a single domain per core model.  This also needs to have
+locality controls to the cores.  The idea is to combine the
+overdecomposition approach currently implemented with AMPI with the
+light-weight scheduling for computations within a process, along with
+the use of shared memory on a chip or node (but between MPI
+processes), into an MPI + threads implementation.
+
+For example,
+
+On each coherence domain, there is an allocation includes a ghost-cell
+region.  The local points are n0 x n1 x n2.
+(variation: multiple regions)
+Allocation depends on style of multicore parallelism:
+1) Single process, multiple threads.
+2) Multiple processes (same domain), one or multiple threads per
+process
+A separate question is # of threads per patch. 
+
+Processing is in terms of patches.
+Each patch is defined as l0 x l1 x l2, within the larger allocation of
+size n0 x n1 x n2, at offset of (c0,c1,c2) (c for corner).
+
+Each patch has a prefered core (or cores, if # threads per patch,
+intended to use data-parallel OpenMP or similar)
+
+Variations:
+1. Should be a way to split a patch to provide adaptive load
+   balancing.  In fact, could start with one patch per allocation
+   unit, and dynamically divide to provide sufficient
+   overdecomposition to adapt to load imbalance and communication
+   overlap needs.
+2. Scheduling on communication completion (waitsome or waitany, with each
+   patch having request(s) for the boundaries.
+3. Communication by allocation or communication by patch.
+4. Communication with/without overlap.
+5. Stencil width and shape (box vs. star)
+6. Datatype vs user pack/unpack for edges
+7. Arrange decomposition so that the halo is in "nearby" memory and
+   doesn't cause too many problems with cache misses.
+8. Recurse (subpatches of patches)
+9. Use a DAG scheduler (more generally, make it easy to replace the
+   schedule, with some way to describe dependencies
+10. Link operator application across routines - this would allow
+    rescheduling of the operations to provide more memory locality.
+11. Integration with HTAs, particularly for integration in time
+12. Manage data in a remote coherence domain - e.g., some data stays
+    on GPU.
+
+
+Instrumentation
+Keep track of array sizes, communication volume, times for all
+operations (by patch).
+Estimate communication performance, including the overlap case.
+Vectorization check
+
+Verification
+Need a way to check for correctness (at least tests that must pass).
+Use: shift data in direction, use initial data as points, line
+(Points used as a way to check multiple points at a time; use isolated
+grid points)
+
+Initial example A: 2D version rather than 3D?
+
+Initial example B: 2D version for matrix transpose (multinode) (but no
+ghost cells; still, could receive parts, and transpose as they arrive,
+rather than using the in-place MPI datatype transpose)
+
+Operations:
+1) Allocate patch across memory domain.  First touch initialization
+   (by page or cache line) as an option.
+   a) Need to define which threads are part of a memory domain.
+   should be MPI ranks + number of threads (what is the correct
+   abstraction here?)
+   b) Include halo cells for neighbors.
+
+2) Divide allocation unit into patches and assign each patch to one or
+   more cores.
+   a) Core assignment is preference - if a core is idle, a patch may
+   be processed by a different core (using Vivek's scheduling choices)  -  
+   b) patches need not be the same size.  For example, could have
+   interior and edges, so that interior is processed while halo
+   communication takes place, then the edges as data arrives.
+   c) Should be able to use OpenMP as one option
+
+3) Manage halo communication by either allocation or patch
+   a) Initiate all.  In the case of multiple MPI processes involved,
+   need options to select which MPI processes are involved.
+   b) Test for completion (including kick progress engine).  Mark
+   patches as ready when all halo data present.
+   c) Goal is to achieve full MPI performance from node, without
+   having each process wait for communication.
+   d) Possible option - include function to execute on message arrival
+   (AM-like)
+   e) Option for using RMA operations instead of pt2pt.
+
+4) Apply operation (stencil) to each patch
+   a) Dynamically schedule, but apply Vivek's scheduling ideas
+   b) Need to look at extending these ideas to the shared-memory
+   between MPI processes.
+
+
+
+shared memory - 
+
+patches 
+
+domain 
+
+
+lock all 
+
+shared mem  
+
+
+
+Hi all, 
+
+
+
+Today, we talked about applying operations to stencils to each patch. 
+
+
+Action Item: 
+
+1. write code with mesh 

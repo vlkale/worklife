@@ -1,0 +1,111 @@
+\begin{frame} [Tasks] 
+\frametitle{Task: \textit{MPI shared memory extensions} + Numerical linear algebra work (Estimated time: 2 weeks, 1 week complete)}
+\begin{enumerate} 
+\item Finish shared mem extensions paper (\textit{complete}). \\ 
+\item Tests/application of shared mem extensions for simple 3D stencil app (in progress tommorrow).  \\ 
+\item Integration and implementation of lightweight scheduling through allocated shared memory.     \\
+\end{enumerate} 
+\end{frame}  
+
+\begin{frame} [Tasks] 
+\frametitle{Task: MPI shared mem extensions + \textit{Numerical linear algebra work}, cont'd (Estimated time: 2 weeks, 1 week complete)}
+\begin{enumerate} 
+\item IPDPS presentation : lightweight scheduling for Communication-Avoiding 
+Dense Matrix Factorizations (\textit{complete}).  \\
+\item Quick review AMG performance model.  No need to integrate lightweight scheduling 
+into this performance model. I just need to review it as part 
+of the knowledge for my thesis. (We've already applied lightweight scheduling theoretical 
+analysis to Communication Avoiding LU and Comm Avoiding QR, and this is good enough ). \\ 
+\end{enumerate}
+\end{frame} 
+
+\begin{frame} [Tasks] 
+\frametitle{Task: Tools setup (Estimated time: 5-6 days)} 
+\begin{enumerate} 
+\item Make sure lightweight sched strategy is usable in 
+basic application (through linking using \texttt{ar rcs ...}). \\ 
+\item  make sure it is portable through \texttt{autoconf} or 
+\texttt{cmake} (preferable is \texttt{autoconf} since I've used it 
+before, but am going to look into \texttt{cmake}). \\ 
+\item Collaboration support: git repo setup, organize current svn for paper \\ 
+\item Publicizing: simple wiki + website.  \\ 
+\item Code documentation: Doxygen, or really just a simple systematic mechanism for documentation/commenting that can easily be seen. \\ 
+\item Results organization: make simple \texttt{gnuplot} script to make common plots needed. \\  
+\item Setup and organize figures/diagrams for lightweight scheduling  and slack-conscious lightweight sched \\ 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame} [Tasks] 
+\frametitle{Task: Additional Experimentation on BG/Q and BW (Est time: 3 days)}
+\begin{enumerate} 
+\item Do fully dynamic sched. (got this setup) \\
+\item Check slack-conscious sched on BG/Q again. \\ 
+\item Do experimentation with different compilers: gcc and xl , on BG/Q  \\
+\item Check experimentation with different OpenMP thread configuration settings \\ 
+\end{enumerate}  
+\end{frame} 
+
+\begin{frame} [Tasks] 
+\frametitle{Task: Simulator setup and integration of slack-conscious scheduler (Estimated time: 3-4 days)}
+\begin{enumerate} 
+\item Make sure it works properly on laptop, write a readme for running. \\
+\item Incorporate slack-conscious scheduling. \\
+\item May want to consider noise injection as an alternative to simulation.  Main 
+goal of this task is to see if this helps the argument of the thesis, or if 
+we should drop it.  (Issue with simulator being that someone needs to validate and maintain it).  \\
+\end{enumerate} 
+\end{frame} 
+
+%\begin{frame} [Tasks] 
+%\frametitle{Task: Revise current Concepts/Theoretical Analysis (Est time: 3 days)} 
+%\begin{enumerate} 
+%\item Theoretical Analysis: have simple version ready which adds in slack-conscious scheduling. \\ 
+%\item Strategy Explanation: Apply it to a simple example. \\ 
+%\item Apply it to AMG. 
+%\end{enumerate} 
+%\end{frame} 
+
+%\begin{frame} [Tasks] 
+%\frametitle{Task: Risk Analysis (Est time:  4 days)} 
+%\begin{enumerate} 
+%\item Review statistics and game theory. 
+%\item Look through noise theoretical work by Tsasfir.
+%\item connect game theory and statistic to noise, so that we 
+%can adjust static fraction for sched. 
+%\end{enumerate} 
+%\end{frame} 
+
+\begin{frame}
+\frametitle{Schedule(Summer 2012)}
+\begin{itemize}
+
+\tiny \item \tiny May 13th - 22nd:  MPI paper, IPDPS2012 presentation, website+ wiki + collab space setup \\  
+
+\item \tiny May 22nd - June 3rd: application of shared mem extensions (use lightweight sched) 
+to 3D stencil code (as a comparison to OpenMP prog model), work on follow-up tests for SC paper. 
+
+\item \tiny June 3rd - June 13th: finish application of shared mem extensions to 3D stencil code,  
+setup the library creation for slack-conscious sched using software agreed upon above(e.g.
+\texttt{autotools} , \texttt{ar rcs}).  \\  
+
+\item \tiny June 13th - June 15th: travel back to LLNL, review some basic statistics and some game theory. \\  
+
+\item \tiny June 15th - July 15th: Risk Analysis + Theory + Formalization of Slack-conscious sched in software \\ 
+
+\item \tiny July 15th - Aug 15th: apply to real code; look at AMG and PF3D. \\ 
+
+\item \tiny Aug 15th - Sept 1st: gather results and do write-up for fall conference (PPoPP or maybe IPDPS target) \\ 
+
+\end{itemize} 
+\end{frame} 
+
+%\begin{frame} 
+%\frametitle{Schedule(Fall 2012)}
+%\begin{itemize}
+%\tiny \item \tiny Sept 1st - Oct 1st: IPDPS write-up for risk analysis.
+%\item \tiny Oct 1st - Dec 1st : Journal with Prof Grigori and Ulrike + MPI shared memory programming model + prelim  
+%\item \tiny Dec 1st - Jan 15th : organize code, thesis writing plan and organization
+%\item \tiny Jan 15th - May 15th : thesis writing ,  Gordon Bell submission or SC submission for LBM work.   
+%\item \tiny May 15th - Aug 15th : thesis writing,  defense
+%\end{itemize} 
+%\end{frame} 

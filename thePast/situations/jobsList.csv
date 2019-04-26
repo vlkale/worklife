@@ -1,0 +1,13 @@
+Job, JobDesc, Category, coverLetter, applied,phoneScreen, interview, result, salary, benefits
+llnl1, tba, 1, 1, 1, 1, 1, 0, na, na
+brnl1, tba, 1, 1, 1, 1, 1, 1, 140, na
+sdsc1, tba, 1, 0, 0, 1, 0, 0, na, na
+lbnl1, tba, 2, 1, 1, 1, 1, ta, ta, na
+lbnl2, tba, 2, 0, 1, 1, 1, 1, 0, na
+arnl1, tba, 2, 1, 1, 0, 0, 0, na, na
+intl1, tba, 2, 1, 1, 1, 0, ta, na, na
+intl2, tba, 2, 1, 1, 1, 0, ta, na, na
+appl1, tba, 2, 1, 1, 1,	0, ta, na, na
+goog1, tba, 3, 1, 0, 0, 0, ta, na, na
+goog2, tba, 3, 1, 1, 1, 0, ta, na, na
+dnan2, tba, 3, 1, 1, 1, 0, ta, na, na

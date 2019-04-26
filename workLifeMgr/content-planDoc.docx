@@ -1,0 +1,253 @@
+%<*ypn>
+# \underline{{\bf Percentage of time spent on a type of thing for in the last 3.5 +0.5 years:}}\\
+\newline
+Research: 65\% Presentation, behavior skill development: 10\% , Documentation, tutorials, training/interview prep: 25\% \\
+\newline
+
+\underline{{\bf Timeline of work on research after PhD:}} \\
+
+{\bf Year 1 (May 2015 to May 2016)}:
+App performance optimization on heterogenous nodes: 4 months
+Numerical linear algebra perf optimization with stat/dyn scheduling: 4 months
+Performance Optimization technique of CPU + GPU fraction, laying foundations for it and compiler optimizations associated with it: 4 months
+
+{\bf Year 2 (August 2016 to August 2017)}:
+Charm ++  + CkLoop experimentation and implementation: 1 year
+
+{\bf Year 3 (May 2017 - May 2018):}
+User-defined Schedule for OpenMP addition: 1 year
+
+{\bf Year 4 ( May 2018 - May 2019):}
+ -  Charm++ + CkLoop ← further implementation (2 months) + proposal writing(2.5 months) - 4 months  
+ -  finished from May 2018 to September 2018
+Work on integrating low-overhead loop scheduling in RAJA: 4 months -finishing - started in August and finishing in early November.
+Locality-aware scheduling SBIR proposal and work with Florina: starting soon in December: 4 months
+
+%</ypn>
+
+
+%<*spn>
+- December: continue work on uds, making notes on implementation. \\
+- January: uds implementation \\ 
+- February: uds paper for problem, algorithmic strategies \\
+- March: uds paper for research questions and algorithmic strategies \\
+- April: uds paper for SC19 with applications such as LuLEsh with RAJA. \\
+- May: uds paper for SC19 with applications run on supercomputers. 
+- June: UDS paper for SC 19. 
+
+%</spn>
+
+%<*cci>
+
+CCI 
+
+%</cci>
+
+
+%<*dmy>
+
+Hello ... 
+
+%</dmy>
+
+
+
+
+%<*uds>
+
+\begin{multicols}{3}
+\underline{\bf{TODO}}
+\begin{itemize}
+\item  Work(uds:): add information about examples application  
+\item Work(uds:): finish the information about uds example
+schedulers. 
+\item Work(uds:): finish information about example implementation of schedulers. 
+\item Work(uds:): address James Beyer's comments. 
+\end{itemize}
+
+\underline{\bf{Schedule}}
+\begin{itemize}
+\item Week of December 22nd, 2018: 
+\item Week of January 1st, 2019: RAJA 
+\item Week of January 7th, 2019: 
+\item Week of January 15th, 2019:
+\item Week of January 22nd, 2019: 
+\item Week of January 31st, 2019: Do plan to meet up for UDS. 
+\item Week of February 5th, 2019: 
+\item Week of February 12th, 2019: 
+\item Week of February 19th, 2019:  
+\item Week of February 26th, 2019: 
+\item Week of February 
+\end{itemize}
+\end{multicols}
+
+%</uds>
+
+
+
+
+%<*mon>
+
+%</mon>
+
+%<*rou>
+
+%</rou>
+
+
+
+%<*wkn>
+
+
+
+%</wkn>
+
+
+
+
+%<*wor>
+
+%</wor>
+
+
+%<*nws>
+
+
+%</nws>
+
+%<*wps>
+{\underline{\bf Week Plan}}: Work:cci: update code from taskq + Work:cci: review 11 code problems, Work:rsr: do paper writeup, Mgmt:Spaces: do travel expenses stuff, Work:rel: update LLNL research statement, Work:rel: bump email to Kathryn, Work:rel: send email to Olga, Work: review coding material, Comm: message to Toni, Comm: reply to Aditi about meetup.  
+
+%</wps>
+
+%<*rtd>
+
+\begin{enumerate} 
+
+\item $\rightarrow$ **Curr**
+\item [] Work: finish draft paper for SC19. \te{1 hour} + [] Work: update lw-sched code to support Fortran. \te{30 minutes} + [] Work: do writing for IWOMP 19 paper problem statement and technique + [] Explain UDS’s
+\item Work: update startup draft. \te{50 minutes} 
+\item worklife: update wl cheatsheet.
+\item  Work: submit application on LLNL =  [] Work:comm: explain software contributions. + [] Work: review software engineering course from Columbia. + [] Work: explain knowledge of tools like git and cmake.
+\item Work:rel: finish software overview in application. \te{30 minutes} + [] Work:rel: update for comments. 
+\item Work:comm: email to Bronis +  [] Work:comm:  message to Tony Baylis. \te{10 minutes}. + [] Work: comm: message to Olga about ParaDis.
+\item Work:cod: practice problems for interview = [] Work: cp: Binary search and parallel prefix. \te{20 minutes}.
+\item Work:rel: update application for Rutgers. \te{20 minutes}.
+\item worklife: update wl cheatsheet.
+\item Work: comm: message to Professor Gropp. \te{1 hour}.
+\item Work: apply to LANL. te{10 minutes}.
+\item Work: message to Laura Grigori. \te{10 minutes}.
+\item Mgmt: Health: dentist appointment.
+\item Comm: message to Anu. 
+\doneTask{\Decision/:  Say no to Cray decision today at 4:30 PM 
+Pro: can apply again, can tell in a few days. , Don’t burn bridges. 
+Con: hard to apply again, process takes a while with BNL.}
+- [] \Decision/: take offer for EP Analytis \\ 
+       - Pro: 
+       - Con: 	
+\end{enumerate}
+
+%</rtd>
+
+%<*dpn>
+
+ **Sa**:    | *Su*   |  *M*:   |  *T*:  | *W*: |     *R*:   |     *F*: 
+%</dpn>
+
+
+
+%<*myi>
+
+\begin{frame}{My Information - 1}
+\begin{itemize}
+  \tiny \item \tiny work ID
+  \begin{enumerate}
+    \tiny \item \tiny UIUC UIN: 659743643
+  \item \tiny LLNL ID: 008983 
+  \item \tiny USC ID: 910-1254-783 $\leftarrow$ \textcolor{red}{Memorize} 
+  \item \tiny USC ID: 2029269
+  \end{enumerate}
+\item \tiny Work equipment: 
+  \begin{enumerate}
+          \tiny \item \tiny Model A1707
+          \tiny \item \tiny S/N: C02T30EZGTF1  
+          \tiny \item \tiny Computer serial number:
+          \tiny \item \tiny private159.east.isi.edu
+        \item \tiny IP address:  65.114.168.159
+        \item \tiny Whole disk encryption? 
+        \end{enumerate}
+%      \item \tiny insurance number:
+     
+        \seti 
+        \end{itemize}
+        \end{frame}
+
+
+        \begin{frame}{My Information - 2}
+        \begin{itemize}
+        \conti 
+ \tiny  \item \tiny  User ID
+        \begin{enumerate}
+       % \tiny \item \tiny bcbs : user: vivekkale pass: qazxsw23 memberID: QME9212849609  Group No.: IG2601. 
+        \item \tiny USC:  user:   pass: 
+      \item \tiny mycarle: vivekk112 password: carle
+      \item \tiny ppn:532296999 exp: 3-16-2025  \textcolor{red}{Memorize} 
+      	\item \tiny driver's license:K400-8728-4051 exp:2-20-18
+          \tiny \item \tiny bcbs : user: vivekkale pass: qazxsw23 memberID: QME9212849609  Group No.: IG2601.
+        \item \tiny USC:  user:   pass: 
+        \end{enumerate}
+      \item \tiny Money:
+        \begin{enumerate}
+          \tiny \item \tiny CC1 num: CC2 num: Dbtnum:  \textcolor{red}{Memorize} 
+        \item \tiny Bank Account:
+          Name: JP Morgan Chase
+          bank acct num: Nine Five Eight Six Thirty Sixteen Two
+          IBAN/routing num: Three Triple Two Seven One Six Two Seven 
+          ABA-Fedwire No.: 021000021
+        \item \tiny CCnum: Four One Four Threee
+        \item \tiny VIN:  License Plate:        reg.exp:   Atul's lic: P84 VIN:
+        \item \tiny Dad's License Plate: IL Q56 4276
+        \item \tiny Mom's License Plate : IL P84 9023 
+        \end{enumerate}
+        \seti
+        \end{itemize}
+        \end{frame}
+        \begin{frame}{My Information -3 }
+          \begin{itemize}
+            \conti  
+	  \item Travel: 
+            \begin{enumerate} 
+%            \item \tiny VIN:  License Plate: IL E61 2444 reg.exp:   Atul's lic: P84 VIN: 
+            \item \tiny Parking location codes:   Parking signs: 
+            \item \tiny AtulInternet’s FightingIllini  wifi pass: 2173900374 WPA
+            \item \tiny xfinity account number: 0149024144. / \url{vivek.lkale@gmail.com}
+            \item \tiny ComEd account number: 0149024144.
+            \item \tiny Dominion Account Number: 4248285449. 
+            \item \tiny Renter's Insurance Arlington, VA account number:
+            \item \tiny Hilton HHonors Number: 255506941. $\longleftarrow$ \textcolor{red}{Memorize} 
+            \item \tiny Marriott Rewards number: 947965950. $\longleftarrow$ \textcolor{red}{Memorize}
+            \item \tiny United MileagePlus number: 697 
+            \item \tiny AAdvantage number: 847JJP0. password: 
+            \item \tiny Delta number : 
+            \item \tiny Southwest: vivek.k password: 
+            \item \tiny Dad's AAdvantage number: BRU6630 Password: polarwind.
+            \item \tiny Emerald Club number:  140294615   pass:   pass: $\leftarrow$         \textcolor{red}{Memorize.} 
+            \item \tiny Avis Wizard number: AV0426. 
+            \item \tiny Netflix user:  \url{lvk2408@gmail.com}  Netflix password: chitrapat.
+            \item \tiny Matrimony ID: R1438138 - R one FOUR three eight one three eight 
+            \item \tiny SH ID:
+
+            \item \tiny Contact: 
+\begin{itemize}
+             \item \tiny
+             \item \tiny My phone number: 217-369-7996
+\item \tiny Google Voice: 650-733-9327
+\item \tiny BlueJeans: 703-812-3704 
+\item \tiny Zoom conference call: Dial: 408-638-0968, when prompted, enter the meeting ID: 939 078 1212
+\end{itemize}
+            \end{enumerate}
+          \end{itemize}
+      \end{frame} 
+
+
+%</myi>

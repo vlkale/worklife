@@ -1,0 +1,174 @@
+\begin{frame}[Problems] 
+\frametitle{Context for CSE}
+\begin{enumerate} 
+\item Engineering(solvers): Building a bridge, Financial Trading, Linear Programming (requires solving a large linear system of equations )
+\item Science(simulations): Human Heart Simulation (requires several timesteps) -- one human heartbeat 
+can be simulated at full-scale in 6 hours.
+\item We refer to the solvers and simulations as an "application". 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Context for CSE}
+\begin{enumerate}
+\item A computer can solve these problems much faster. 
+\item Computation needs to be portable to different machines.  
+\item Depending on how an application is implemented and tuned,
+      a code could take a lifetime or a few days or a few minutes 
+      to solve the problem.  
+\item As science and engineering advances, we need larger machines to solve our problems. 
+\item Currently, we use petascale machines with machines with nodes of 16+ cores.  
+\item What happens when we move to exascale?  
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Static versus Dynamic techniques for optimizations Techniques}
+\begin{enumerate}
+\item static optimization techniques: compilers. 
+\item auto-tuning 
+\item runtime optimization: measurement-based load balancing, 
+(determines through prior knowledge how to manage resources). 
+\item Fully dynamic:  work-stealing  
+%Computation needs to be portable to different machines.  
+\end{enumerate} 
+\end{frame}   
+
+\begin{frame} 
+\frametitle{A Quick Digression (which we will come back to): Some known shortcomings of work-stealing}
+\begin{itemize}
+\item With work-stealing, there is a flaw in that the cost for 
+a steal is not constant on most machines, and locality is 
+is important here. 
+\item Furthermore, we are not working on a cloud and sharing resources with other applications, 
+as one would when using a desktop machine.  All the cores can be used pretty much all the time.
+\item  Because of this, many applications running 
+on hpc systems have no need and won't benefit from this dynamic scheme. 
+\item Thus, we continue with auto-tuning, hand-optimization, algorithm rearrangements, 
+compiler schemes and runtime schemes for many applications. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Noise Problem}
+\begin{enumerate}  
+\item But wait, are all the cores really used all the time? 
+\item What about software floating point ?  
+\item What about runtimes for HPC systems? 
+\item what about MPI progress engines? 
+\item What if the overheads (or mispredictions in optimizations, causing extra time) 
+of these runtimes and operating systems 
+are large enough to be noticeable?  
+\end{enumerate} 
+\end{frame} 
+
+
+\begin{frame} 
+\frametitle{Noise \textit{Amplification} Problem}
+\begin{enumerate} 
+\item \small One might think that the detrimental impact is so rare, and so we never need to worry about this. 
+\item \small Let's take a step back and consider an increased problem. 
+\item \small Small performance irregularities within one node can amplify across the machine 
+due to communication dependence in the application.
+\item \small This amplification has a higher likelihood of occuring as we increase the number of processors.  
+\item \small Theoretical analysis of noise amplification (called "noise law" in their paper) by Tsafsir. 
+\end{enumerate} 
+\end{frame} 
+
+
+\begin{frame}[Problem: Uncoordinated Localized Transient load imbalance] 
+\frametitle{General Problem: Uncoordinated Localized Transient load imbalance} 
+\begin{enumerate} 
+\item \small On a single node, there is a competition between application, OS, and 
+      runtime for the multiple CPUs on the node. 
+\item \small This competition for the CPU generates as uncoordinated localized transient load imbalance. 
+%\item This U.L.T. load imbalance can occur due to competition for the CPU by the OS, application, and runtime. 
+\item \small A big barrier for running such applications on future machines is uncoordinated 
+localized transient load imbalance. 
+\item \small The load imbalance due the OS is one instance of ULT load imbalance. 
+The impact of OS has been show experimentally through Petrini et al, 
+through Simulation by Hoefler et al,  and theoretically by Tsasfir et al. 
+\item \small Noise amplification can actually make time to solution go to a very large number. 
+\item \small How do you parallelize the entire the stack of compiler,
+multiple runtimes, Operating System, application to reduce this ULT load imbalance? 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Solution: Work-stealing within each node or collection of nodes in a rack}
+\begin{enumerate}
+\item \small Work-stealing is a mechanism that allows computation to self-organize;  
+it can mitigate the noise within a node.  
+\item \small Through localized work-stealing, each node self-adapts to its own noise. 
+\item \small We have to be careful though, because noise is so fine-grained. Moving work
+from one core to another can have high startup cost.    
+\end{enumerate}
+\end{frame} 
+
+\begin{frame} 
+\frametitle{Enhancing work-stealing within each node to be lightweight (i.e. locality-conscious)}
+\begin{enumerate}
+\item  Due to the fundamental issues of dequeue overhead ( non-constant overhead to move work), 
+we try to make the work-stealing more lightweight, so that more work is stolen 
+at the end of the computation in the application timestep.    
+\item We can further improve this through adaptive scheduling, where we use knowledge from 
+previous application timesteps to adjust load in the current application timestep.  
+\item We can also further improve this through the use of slack-conscious lightweight scheduling, 
+where we adjust the scheduler so that it reduces amplification due to dequeue overhead on nodes 
+that have less load than others. 
+\end{enumerate}
+\end{frame} 
+
+\begin{frame}
+\frametitle{Understand concepts through Use Case Example}
+\begin{enumerate} 
+\item Show picture diagram of parallelization of stencil.
+\item Show picture diagram of parallelization of LU factorization (how the work is split across threads, which work is done statically, and which work is done dynamically).  
+\item Show mitigation of noise through scheduling techniques. 
+\item Show mitigation of noise through adaptive scheduling techniques. 
+\end{enumerate} 
+\end{frame} 
+
+%\begin{frame}
+%\frametitle{Theoretical Analysis and Projected Improvement}
+%\begin{enumerate}
+%\item Show mitigation of noise through scheduling techniques. 
+%\item Show mitigation of noise through adaptive scheduling techniques. 
+%\end{enumerate} 
+%\end{frame} 
+
+\begin{frame} [Using Our technique for your Application]
+\frametitle{Using Our Technique for Your Own Application}
+\begin{enumerate} 
+\item Tasklet library implementation. 
+\item OpenMP extensions, MPI shared mem extensions. 
+\end{enumerate} 
+\end{frame} 
+
+
+\begin{frame} 
+\frametitle{Modifying scheduler runtime} 
+\begin{enumerate} 
+\item scheduler runtime allows for new pragma of static+dynamic
+\item scheduler runtime allows for multiple MPI processes 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame} 
+\frametitle{Packaging software} 
+\begin{enumerate} 
+\item using cmake for packaging
+\item git for collab 
+\item environment variable setup
+\item ssh guide
+\item slack-conscious sched visualization tool 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame} 
+\frametitle{Paper} 
+\begin{enumerate}
+\item IPDPS with slack-conscious sched. 
+\item ICS 
+\end{enumerate} 
+\end{frame} 

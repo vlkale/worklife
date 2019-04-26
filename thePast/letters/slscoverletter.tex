@@ -1,0 +1,184 @@
+\documentclass[11pt]{article} 
+
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\usepackage{ulem}
+\usepackage{caption}
+\usepackage{courier}
+
+\usepackage{verbatim}
+%\usepackage[usenames,dvipsnames]{xcolor}                                  
+\usepackage{listings}
+
+\usepackage{float}
+\usepackage{subfig} 
+
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\item \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\item \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\item  \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\item  \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\deadline}[1]{#1}
+\newcommand{\dl}[1]{\textit{Deadline:}#1}
+
+\newcommand{\comments}[1]{} 
+
+%TODO: figure out better title for this file 
+%TODO: add in all relevant packages 
+%TODO: do a clean-up for writing/how-to-say-it and visual appeal 
+%TODO: add in more on summary page  
+%TODO: add in all howtos 
+%TODO: try to get multi-column for month plan doc. 
+
+%\title{Google}
+%\author{Vivek Kale}
+\begin{document}
+%\maketitle  
+
+
+
+\begin{enumerate} 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{enumerate} 
+
+My CV is attached as a pdf file in the email that this document was
+attached.\\
+
+\comments{
+My research focus is performance tuning loops performing computational work in
+parallel computer programs. This is done through experimentally tuning
+different different loop execution strategies and choosing the best
+performing configuration for production runs. In the worst case, there
+may be P(n,c) different schedules for which the performance is
+measured. With loop sizes typically 1000 and number of cores typically
+16-64, this entails a large data set to go through. The question is
+how do we quickly find the minima? Also, how do we ensure we haven't
+missed out on the best configuration? These questions can be answered
+by attending the SLS forum focused on machine learning, particularly focus
+item 1 listed on the website.
+}
+
+\comments{
+\begin{outline}[enumerate]
+ \tiny \1 {\tiny My research involves performance optimization of
+    loops in parallel programs performing computation simulation
+    scientific phenonemon such as blood flow, to help scientists
+    discover new mechanisms for handling heart problems.}
+
+  \tiny \1 {\tiny Each scheduler has additional variants, with a
+  default scheduling parameter of 50\%. However, since the tradeoff
+  between load imbalance and locality varies between machine and
+  application, we must vary this parameter. Each of the schedulers
+  consists of a parameter which can be varied between 0.0 and 1.0, which
+  dictates the amount of static work to be executed by threads and the
+  amount of dynamic work to be executed by threads. A second
+  parameter is the task granularity of a loop's schedule, which
+  controls the data movement and sychronization overheads. F
+  current approach estimates the best static fraction on one node and
+  then tune by running on an entire machine, due to load imbalance
+  characteristics.   }
+
+  \tiny {\1 \tiny Expensive to tune. }
+    {\tiny \2 \tiny large search space may make it impossible. } 
+    {\tiny \2 \tiny Our current approach uses the static fraction on
+    node and applies it to all nodes. However, as our work in [3]
+    shows, the best static fraction is uses all nodes. 
+    This becomes expensive. } 
+
+  \tiny \1 {\tiny Our current method involves no machine learning,
+    i.e., no parameter searches from a previous tuning is not used for
+    finding the best parameter in a program being currently tuned. For
+    each application-architecture pair, we search the entire search
+    space. A question is whether we can use previous application
+    executions to run current code. }
+  \tiny \1 {\tiny For some program running on a particular architecture, Each
+    code executes in a certain number of seconds.}   
+  \tiny  \1 {\tiny If two loops are same in two different simulations programs,
+    can we use knowledge of the one simulation program code search to
+    find the the best schedule for the current run? } 
+  \tiny \1 {\tiny This is an open question and my thesis work follows
+    from this. } 
+
+  \tiny \1 {\tiny Going to Shlosberg Helps for international
+  collaboration to enrich my area of research.}
+%  \tiny \1 {\tiny Given the focus of both mathematics and computer
+%    science, this opportunity helps for collaborations with
+%    mathematicians, which are the primary domain experts of the
+%    technology that I build.}
+\end{outline}
+}
+
+My research involves performance optimization of
+loops in parallel programs performing computation simulation
+scientific phenonemon such as blood flow, to help scientists
+discover new mechanisms for handling heart problems. 
+Each loop is effiently executed through defining a low-overhead
+schedule. The two performance factors impacting efficiency of
+parallel execution of loops are load imbalance and data movement.  
+We improve efficiency of loops through adapting its schedule in a way
+that maximizes Load balance and minimizes data movement,
+simultaneously. 
+%explain basic scheduling strategy 
+We model the costs, and optimize based on model. 
+
+There are multiple low-overhead scheduling strategies. Each assuming a default scheduling parameter of 50\%. However, since the tradeoff
+between load imbalance and locality varies between machine and
+application, we must vary this parameter. Each of the schedulers
+consists of a parameter which can be varied between 0.0 and 1.0, which
+dictates the amount of static work to be executed by threads and the
+amount of dynamic work to be executed by threads. A second
+parameter is the task granularity of a loop's schedule, which
+controls the data movement and sychronization overheads. F
+current approach estimates the best static fraction on one node and
+then tune by running on an entire machine, due to load imbalance
+characteristics.
+
+The above optimization problem is expensive to tune.  First, large
+search space may make it impossible, in terms of available time for
+science to progress. Second, Our current approach uses the static
+fraction on node and applies it to all nodes. However, as our work in
+[3] shows, the best static fraction is used on all nodes. This
+becomes expensive, and so we need to prune the search space. 
+
+Our current method involves no machine learning,
+i.e., no parameter searches from a previous tuning is not used for
+finding the best parameter in a program being currently tuned. For
+each application-architecture pair, we search the entire search
+space. A question is whether we can use previous application
+executions to run current code. 
+For some program running on a particular architecture.
+Each code executes in a certain number of seconds. 
+If two loops are same in two different simulations programs,
+can we use knowledge of the one simulation program code search to
+find the the best schedule for the current run? This question follows
+from my thesis. This question is open.   Going to Shlosberg Helps for
+international collaboration to enrich the research I have done for my
+thesis. 
+
+%{ It is an open
+%   question not yet solved in the literature.}
+  
+  
+
+\end{document}

@@ -1,0 +1,41 @@
+\documentclass{beamer}
+%\usetheme[
+%          titlepagelogo=bold50-illinois,% Logo for the first page
+%          pageofpages=of,% String used between the current page and the total page count
+%          titleline=true,% Show a line below the frame title
+%          ]{TorinoTh}
+
+\usetheme{Luebeck}
+
+\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{ulem}
+\usepackage{color} 
+
+\title{To Do List for month of \date[DLT 2012]{\today}}
+
+\author{Vivek Kale}
+\date{\today}
+
+\title[ To Do List for \today ]{To Do List for month of \today }
+\author[Vivek Kale]{Vivek~Kale\inst{1}}  
+
+\institute[University of Illinois at Urbana-Champaign]{
+  \inst{1}%
+  Department of Computer Science\\
+  University of Illinois at Urbana-Champaign
+}
+\date[DLT 2012]{\today}
+\subject{Computational Sciences}
+
+%\pgfdeclaremask{ILLINOIS}{bold50}
+%\pgfdeclareimage[mask=ILLINOIS,width=1cm]{bold50}{bold50}
+%\logo{\vbox{\vskip0.1cm\hbox{\pgfuseimage{bold50}}}}
+
+\begin{document}
+\titlepage 
+\input{./content_todo}
+\end{document} 

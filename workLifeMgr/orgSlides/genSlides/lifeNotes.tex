@@ -1,0 +1,58 @@
+\documentclass{beamer}
+%\usetheme[
+%          titlepagelogo=bold50-illinois,% Logo for the first page
+%          pageofpages=of,% String used between the current page and the total page count
+%          titleline=true,% Show a line below the frame title
+%          ]{TorinoTh}
+
+\usetheme{Luebeck}
+
+\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{ulem}
+\usepackage{color} 
+
+
+
+\newcommand{\bllt}{\item \small}
+
+\newcommand{\doneTask}[1]{\item \small \sout{#1}}
+
+\newcommand{\MyName}{Vivek~Kale}
+
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+
+
+\title{Notes on Life}
+\author{Vivek Kale}
+\date{\today}
+
+\title[ Life Notes ]{Life Notes }
+\author[Vivek Kale]{%
+  Vivek~Kale\inst{1}}  
+
+\institute[University of Illinois at Urbana-Champaign]{
+  \inst{1}%
+  Department of Computer Science\\
+  University of Illinois at Urbana-Champaign
+}
+\date[DLT 2012]{\today}
+\subject{Computational Sciences}
+
+%\pgfdeclaremask{ILLINOIS}{bold50}
+%\pgfdeclareimage[mask=ILLINOIS,width=1cm]{bold50}{bold50}
+%\logo{\vbox{\vskip0.1cm\hbox{\pgfuseimage{bold50}}}}
+
+\begin{document}
+\titlepage 
+\section{General Life}
+\input{./content_life} 
+%\section{Shopping List}
+%\input{./content_groceryList} 
+\section{Relationships}
+\input{./content_funStuff} 
+\end{document} 

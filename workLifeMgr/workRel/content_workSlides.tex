@@ -1,0 +1,2008 @@
+%!TEX root = researchQuestionsAndData.tex
+
+%TODO: fix minima explanation 
+%TODO: think about a new graph for static fraction 
+%TODO: split explanations of graphs in first slides, into separate graphs 
+%TODO: get different noise graphs. 
+%TODO: figure out explanation for histogram graphs. 
+%TODO: figure out rebound code that maps to heartbeat sim. and show that here.  
+%TODO: make sure that rebound code works in terms of mapping to heartbeat  (check with someone) 
+%TODO: ensure naming consistent besf.
+
+%Ridhima : honda cr-v 
+% dad: acura rlx 
+%vivek: bmw 3
+
+
+\begin{frame}
+\frametitle{Overview}
+\begin{enumerate} 
+\item Work 
+\item Mgmt
+\item Comm 
+\end{enumerate}
+\end{frame} 
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Overview: Work}
+\begin{enumerate}
+\item Introduction and Motivation for Schedulers
+\item Lightweight Scheduling with further optimizations + Scalability 
+\item Scheduling for Both Transient and Persistent Load imbalances
+\item Model-guided Optimization and Optimizations taking into account MPI Slack
+\item Balancing Load Balance and Locality in different dimensions
+\item Combining all schedulers and Application Programmer Usability
+\item Conclusions and Future Work
+\end{enumerate}
+\end{frame}
+
+
+\input{content_workSlides}
+
+\begin{frame}
+\frametitle{Overview: Mgmt} 
+
+\end{frame} 
+
+\begin{frame}
+\frametitle{Overview: Comm} 
+
+
+\end{frame} 
+
+
+
+
+
+
+
+
+
+%TODO: add in simple bulk-synchronous code here. 
+%TODO: justify why these old graphs are fine. 
+\begin{frame}
+\frametitle{Example Synchronous MPI code}
+\lstinputlisting{../listings/mpi-bulk-synch.c}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Transient Load Imbalance and its Mitigation}
+\begin{columns} 
+\column{0.5\columnwidth}
+{\small Performance Irregularities on individual nodes can lead to
+  significant slowdown of synchronous MPI codes. }
+\column{0.5\columnwidth}
+{\small One promising approach, given multi-core nodes, is to only
+re-distribute work within each node (this is inexpensive). } 
+\end{columns} 
+%{$\rightarrow$ \small Within-node performance irregularities that
+%induce load imbalances are as significant a factor for applications as
+%across-node load imbalances. The below gives an intuitive
+%explanation of why this is so.}
+
+%TODO: animate this to show  right one slide later. 
+\begin{figure}[ht]
+  \label{fig:NoiseTransImbPic}
+  \label{fig:AmplificationPic1}\subfloat[\label{fig:AmplificationPic1}
+    \tiny Noise occuring on different nodes in different
+    iterations delays every iteration. 
+  ]{\includegraphics[height=1.0in]{../pictures/NoiseAmplificationPic4}}
+  \label{fig:AmplificationPic3}\hspace*{0.25in}\subfloat[\label{fig:AmplificationPic3}
+    \tiny Execution times is significantly reduced, if we assume load
+    can be perfectly re-distributed within each node. 
+  ]{\includegraphics[height=1.0in]{../pictures/NoiseMitigatedPic5}}
+  \caption{\label{fig:NoiseTransImbPic} Schematics of application
+    timelines showing how impact of noise can be mitigated by
+    idealized within-node work re-distribution.} 
+\end{figure}
+\end{frame}
+%TODO: finalize that this should go here. We explain that the problem
+%will become even greater when laod imbalance is.  
+\begin{frame}[label=workredistributionNoise]
+\frametitle{Within-node Load Imbalance May Help}
+\begin{figure}[ht!]
+\label{fig:stat-histo}
+\begin{center}
+\includegraphics[scale=0.16]{../images/IterTimesHisto-outliers-static}\\
+%\includegraphics[scale=0.29]{../images/IterTimesHisto-outliers-dynamic}
+%\includegraphics[scale=0.35]{../images/IterTimingsHisto-dynamic}
+\end{center}
+\caption{\label{fig:stat-histo} \small Iteration timing distribution across 1000 timesteps of the
+statically scheduled\comments{\hyperlink{3Dmesh}{\beamerbutton{3D
+      reg. mesh}}} 3D regular mesh computation on one node of Power5+. }
+\end{figure} 
+
+\comments{
+\begin{figure}[h!]
+\label{fig:work-redistribution-histo-ideal}
+\begin{center}
+\fbox{\includegraphics[scale=0.23]{../images/emptySchedImage}}\\
+{\tiny todo - need to add (idealized) iteration timing histogram here with single bar at
+  6.75 ms} 
+\end{center}
+%TODO: could re-word the below further. 
+\caption{\label{fig:work-redistribution-histo-ideal} \small  }
+\end{figure} 
+}
+\begin{itemize} 
+\tiny  \item \tiny Iteration timing distribution
+  for 3D regular mesh across 1000 timesteps using no work
+  re-distribution\comments{across cores} during each iteration cause
+  bi-modal distribution. The second mode on the right causes 
+  performance degradations. 
+ \item \tiny To minimize the impact of noise to application performance, 
+  we would need to re-distribute work in a way that causes the above
+  histogram be the one with minimal spread and mean.
+\end{itemize} 
+
+\end{frame}
+
+\begin{frame}[label=mitigationWithinNode]
+\frametitle{Within-node Persistent Load Imbalance and Mitigation of It}
+\begin{figure}[ht]
+\label{fig:AppPersistentImbPic}
+\subfloat[\tiny A modeled application timeline having persistent load
+imbalance across nodes, and cores during execution.]{\includegraphics[height=1.0in]{../pictures/PersistentCores}}
+\label{fig:AmplificationPic3}\hspace*{0.25in}\subfloat[\label{fig:AmplificationPic3}\tiny
+  A modeled application timeline with work re-distributed across cores,
+to reduce load imbalance.]{\includegraphics[height=1.0in]{../pictures/PersistentNode}}
+\caption{\label{fig:AppPersistentImbPic} Application-induced load imbalances, which are typically jagged and persistent, are also mitigated by within-node re-balancing. }
+\end{figure}
+\end{frame}
+
+\begin{frame}[label=ImbWithinNode]
+%\frametitle{Performance Doesn't Scale with Cores as Exp}
+\frametitle{Within-node Imbalance May Help}
+{\small We measure the load on each core for an n-body application code called Rebound.}\\
+{\small Mitigated Imbalance: Assuming load within each node is perfectly balanced across its cores without any overhead.}
+\hspace*{2.5in}\includegraphics[scale=.12]{../pictures/persistentImb}\hspace*{1in}\includegraphics[scale=.12]{../pictures/mitigatedImb}
+\vspace*{-0.1in}
+\begin{center}
+\input{../plots/bh-withinAcrossImb-cab}
+\end{center}
+%TODO: show calculation for this. 
+\begin{center}
+{\tiny Imbalance is measured as $\frac{{max\{load_{i}\}}}{avg\{load_{i}\}}$, where $i$ is the processing element.}
+%TODO word the below better 
+\end{center}
+\end{frame}
+
+%TODO: see if we can change title 
+\begin{frame}[label=dynLoadBal]
+\frametitle{So, can dynamic load balancing fix this?}
+\begin{itemize}
+\item Dynamic load balancing within a node can improve performance. 
+\begin{enumerate}
+\item For both kinds of imbalances. 
+\item Persistent imbalance can also be addressed by across-node balancing (avail. in Charm++, Zoltan), but this is complementary.
+\end{enumerate}
+\vspace*{.5in}
+\item However, within-node dynamic load balancing faces many challenges. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=idleTimeCalc]
+\frametitle{Challenge 1: Idle Time due to Within-node Imbalance}
+{\tiny How we measured idle time:}
+\begin{center}
+\lstinputlisting{../listings/omp-CG-idleTimeCalc.c}
+\end{center}
+\end{frame}
+
+\begin{frame}[label=basictimings]
+\frametitle{Challenge 1: Idle Time due to Within-node Imbalance}
+{\tiny \textit{\textbf{Setup and Methodology:}} Used NASLU OpenMP
+  benchmark code and Barnes-Hut pthread application code. Ran on one
+  node of LLNL cab cluster, which is an Intel Xeon 16-core with CHAOS
+  operating system.\comments{using gcc optimization level 'O3'}. \comments{having OpenMP3 and mvapich3}}
+\visible<1->{
+\begin{figure}[t]
+\begin{center} 
+\includegraphics[scale=0.35]{../plots/dmTime-nbody-cab-idleonly}
+\includegraphics[scale=0.35]{../plots/dmTime-NASLU-cab-idleonly}
+\end{center}
+\caption{\small Breakdown of execution time for a load imbalanced code
+  (left) and a load balanced code (right) on cab, shown for the
+  3\comments{available}OpenMP scheduling strategies.}
+\end{figure}}
+
+\visible<1->{
+\begin{itemize}
+\tiny {\item \tiny  Dynamic or guided scheduling eliminates idle times in both codes.}
+\tiny {\item \tiny However, for NASLU, the total execution time actually increases with both dynamic and guided scheduling.}
+%TODO : make within-node dynamic balancing clear. 
+\begin{itemize}
+\tiny {\item \tiny  Recall that (within-node) dynamic load balancing is needed even for naturally balanced applications, to handle noise.}
+\end{itemize}
+\tiny {\item \tiny  For n-body, the execution time does not decrease as much as we expect, based on the idle time in the static scheduling.}
+\end{itemize}}
+\end{frame}
+
+%TODO: word the expected overhead of idle time better. 
+\begin{frame}
+\frametitle{Why is the Non-idle Time Increasing?}
+%\begin{itemize}
+%\tiny \item \tiny Scheduling overhead?
+%\end{itemize}
+\begin{figure}[t]
+\begin{center}
+\includegraphics[scale=0.35]{../plots/dmTime-nbody-cab-idleonly}
+\includegraphics[scale=0.35]{../plots/dmTime-NASLU-cab-idleonly}
+\end{center}
+\end{figure}
+\begin{center}
+{\small Breakdown of execution time for a load imbalanced code (left) and a load balanced code (right) on cab.}
+\end{center}
+{\small (Answer: Mostly data movement, as we will see in the next few slides.)}
+\end{frame}
+
+%TODO: check cause/challenge here and in thesis. 
+\begin{frame}
+\frametitle{Challenge 2: Synchronization Overhead}
+{\tiny \textbf{\textit{Methodology}}: Obtain call-path profile from
+  hpcToolkit which gives percent time spent in \texttt{omp\_lock()}
+  OpenMP runtime function.}
+{\tiny comp: computation time,  dq: locking and synchronization, 
+Dm:  data movement, due to extra cache misses, etc. } 
+\begin{figure}[t]
+\label{fig:dmTimes-cab}
+\begin{center}
+\includegraphics[scale=0.35]{../plots/dmTime-nbody-cab}
+\includegraphics[scale=0.35]{../plots/dmTime-NASLU-cab}
+\end{center}
+%\caption{\label{fig:dmTimes-cab} \tiny Breakdown of time. Synchronization overheads are shown in green.}
+\end{figure}
+\begin{center}
+{\small Breakdown of time. Synchronization overheads are shown in green.}
+\end{center}
+\begin{itemize}
+\tiny \item \tiny Synchronization overheads exist when using dynamic or guided scheduling.
+\item \tiny While seemingly insignificant, they account for roughly 5\% percent of execution time for both of these applications. 
+\end{itemize}
+\end{frame}
+
+%TODO: figure out whether we need data movement on BG/Q. 
+%TODO: figure out whether we need to show data movement on bw. 
+%TODO: see if you should show static time, to explain prefetching benefit. 
+%TODO: separate NUMA and non-NUMA slides.
+%TODO: add in details on architecture/platform settings. 
+%TODO: add in job script specifics.
+%TODO: add number of nodes run on.
+%TODO: add in timestep length and problem size. 
+%TODO: explain why for different setups 
+
+\begin{frame}
+\frametitle{Challenge 3: Data Movement}
+{\tiny \textit{\textbf{Methodology}}: Measured L2 and L3 cache misses using PAPI counters, placed just before and just after OpenMP threaded computation region. \comments{(Note: will add code in next slide if I can} } 
+\visible<1->{
+\begin{figure}[t]
+\label{fig:cacheMisses-cab} 
+\begin{center}
+\includegraphics[scale=0.30]{../plots/L2-cacheMisses-nbody-cab}
+\includegraphics[scale=0.30]{../plots/L2-cacheMisses-NASLU-cab}\\
+\includegraphics[scale=0.30]{../plots/L3-cacheMisses-nbody-cab}
+\includegraphics[scale=0.30]{../plots/L3-cacheMisses-NASLU-cab}
+\end{center}
+\end{figure}
+\begin{center}
+{\small Cache misses with L2 misses on top and L3 on bottom, for different OpenMP scheduling strategies.}
+\end{center}
+}
+\visible<1->{
+\begin{itemize}
+{\tiny \item \tiny For both codes, cache misses increase significantly with dynamic or 
+guided scheduling, suggesting an  explanation for the performance loss.}
+\end{itemize}
+} 
+\comments{ {\footnotesize Cache miss calcs in thesis write-up  } }
+\end{frame} 
+
+\begin{frame}
+\frametitle{Calculations for Cache Misses for NASLU} 
+{\small To verify that cache misses are in fact impacting performance 
+(and is in fact the cause of the increase in data movement time), we show calculations below. }\\
+{\tiny L2 cache miss latency is 100 - 300 cycles (with a 2.66 Ghz processor, this is 4 - 8 ns). }\\
+{\tiny L3 cache miss latency is 100 ns. }\\
+\begin{figure}[ht]
+\label{fig:cacheMisses-cab-forCalcs}
+\begin{center}
+\includegraphics[scale=0.20]{../plots/L2-cacheMisses-NASLU-cab}\includegraphics[scale=0.20]{../plots/dmTime-NASLU-cab}
+\end{center}
+\end{figure} 
+
+\begin{itemize}
+\tiny \item \tiny We need to account for 485.52 - 83.53 - 24.65 = 
+376.34 seconds of time spent in dyn sched. Note that we don't need the
+execution time breakdown here, since there is low idle time for this code. 
+\item \tiny Cache miss time for L2 is $\frac{200}{2.66 \times 10^9}
+  \cdot (3845- 2257 \times 10^6) = 65.04$ s. 
+\item \tiny 376.34 - 65.04 = 311.44 seconds to account for.
+\item \tiny Cache miss time for L3 is $(100 \cdot 10^-9) \cdot (1676
+  - 631) \times 10^6 =  97.82 $ s. 
+\item \tiny Still 311.44 - 97.64 = 214.20 seconds to account for. 
+  The cost of L3 cache miss may be much higher than 100 ns,
+  because access to main memory by multiple threads requires threads to wait in memory
+  queue. In the worst case, i.e., when all threads access main memory simultaneously, 
+  the latency to memory is factor of $(16+(16-mem\_queue\_depth)\times
+  100$ ns of the original latency, where mem\_queue\_depth=12 on this
+  machine. 
+  %We didn't take
+  %into account the execution time for memory buffers for , which can
+  %make 
+\item \tiny Additionally, to verify that memory bandwidth was the
+  factor, we ran STREAM on one core and STREAM running all cores, and
+  recorded the bandwidth for both runs. 
+\item \tiny Memory bw of STREAM triad on one core is 14837.24 MB/s, but on 16
+  cores it is only 103669.71 MB/s. The effective mem. latency
+  increases by factor of 2.4x, giving 238.4 s instead of 97.64 s for
+  Cache miss time for L3. 
+\item \tiny The remainder of time is now 311 - 238.34 = 80 s. This may
+  due to L2 being higher (also, note that the L2 latency was reported at
+  1 core), or by inefficiencies in parallelization. 
+\end{itemize} 
+\end{frame}
+
+\comments{
+\begin{frame}
+\frametitle{Calculations for Cache Misses for bh}
+Similarly, for n-body: 
+\begin{figure}[ht]
+\label{fig:cacheMisses-cab-forCalcs}
+\begin{center}
+\includegraphics[scale=0.30]{../plots/L2-cacheMisses-nbody-cab}\\
+\includegraphics[scale=0.43]{../plots/dmTime-nbody-cab}
+\end{center}
+\end{figure}
+\end{frame}
+}
+%TODO: consider new title 
+% possible Question from audience: why is guided different from mixed
+% static/dynamic?  Answer: because it doesn't preserve outer iteration
+% data locality, and because on the first chunks, there is dqueue
+% overhead. 
+% Also, the sizes of the tasks can be controlled in guided, but can't
+% handle staggering, i.e., spatial locality. 
+
+\begin{frame}
+\frametitle{Thesis Objective}
+\underline{\textbf{Thesis Objective:}} Design a set of new scheduling strategies that handles all three causes of the problem, i.e., thread idle
+time, data movement, and synchronization overhead simultaneously for
+many applications and platforms, in the context of bulk-synchronous and loosely synchronous
+MPI applications. 
+% all at once, which  OpenMP static scheduling and OpenMP dynamic scheduling. 
+\end{frame}
+%TODO: change the below to the decomp 
+
+\begin{frame}
+\frametitle{Key Idea of Solution}
+\visible<1->{\small Can we combine a static and dynamic scheduling scheme, which
+  simultaneously reduces scheduler overhead and load imbalance
+  (respectively) in an intelligent manner?}\\ 
+\visible<1->{
+\begin{columns}
+\column{0.9\textwidth}
+In spite of noise, most of the time, all cores are available to
+the application. 
+\begin{enumerate}
+  \small \item \small Allocate a fixed fraction of
+  loop iterations statically. (Then do remaining loop
+  iterations dynamically). 
+\item \small Ratio of static loop iterations to all loop iterations is the \textit{static fraction}.
+\item \small \textit{How do we select the static fraction?}  
+\end{enumerate}
+\end{columns}
+}
+\end{frame}
+
+%Note:  add in the cost model .
+%TODO: check that we brought in ULT load imbalance.
+
+\begin{frame}
+\frametitle{Overview of Scheduling Strategies}
+\begin{columns}
+\column{0.95\textwidth}
+       {\tiny \underline{\textbf{Available OpenMP Schedulers}}} \\
+       \begin{itemize}
+         \tiny \item \tiny \textcolor{black}{OpenMP static scheduling (\textit{static} or \textit{OpenMP-static})}\\ 
+       \item \tiny \textcolor{black}{OpenMP dynamic scheduling (\textit{dynamic} or \textit{OpenMP-dynamic})}\\
+       \item \tiny  \textcolor{black} {OpenMP guided scheduling(\textit{guided} or \textit{OpenMP-guided})}\\
+       \end{itemize}
+           {\tiny  \underline{\textbf{Scheduling Strategy Optimizations}}}\\
+           \begin{itemize}
+             \tiny \item \tiny \textcolor{black}{mixed static/dynamic scheduling(\textit{half})}
+           \item \tiny \textcolor{black}{hybrid static/dynamic scheduling(\textit{besf})}
+           \item \tiny \textcolor{black} {lightweight scheduling \textit{ligh}, which includes locality-aware scheduling(\textit{loca}) and skewed workloads(\textit{skew})}
+           \item \tiny \textcolor{black} {weighted locality-sensitive scheduling (\textit{weig}, \textit{uWsched} or
+             \textit{uWldB}), which consists of hybrid static/dynamic
+             scheduling and weighted allocation (\textit{wSched} or \textit{wldB})}.
+           \item \tiny \textcolor{black} {model-guided Hybrid
+             Static/Dynamic Scheduling (\textit{Static-Hybrid}), and
+             slack-conscious hybrid scheduling
+             (\textit{callsite\_fd})}. Slack-conscious
+             hybrid static/dynamic scheduling is referred to as Adaptive Scheduling in the paper.  
+           \item \tiny \textcolor{black} {staggered hybrid static/dynamic scheduling (\textit{sds} or \textit{vSched})}
+           \item \tiny \textcolor{black}{{Example combination of schedulers (\textit{allStrat} or \textit{full}) }}
+           \end{itemize}
+               {\tiny \underline{\textbf {Methodology for Tuning Scheduler Parameters}}}
+        \begin{itemize}
+          \tiny \item \tiny \textcolor{black} {experimental tuning}
+        \item \tiny \textcolor{black} {model-guided optimization} %TODO: change to pruning search space 
+        \item \tiny \textcolor{black} {runtime adjustment} %TODO: add within-node runtime adjustment and across node adjustment 
+        \end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hybrid Static/Dynamic Scheduling and Lightweight Scheduling} 
+\comments{
+\column{0.5\columnwidth} 
+\begin{enumerate}
+\item \textbf{Introduction:}
+\begin{itemize}
+\tiny \item \tiny Show basic scheduling scheme and provide explanation of why it is beneficial. 
+\item \tiny Explain inefficiency of load balanced code due to noise, with just one node. 
+\item \tiny Show additional ways to provide low-overhead dynamic scheduling. 
+\item \tiny Intuitive explanation of amplification problem, and benefits of our scheduling strategy to scale. 
+\end{itemize} 
+\item \textbf{Technique Overview}:
+  \begin{itemize}
+  \tiny \item \tiny \textbf{Scheduling Strategies}:Mixed static/dynamic, Hybrid Static/Dynamic Scheduling,Lightweight scheduling (which includes locality-aware scheduling and skewed workloads)
+  \small \item \small \textbf{Tuning Methodology}: Experimental Tuning  
+\end{itemize}
+\item \textbf{Architectures:}
+\begin{itemize} 
+\tiny \item \tiny \textbf{cab}: Intel Xeon Cluster at LLNL having 16 cores per node, CHAOS operating system, mpich2, openMP 3.4. 
+\item \tiny \textbf{bp}: IBM Power5+ Cluster at Univ. of Illinois having 16 cores per node, IBM AIX Operating System, ibmmpi, lomp. 
+\end{itemize}
+\item \textbf{Applications:}
+\begin{itemize}
+\tiny \item \tiny NASLU: 
+\item \tiny nbody: 
+\item \tiny 3D stencil: 
+\end{itemize}
+\end{enumerate}
+}
+
+\begin{columns}[T]
+  \column{0.5\textwidth}
+  \textbf{Introduction:}\\
+    \begin{itemize} 
+      \tiny \item \tiny Show basic scheduling scheme and provide explanation of why it is beneficial. 
+    \item \tiny Explain inefficiency of load balanced code due to noise, with just one node. 
+    \item \tiny Show additional ways to provide low-overhead dynamic scheduling. 
+    \item \tiny Intuitive explanation of amplification problem, and benefits of our scheduling strategy to scale. 
+    \end{itemize}
+    \vrule{10in}{1pt}
+    %\vrule width 10in height 1pt
+    \column{0.5\textwidth}  
+           {\tiny  \underline{\textbf{Scheduling Strategy Optimizations:}}}\\
+           \begin{itemize}
+             \tiny \item \tiny mixed static/dynamic $\rightarrow$ hybrid static/dynamic  (base). 
+           \item \tiny Lightweight scheduling (which includes locality-aware scheduling and skewed workloads). 
+           \item \tiny \textcolor{white} {weighted locality-sensitive scheduling}
+           \item \tiny \textcolor{white} {slack-conscious scheduling}
+           \item \tiny \textcolor{white} {staggered hybrid static/dynamic scheduling}
+           \end{itemize}
+               {\tiny \underline{\textbf { Methodology for Tuning Scheduler Parameters:}}}\\
+               \begin{itemize}
+                \tiny \item \tiny experimental tuning
+               \item \tiny \textcolor{white} {model-guided optimization} %TODO: change to pruning search space 
+               \item \tiny \textcolor{white} {runtime adjustment}  %TODO: add within-node runtime adjustment and across node adjustment 
+               \end{itemize}
+\end{columns}  
+\end{frame} 
+
+\begin{frame}
+\frametitle{Static and Dynamic Scheduling}
+\includegraphics[scale=0.30]{../images/legend-dynamic} \\
+\begin{columns}
+  \column{0.5\columnwidth}
+  \lstinputlisting{../listings/threadedCompRegion-static.c}
+  \column{0.5\columnwidth}
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/threadedCompRegion-static} \\
+  \end{center} 
+\end{columns}
+\begin{columns}
+\column{0.5\columnwidth}
+\lstinputlisting{../listings/threadedCompRegion-dynamic.c}
+\column{0.5\columnwidth}
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/threadedCompRegion-dynamic}\\
+  \end{center}
+\end{columns}
+%\end{block}
+
+\begin{columns}
+\column{0.5\columnwidth} 
+- 
+\column{0.5\columnwidth}
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/emptySchedImage}
+  \end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label=mixedstatdyn]
+\frametitle{Mixed Static/Dynamic Scheduling}
+%\begin{block}
+\begin{columns}
+  \column{0.5\columnwidth}
+  \lstinputlisting{../listings/threadedCompRegion-static.c}
+  \column{0.5\columnwidth}
+  \includegraphics[scale=0.15]{../images/legend-dynamic}\\
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/threadedCompRegion-static} \\
+  \end{center}
+\end{columns}
+%\end{block} 
+%\begin{block}
+\begin{columns}
+\column{0.5\columnwidth}
+\lstinputlisting{../listings/threadedCompRegion-dynamic.c}
+\column{0.5\columnwidth}
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/threadedCompRegion-dynamic}\\
+  \end{center}
+\end{columns}
+%\end{block}
+\begin{columns}
+\column{0.5\columnwidth}
+\lstinputlisting{../listings/threadedCompRegion-mixed.c}
+\column{0.5\columnwidth}
+\begin{center}
+\includegraphics[scale=0.35]{../images/threadedCompRegion-mixed}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label=halftimings]
+\frametitle{Naive Mixed Static/Dynamic Scheduling}
+{\tiny Setup and Methodology is the same as that used in
+  \hyperlink{basictimings}{\beamerbutton{here}}.} 
+%Used NASLU OpenMP benchmark code and Barnes-Hut pthread application
+%code. Ran on one node of LLNL cab cluster, which is an Intel Xeon
+%16-core with CHAOS operating system.\comments{using gcc optimization
+%level 'O3'}. \comments{having OpenMP3 and mvapich3}} 
+\begin{figure}[t]
+\begin{center}
+\includegraphics[scale=0.34]{../plots/dmTime-nbody-cab-withsd}
+\includegraphics[scale=0.34]{../plots/dmTime-NASLU-cab-withsd}\\
+\end{center}
+\label{fig:dmTimes-NASLU-cab}
+\end{figure}
+\begin{center}
+{\small Set static fraction to 0.5: In \textit{half}, threads do the
+  first half of their iterations statically. See rightmost bar. }
+\end{center}
+\begin{itemize}
+\tiny \item {\tiny We expect \textit{half} to cut the dynamic overhead in half.}
+\item {\tiny The \textit{half} scheduling provides 10.1\% gain over
+  OpenMP guided for the nbody code, due to preservation of locality
+  across invocations of threaded computation regions and thus less
+  data movement across invocations of the threaded computation
+  region.}
+\item {\tiny For the NASLU code, the \textit{half} scheduling still has high overhead.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=dmTimes]
+\frametitle{Data Movement with Naive Mixed Static/Dynamic Scheduling}
+\visible<1->{
+\begin{figure}[t]
+\label{fig:cacheMisses-cab-withsd}
+\begin{center}
+\includegraphics[scale=0.30]{../plots/L2-cacheMisses-nbody-cab-withsd}
+\includegraphics[scale=0.30]{../plots/L2-cacheMisses-NASLU-cab-withsd}\\
+\includegraphics[scale=0.30]{../plots/L3-cacheMisses-nbody-cab-withsd}
+\includegraphics[scale=0.30]{../plots/L3-cacheMisses-NASLU-cab-withsd}
+\end{center}
+%\caption{\label{fig:cacheMisses-cab-withsd} L2 cache misses (top) and L3 cache misses (bottom).}
+\end{figure}
+\begin{center}
+{\small L2 cache misses shown in the top graphs; L3 in the
+bottom. \comments{The \textit{half} is added on the rightmost bar.}
+% The data shown is based on 100 trials run on a single node of the
+% respective machines. Data movement time is obtained by subtracting
+% the sum of idle time, dequeue time and computation time, from total
+% execution time.
+}
+\end{center}
+}
+\visible<1->{\begin{itemize} 
+{\tiny \item \tiny With \textit{half}, cache misses decrease with respect to OpenMP guided, for both nbody and NASLU codes.}
+\end{itemize}}
+\end{frame}
+
+\begin{frame}[label=noPreset]
+\frametitle{Problem: A Preset Static Fraction Doesn't Work Effectively for all Application-architecture Pairs}
+\begin{itemize}
+\item The above shows that the basic static/dynamic scheduling 
+improves performance only for nbody on cab. So, we make the strategy more flexible. 
+\end{itemize}
+\begin{itemize}
+\item We expose the static fraction to the application programmer.  
+\item What is right blend of static and dynamic scheduling to use? 
+\item The application programmer tunes the blend of static and dynamic scheduling.
+\item We refer to this as \textit{Hybrid Static/Dynamic Scheduling}. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=hybridstatdyn]
+\frametitle{Hybrid Static/Dynamic Scheduling}
+\begin{columns}
+  \column{0.5\columnwidth}
+  \lstinputlisting{../listings/threadedCompRegion-static.c}
+  \column{0.5\columnwidth}
+  \includegraphics[scale=0.15]{../images/legend-dynamic}\\
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/threadedCompRegion-static} \\
+  \end{center} 
+\end{columns}
+%\end{block} 
+%\begin{block}
+\begin{columns}
+\column{0.5\columnwidth}
+\lstinputlisting{../listings/threadedCompRegion-dynamic.c}
+\column{0.5\columnwidth}
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/threadedCompRegion-dynamic}\\
+  \end{center}
+\end{columns}
+%\end{block} 
+
+\begin{columns}
+\column{0.5\columnwidth}
+%TODO: fix code  to be hybrid sched
+\lstinputlisting{../listings/threadedCompRegion-hybrid.c}
+\column{0.5\columnwidth}
+\begin{center}
+\includegraphics[scale=0.35]{../images/threadedCompRegion-hybrid}
+\end{center}
+\end{columns}
+\end{frame}
+
+%TODO: think of a better name for title. 
+\begin{frame}[label=expTuningSF]
+\frametitle{Experimentally Tuning the Static Fraction}
+%TODO: explain why increments of 0.01 
+%TODO: explain number of trials run 
+{\tiny We vary the static fraction environment variable in increments of 0.01. \comments{(We do 0.01 to get enough data points, but more refinement might give less improvement. )} } 
+\begin{figure}[ht]
+\begin{center} 
+\includegraphics[scale=0.19]{../plots/expTuningSF-nbody-cab-WallTime}
+\includegraphics[scale=0.19]{../plots/expTuningSF-NASLU-cab-WallTime}\\
+\end{center} 
+\begin{center}
+{\small Performance for different static fractions when using hybrid static/dynamic scheduling strategy for nbody and NASLU. }
+\end{center}
+\end{figure}
+
+\begin{itemize}
+\tiny \item \tiny For n-body, fully dynamic is better than fully static, but static fraction of 49\% gives even better performance. 
+\item \tiny For NASLU, the fully static is much better than fully
+  dynamic. However, static fraction of 96\% is the best (although
+  compared with the 100\% dynamic, the difference between ``best'' and
+  fully static may appear small, it is still a significant
+  improvement).  
+\item \tiny Note that the best static fraction varies across
+  application. 
+%Comment: make note about half
+\end{itemize}
+\end{frame} 
+
+\begin{frame}[label=halftimings]
+\frametitle{Hybrid Static/Dynamic Scheduling}
+\begin{figure}[t]
+\begin{center}
+\includegraphics[scale=0.34]{../plots/dmTime-nbody-cab-withsdandbesf}
+\includegraphics[scale=0.34]{../plots/dmTime-NASLU-cab-withsdandbesf}\\
+\end{center}
+\label{fig:dmTimes-NASLU-cab}
+\end{figure}
+\begin{center}
+{\small In \textit{besf}, we use the best static fraction. See rightmost bar.}
+\end{center}
+%TODO: fix this so it doesn't duplicate
+
+\visible<1->{
+\begin{itemize}
+\tiny \item \tiny When using \textit{besf} scheduling, cache misses decrease w.r.t. \textit{half}, for both nbody and NASLU codes. This is
+because we tune to balance the tradeoff between load balance and locality, to minimize the costs in each of the three challenges, simultaneously.
+\item \tiny Paper [statdyn1] studies this idea in more depth.
+\end{itemize}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Data Movement with Hybrid Static/Dynamic Scheduling}
+\visible<1->{
+\begin{figure}[t]
+\label{fig:cacheMisses-cab}
+\begin{center}
+\includegraphics[scale=0.30]{../plots/L2-cacheMisses-nbody-cab-withbesf}
+\includegraphics[scale=0.30]{../plots/L2-cacheMisses-NASLU-cab-withbesf}\\
+\includegraphics[scale=0.30]{../plots/L3-cacheMisses-nbody-cab-withbesf}
+\includegraphics[scale=0.30]{../plots/L3-cacheMisses-NASLU-cab-withbesf}
+\end{center}
+%\caption{\label{fig:cacheMisses-nbody-cab} L2 cache misses (top) and L3 cache misses (bottom).}
+\caption{\small Cache misses for \textit{besf}, added on the rightmost bar. }
+\end{figure}
+}
+%\begin{center}
+%The data shown is based on a 100 trials run on a single node of the respective machines. Data movement time is obtained by subtracting the sum of idle time, dequeue time and computation time, from total execution time.
+%} 
+%\end{center} 
+\visible<1->{
+\begin{itemize} 
+\tiny \item \tiny When using \textit{besf} scheduling, cache misses 
+decrease w.r.t. \textit{half}, for both nbody and NASLU codes. This is
+because we tune to balance the tradeoff between load balance and
+locality, to minimize the costs in each of the three challenges,
+simultaneously. 
+\item \tiny Paper [statdyn1] \comments{\footcite{dynwork}} studies
+  this idea in more depth. 
+\end{itemize}}
+\end{frame}
+
+\begin{frame}[label=3Dmesh]
+\frametitle{3D Regular Mesh process+thread Domain Decomposition}
+\begin{columns}
+  \column{0.35\textwidth}
+  \begin{center}
+    \includegraphics[scale=0.35]{../images/appTimestep-noslack}
+ \end{center}
+\column{0.65\textwidth}
+
+\begin{figure}[ht]
+  \label{fig:3DStencil-domainDecomp-stat}
+  \begin{center}
+    \includegraphics[scale=0.18]{../images/3DStencil-domainDecomp-stat}
+  \end{center}
+  \caption{\label{fig:3DStencil-domainDecomp-stat} {\small 3D Regular Mesh domain
+  decomposition across processes, along with thread partitioning
+  of work within each process.}}
+\end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}[label=perfVar]
+\frametitle{Performance Variation and Absolute Performance for Static Scheduling}
+{\tiny \underline{\textbf{Setup and Methodology:}} Run on IBM Power5+ cluster at UIUC which has 16 cores per node\comments{32MB L1 cache and 128MB L2 cache} and AIX operating system.}
+\begin{figure}[h!]
+\label{fig:stat-histo}
+\begin{center}
+\includegraphics[scale=0.29]{../images/IterTimesHisto-outliers-static}\\
+%\includegraphics[scale=0.35]{../images/IterTimingsHisto-dynamic}
+\end{center}
+\caption{\label{fig:stat-histo} \small Iteration timing distribution across 1000 timesteps of the statically scheduled\comments{\hyperlink{3Dmesh}{\beamerbutton{3D reg. mesh}}} 3D regular mesh computation.}
+\end{figure}
+\begin{center}
+{\small $\rightarrow$ \textcolor{gray}{Bi-modal distribution for static scheduling.} \comments{Uni-modal distribution for dynamic scheduling, but increased spread and higher mean for dynamic scheduling.}}
+\end{center}
+\end{frame}
+
+\begin{frame}[label=lightweightDynDefs]
+\frametitle{Lightweight Dynamic Scheduling}
+\textbf{Tasklet}: A tasklet specifies a set of iterations and records the core that it was executed on in the preceding iteration. 
+\begin{enumerate}
+\item \textbf{Skewed Workload}: The distribution of tasklets in the shared queue, from beginning to end, is 16 tasklets of size 16, 32 tasklet of size 8, and 64 tasklets of size 4. 
+\item \textbf{Locality-aware Scheduling}: On each iteration, a thread tries to search for the tasklet that it executed during the preceding iteration. 
+%\item \textbf{Work-stealing}: On each iteration, a thread tries to search for the tasklet that it executed during the preceding iteration. 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label=HybStatDynAppliedto3DMesh]
+\frametitle{Hybrid Static/Dynamic Scheduling Applied to 3D Regular Mesh}
+\begin{columns}
+  \column{0.10\textwidth}
+
+  \column{0.90\textwidth}
+  \begin{figure}
+    \label{fig:3DStencil-domainDecomp-sd}
+    \begin{center}
+      \includegraphics[scale=0.18]{../images/3DStencil-domainDecomp-sd}
+    \end{center}
+    \caption{\label{fig:3DStencil-domainDecomp-hybrid} \small 3D Regular Mesh domain decomposition with Hybrid Static/Dynamic Scheduling Strategy Applied.}
+  \end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hybrid Static/Dynamic Scheduling with Lightweight Dynamic Scheduling in Dynamic Section}
+{\tiny Setup and methodology the same as \hyperlink{perfVar}{\textcolor{blue}{here}}.} 
+\begin{figure}[h!]
+\label{fig:skewed2}
+\begin{center}
+\includegraphics[scale=0.28]{../images/IterTimesHisto-skewedWorkload2}
+\end{center}
+\caption{\label{fig:skewed2} Iteration timing histograms for 100\% dynamic scheduling, 100\% dynamic scheduling with locality, and 50\% dynamic scheduling.}
+\end{figure}
+\begin{itemize}
+\tiny \item \tiny 50\% dynamic provides better absolute performance,
+as well as less performance variation than 100\% dynamic scheduling
+without locality and 100\% dynamic scheduling with locality. 
+% \tiny \item \tiny Each percent dynamic has a minima for the number of
+%  tasklets in the queue, and skewed does well for larger percent
+%  dynamic. 
+%\item \tiny The best performance is with 4 planes per planes per
+%tasklet, so we use this for the subsequent experimentation. 
+%As we vary the number of tasklets in the queue, ther
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=noiseAmpExample]
+\frametitle{Amplification Problem in the Context of Noise}
+\begin{itemize}
+\item \small On one node running 1000 iterations of length 10 ms. 
+\begin{itemize}
+\tiny \item \tiny Assume noise (PI) is of length 5 ms, and it occurs approximately every second.
+\item \tiny Execution time without PI 10 ms * 1000 iterations = 10 seconds. 
+\item \tiny With PI: 10 out of 1000 iterations will be affected (that is delayed by 5 ms) .  So, the total delay is 50 ms.
+\item \tiny Execution time is 10.05 seconds, i.e., 0.5\% delay. 
+\end{itemize}
+\item \small On two nodes (weak scaling):
+\begin{itemize}
+\item \tiny Probability that an iteration is delayed on one of the nodes is 1\%, same as above.
+\item \tiny Probability that a given iteration is delayed on any processor is : $1.0 - (1 - 0.01)^2$ = $1.99$\% .
+\item \tiny The delay is then $1000 \times 0.0199 \times 5$  = $99.5$ ms for a total execution time of $10.0995$ s. 
+\end{itemize}
+\item \small On p nodes :
+\begin{itemize}
+\item \tiny The delay is $1000 \times (1.0 - 0.99^p) \times 5$ ms
+\item \tiny For 10 nodes: $1000 \times 0.0956 \times 5$ ms =  478 ms
+\item \tiny For 100 nodes: $1000 \times 0.634 \times 5$ ms = 3170 ms
+\item \tiny For 1000 nodes: $1000 \times 0.9999 \times 5$ = 4999.5 ms
+\end{itemize}
+\item \small That's a 50\% performance loss. 
+\item \small As $p$ increases, the probability that one node experiences a delay on a given iteration starts approaching 100\%. 
+\small \item \small Caveat for loosely synchronous: amplification will come at a larger number of nodes than for bulk-synchronous, though magnitude of performance degradation may be the same as bulk-synchronous code. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=noiseampformula]
+\frametitle{Amplification Problem in Context of Noise} 
+\begin{itemize}
+\small \item \small Let $T_p$ be iteration time on one node with $p$ cores, with no noise. We assume weak scaling. 
+\item \small  Let $\delta$ be the noise duration.
+\item \small Let $\phi$ be the expected number of noise events per second, on one node. \item \small We assume global synchronization with zero overhead, e.g., allreduce.
+\end{itemize}
+
+\textbf{----------------------------------------------------------}
+\begin{itemize}
+\small \item \small Probability of noise happening in one iteration on one node = $\phi \times T_p$. 
+\item \small Probability that there is no delay on any nodes while running on k nodes is $(1 - \phi \times T_p)^k$. 
+\item \small Probability that \textit{some} node experiences a delay in a given iteration is $1 - (1- \phi \times T_p)^k$. 
+\item \small So, expected execution time of an iteration on k nodes is: $E[T_k]  >=  T_p + \delta \times  [1 - (1- \phi \times T_p)^k]$. 
+\end{itemize}
+%( Caveat of slack) 
+\end{frame}
+
+\begin{frame}
+\frametitle{Improvement of Scalability for 3D Stencil}
+\begin{figure}
+\includegraphics[scale=0.34]{../images/stencil-scaling}
+\caption{Scaling 3D Regular Mesh for different schedulers.}
+\begin{itemize}
+\tiny {\item \tiny Mixed static/dynamic scheduling results in improved 
+scalability over both static scheduling and dynamic scheduling.}
+\end{itemize}
+\end{figure}
+\end{frame}
+
+%TODO: show graph for fully dynamic scheduling.
+%\vivek{fix layout}
+\begin{frame}
+\frametitle{Impact on Scaling}
+\begin{figure}[ht!]
+\label{fig:scaling-histograms}
+\begin{center}
+\includegraphics[scale=0.20]{../images/scaling-histograms}
+\end{center}
+%TODO: word the below better
+\caption{\label{fig:scaling-histograms} Iteration timing histograms 
+for static scheduling~(left) for mixed static/dynamic scheduling~(right) as we increase the 
+number of nodes.}
+\end{figure}
+
+\begin{enumerate}
+\tiny \item \tiny Distribution of two equal peaks goes to one small
+peak and one large peak. 
+% Performance variation increases with increasing numbers of
+% nodes
+\item \tiny The mean of the distribution for mixed 
+static/dynamic scheduling stays consistent 
+as we increase the number of nodes. 
+\item \tiny The mean of the distribution at 64 nodes is better 
+  with static/dynamic scheduling than that of static
+  scheduling. %TODO: think of a better point here. 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Improvement Over an Already Optimized Dense Matrix Factorization using Hybrid Static/Dynamic Scheduling}
+%\frametitle{For Problem 1: Does our scheduling approach perform competitively or better than other industry wide schedulers?}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.22]{../plots/calu-fastNUMA4-perf}
+\caption{\tiny Comparison of hybrid static/dynamic scheduled CALU
+  to statically scheduled CALU (first version) as well as 
+  other industry standards such as PLASMA and MKL.\comments{showing significant
+  performance improvements over the baseline (statically scheduled)
+  CALU, particularly with large matrix sizes.}}
+\visible<1->{\tiny $\rightarrow$ We get significant
+  performance improvements over the baseline (statically scheduled)
+  CALU, particularly with large matrix sizes. Our scheduler is 30\% 
+  better than PLASMA library's implementation of the same 
+  numerical algorithm, and 38\% better than Intel MKL library's 
+  impementation of the same numerical algorithm.}
+%\end{itemize}
+%(Problem: PLASMA has inefficient work-stealing algorithm.) 
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.10]{../plots/calu-fastNUMA3-histogram}
+\caption{\tiny Performance Variation for static CALU, dynamic CALU, and hybrid static/dynamic CALU.}
+\end{figure}
+{\tiny $\rightarrow$ Hybrid static/dynamic scheduled CALU reduces
+  performance variability while maintaining absolute performance
+  better than that of statically scheduled CALU and dynamically
+  scheduled CALU, and this is consistent with the performance
+  variability results for 3D stencil.} 
+\end{columns}
+\end{frame}
+
+%TODO: update this
+\begin{frame}
+\frametitle{Problems with the Basic Lightweight Scheduling Approach}
+%\textbf{Two problems with the above basic approach:} 
+\begin{enumerate}
+\small \item \small Persistent load imbalances not handled. How do we handle both
+persistent and transient imbalances together? 
+\item \small Experimental tuning: can we reduce the search by using a
+model?
+\item \small Across-node load imbalance not taken into account in 
+scheduling strategy. Can we use runtime-guided adjustments (per-node static
+fraction based on slack) to improve performance?
+\item \small Our scheduler does not consider spatial locality. How do
+  we optimize the mixed static/dynamic scheduling scheme so that we
+  improve spatial locality and temporal locality?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Weighted Locality-sensitive Scheduling}
+\begin{columns}[T]
+% \column{0.50\textwidth}
+  \begin{column}{0.5\textwidth}
+    {\small \underline{\textbf{Introduction}}} \\
+    \begin{itemize}
+      \tiny \item \tiny Noise not completely transient; 
+      can be a mixture of persistent core noise and transient noise, as observed
+      in Jaguar (see next slide). 
+    \item \tiny We modify our lightweight scheduling scheme to handle the
+      mixture of persistent core noise and transient node-level OS noise. 
+    \item \tiny For architectures with 
+      the mentioned mixture of noise events, we get noted performance
+      gains of 10.4\% over our basic lightweight scheduling scheme. 
+    \item \tiny The approach described can be generalized to work for any
+      type of mixture of persistent and transient load imbalance, not just
+      mixtures of persistent and transient noise. 
+    \end{itemize}
+  \end{column}
+  % \column{0.50\textwidth}
+  \begin{column}{0.5\textwidth}
+    {\tiny  \underline{\textbf{Scheduling Strategy Optimizations}}}\\
+    \begin{itemize}
+      \tiny \item \tiny \textcolor{gray}{ mixed static/dynamic (\textit{half}) $\rightarrow$ hybrid static/dynamic \textit{besf} (base)}   
+    \item \tiny \textcolor{gray}{ lightweight scheduling (\textit{ligh}) (which includes locality-aware scheduling (\textit{loca}) and skewed workloads \textit{skew})}
+    \item \tiny \textcolor{black} {weighted locality-sensitive scheduling (\textit{weig})}
+    \item \tiny \textcolor{white} {slack-conscious scheduling: \textit{slac} :  model-guided\textit{Static-Hybrid},   slack-conscious(\textit{callsite\_fd})}
+    \item \tiny \textcolor{white} {staggered hybrid static/dynamic scheduling: \textit{ssds}}
+    \end{itemize}
+        {\tiny \underline{\textbf {Methodology for Tuning Scheduler Parameters}}}
+        \begin{itemize}
+          \tiny \item \tiny \textcolor{black} {experimental tuning}
+        \item \tiny \textcolor{white} {model-guided optimization} %TODO: change to pruning search space 
+        \item \tiny \textcolor{black} {runtime adjustment} %TODO: add within-node runtime adjustment and across node adjustment 
+        \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame} 
+
+%TODO: figure out whether we need to use coupling. 
+%TODO: word the below better 
+\begin{frame}
+  \frametitle{Persistent Imbalances (Noise-induced) Not Handled} 
+  \begin{figure}
+    %\includegraphics[scale=0.44]{../images/noise_pes_jaguar}
+    \subfloat[\tiny Jaguar quasi-persistence in noise.]{\includegraphics[scale=0.41]{../images/noise_pes_jaguar}}
+    \subfloat[\tiny Ranger quasi-persistence in noise.]{ \includegraphics[scale=0.41]{../images/noise_pes_ranger}}
+    \caption{\small Time spent by each core in a 1200 core run, for a load balanced code.}
+  \end{figure}
+  \begin{itemize}
+    \tiny \item \tiny The two top bands of indicate slow cores, while
+    bottom bands show fast cores (particularly for Jaguar).
+  \item \tiny Across all nodes, the subset of cores being fast and
+    subset slow is almost the same. 
+  \item \tiny We refer to the above phenomenon as persistent core noise,
+    or  noise-induced persistent imbalances. 
+  %(and note that this could be generalized as a fine-grained application-induced persistent load imbalance across cores).%TODO: explain more on why  
+  \end{itemize}
+\end{frame}
+
+%TODO: check the question presented in the title of the slide.
+\begin{frame}
+\frametitle{Blending Weighted Factoring and Mixed Static/Dynamic Scheduling to Handle Persistent Core Noise}
+%TODO: add regular diagram for weighted decomp. 
+{\small Weighted Factoring: assign different number of iterations to different cores based on history.}
+{\small We combine weighted with hybrid static/dynamic scheduling, and
+  then tune the static fraction.}\\
+{\small Earlier, the number of iterations allocated to thread i was
+ $f_s \cdot \frac{N}{p}$}
+{\small With weighted, it is: $w_i \cdot \frac{f_s \cdot N}{p}$,
+where $w_i$ is calculated by measuring the time spent in the static
+portion by different threads, $s_i$, as: $w_i = \frac{avg\{s_i\}}{s_i}$}.
+% begining iteration for thread i, b_i = b_{i - 1} +
+% w_i*\frac{f_s*N}{p} , with b_0 = 0 
+\begin{columns}
+  \column{0.5\textwidth}
+         {\small Weighted Locality-sensitive Scheduling Strategy Applied to 3D Reg. Mesh.\\}
+         \column{0.5\textwidth}
+         \begin{center}
+           \fbox{\includegraphics[scale=0.2]{../images/weighted_decomp}}\\
+         \end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Weighted Locality-Sensitive Scheduling Results}
+\begin{itemize}
+\tiny \item \tiny Ranger and Jaguar both experience noise; Ranger is
+somewhat noisier.
+\item \tiny Only Jaguar has core differentation; some cores experience 
+more high-frequency noise than the others.
+%\item \tiny 
+\end{itemize}
+
+\begin{figure}
+\label{fig:uWSched-stencil}
+\begin{center}
+\includegraphics[scale=0.39]{../plots/timings_jaguar}
+\includegraphics[scale=0.39]{../plots/timings_ranger}\\
+\end{center}
+\caption{\label{fig:uWSched-stencil} 3D Stencil scaling with weighted
+  locality-sensitive scheduling for Ranger~(left) and Jaguar~(right).}
+\end{figure}
+
+\begin{enumerate}
+\tiny \item \tiny Weighted micro-scheduling is the best on Ranger,
+although micro-scheduling is almost as good (dynamic load balancing
+most important). 
+\item \tiny Jaguar: Weighted is better on fewer than 64 nodes and
+  micro scheduling is better beyond that. 
+\item \tiny Jaguar: Weighted micro-scheduling is better than both of these. 
+\end{enumerate}
+{\tiny $\rightarrow$ Combining schedulers has no disadvantage.}
+%TODO: figure out the avg/max for load imbalance to calculate static fraction. 
+%TODO: max - avg . avg / max ; 
+\end{frame}
+
+\begin{frame}
+\frametitle{Slack-conscious Hybrid Static/Dynamic Scheduling}
+\begin{columns}[T]
+  \column{0.5\textwidth}
+         {\small  \underline{\textbf{Introduction:}}} \\
+         \begin{itemize}
+           \tiny \item \tiny We first discuss limitations of
+           experimentally tuning the lightweight scheduling scheme,
+           including the problem of slack. 
+         \item \tiny With this, we explain the two techniques of this
+           chapter: model-guided lightweight scheduling and
+           slack-conscious scheduling technique. 
+         \item \tiny We evaluate our slack prediction mechanisms,
+           showing scaling results for our model-guided lightweight
+           scheduling. 
+         \item \tiny We show why our slack-conscious runtime
+           adjustment is essential and beneficial at large-scale, by
+           showing speedup of slack-conscious scheduling over best
+           static fraction (\textit{besf}) scheduling strategy. 
+         \end{itemize}
+         %\vrule[0.5em]{1pt}{3.5in]
+\vrule{} 
+         \column{0.5\textwidth}
+                {\tiny  \underline{\textbf{Scheduling Strategy Optimizations}}} \\
+                \begin{itemize}
+                  \tiny \item \tiny \textcolor{gray} {mixed static/dynamic $\rightarrow$ hybrid static/dynamic  (base)}
+                \item \tiny  \textcolor{gray} {lightweight scheduling (which includes locality-aware scheduling and skewed workloads)}
+                \item \tiny \textcolor{gray} {weighted locality-sensitive scheduling}
+                \item \tiny \textcolor{black} {slack-conscious scheduling}
+                \item \tiny \textcolor{white} {staggered hybrid static/dynamic scheduling}
+                \end{itemize}
+                    {\tiny \underline{\textbf { Methodology for Tuning Scheduler Parameters}}}
+                    \begin{itemize}
+                      \tiny \item \tiny \textcolor{white} {experimental tuning}
+                    \item \tiny \textcolor{black} {model-guided optimization} %TODO: change to pruning search space 
+                    \item \tiny \textcolor{black} {runtime adjustment}  %TODO: add within-node runtime adjustment and across node adjustment 
+                \end{itemize}
+\end{columns}
+\end{frame}
+
+%TODO: get another graph - this may not show the results as well. 
+%TODO: show a caption
+
+\begin{frame}
+\frametitle{Large and Complex Search Space}
+%TODO: get new picture 
+%Also, Could maybe show results for enumeration of search space, and that it's large here. 
+%TODO: fix the below 
+%Put in modeled graph with two endpoints, showing non-continuous search space. 
+\begin{enumerate} 
+\item Difficult to find exact static fraction for single node. 
+\item Best static fraction changes per node because MPI collective operations involve ``slack''(explained more in depth on next slide).
+\end{enumerate}
+%\begin{figure}
+%\includegraphics[scale=0.20]{../plots/vary-sf-for-diff-threads}
+%\caption{\small Graph showing the performance of different static fractions
+%  used. Here, we have tried different static fractions, 
+%  in increments of 0.1. The minima here is difficult to attain.}
+%\includegraphics[scale=0.28]{../plots/best-fs-vs-nodes}
+%\end{figure}
+\end{frame}
+
+%TODO: add in other data sets.  
+%TODO: add in max/avg. 
+
+\comments{
+\begin{frame}
+\frametitle{Can We Use Theoretical Analysis to Prune the Large Search Space?}
+% Model-guided optimization, but with experimental tuning after
+% scheduler parameter from model is determined. 
+\begin{center}
+\includegraphics[scale=0.26]{../plots/app-scaling-strat-SNAP-fastNUMA2}
+\includegraphics[scale=0.26]{../plots/app-scaling-strat-nbody-fastNUMA2}\\
+\end{center}
+\begin{center}
+{\small Using a theoretical analysis to acheive the minima helps to provide 13-16\% performance gains for a particle simulation (nbody) and SNAP (reg. mesh), each tested on a 16-core non-NUMA architecture and 16-core NUMA architecture.}
+\end{center}
+\end{frame}
+}
+
+\begin{frame}
+\frametitle{Different MPI processes Have Different Cost to Application Critical Path}
+{\tiny \underline{\textbf{MPI Slack}} is the time by which a process
+  can delay arrival at a synchronizing point without impacting application execution time.}
+%
+\begin{table}[tr]
+\label{fig:collectiveSlack-useq}
+  \begin{center}
+    \begin{tabular}{ | c || c | c || c |}
+      \hline
+      \textbf{Collective} &      \textbf{max} & \textbf{avg ($\sigma$)} & \textbf{$\sigma_i$} \\ 
+\hline
+      \texttt{Allreduce} &             307    &    199 (.792) &            .102 \\ 
+\hline
+      \texttt{Alltoall}  &             280    &    149 (v.821) &            .176 \\ 
+\hline
+      \texttt{Barrier}  &              250    &    139 (.178)  &           .061 \\ 
+\hline
+      \texttt{Allgather} &             268    &    189 (.527) &            .115 \\
+\hline
+      \texttt{Reduce\_scatter} &       459    &    296  (.649)  &          .129 \\ 
+\hline
+    \end{tabular}
+  \end{center}
+  \caption{\label{fig:collectiveSlack-useq} {\small Different slack statistics (in $\mu$s) shown for experiments with different collectives at the end of an iteration. Additional evidence and impact of slack esp. at large scale is discussed in [slackPerf] and [adagio].}}
+\end{table}
+
+\begin{itemize}
+\tiny \item \tiny Slack distribution is different for different collectives.
+\item \tiny Slack varies across processes.
+\item \tiny The distribution of slack on different processes evolves slowly for different applications. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Terminology and Performance Model}
+\begin{table}[tr]\centering
+\begin{tabular} {|c|p{.75\columnwidth}|} \hline
+\multicolumn{2}{|c|}{\textit{Model outputs}} \\\hline
+$f_d$       & {\tiny Fraction of work scheduled dynamically.} \\\hline
+$f_d'$      & {\tiny Fraction of work scheduled dynamically,\newline
+                      reduced for slack.} \\\hline
+%
+\hline
+\multicolumn{2}{|c|}{\textit{Model inputs}} \\\hline
+$q$                     & {\tiny Overhead of dequeueing single iteration.} \\\hline
+$S_i$                   & {\tiny Slack duration on process $i$.} \\\hline
+$\delta$        & {\tiny Expected noise duration.} \\\hline
+$T_p$       & {\tiny Execution time on $p$ cores with fully static scheduling and no noise.} \\\hline
+$N$         & {\tiny Total number of iterations across all threads.}\\\hline
+% 
+$t_1$       & {\tiny Duration of single iteration on a single thread, on one core.} \\\hline
+$d$                     & {\tiny Duration of single dynamic iteration on a single thread.} \\\hline
+%$\eta$          & Compute delay due to noise and queue overhead \\\hline
+%$\alpha_i$      &  Delay added to the critical path by node $i$\\\hline
+\end{tabular}
+\caption{\small Overview of all model parameters. Note that we use
+  the dynamic fraction $f_d$ instead of static fraction $f_s$ to simplify our
+  theoretical analysis.\label{tab:parameters}}
+\end{table}
+\end{frame}
+
+\begin{frame}[label=mghybridstatdyn]
+\frametitle{Model-guided Hybrid Static/Dynamic Scheduling}
+{\small Instead of tuning the dynamic fraction, we establish a model to
+determine it based on noise duration $\delta$, and other model parameters. \\}
+\begin{center}
+  \fbox{\includegraphics[scale=0.46]{../images/hybSched-nonoisenoslack}} \\
+\end{center}
+
+{\small Considering the above model, along with our goal of avoiding load balancing until it is absolutely needed, 
+the dynamic fraction applied to each MPI process is: \\}
+\begin{center}
+  \fbox{{$f_d = \frac{p\delta}{N\left(t_1 + q\right)}$}}\\
+\end{center}
+    {\small We refer to the strategy described above as Model-guided Hybrid
+      Static/Dynamic Scheduling. This strategy is referred to as 
+      \textit{Static-Hybrid} in the graphs.} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Considering Slack Factor for Hybrid Scheduling}
+{\small With this, let us now consider the slack factor for each MPI process.} 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.46]{../images/slackConsciousSched} \\
+  \end{center}
+\end{figure}
+
+\begin{itemize}
+\tiny \item \tiny Slack allows us to reduce the dynamic fraction
+further, because a small amount of delay due to noise will lead to no
+delay in the completion of an MPI operation. For example, if you are
+in a Reduction and waiting for data from your spanning tree
+children. 
+\item \tiny Note that the slack is different on different nodes,
+  depending on the implementation of the collective operation. 
+\item \tiny Therefore, the dynamic fraction will be different on
+  different processors. Nodes with large slack can get away with 
+small dynamic fraction without impacting application performance.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=slackfs]
+\frametitle{Slack-conscious Hybrid Static/Dynamic Scheduling
+  a.k.a. Adaptive Scheduling} 
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.41]{../images/slackConsciousSched} \\
+  \end{center}
+\end{figure}
+\begin{center}
+\fbox{{$f_d = \frac{p\delta}{N\left(t_1 + q\right)}$}}
+\fbox{ {$f_d' = f_d - \frac{S}{(p-1)\frac{Nt_1}{p} - Nq}$}}
+\end{center}
+\begin{center}
+{\tiny Note that $f_d'$ and $S$ are local variables within each MPI process. }
+\end{center}
+
+%TODO: 
+{\small The dynamic fraction $f_d$ of a particular node
+ is reduced by a value proportionate to the slack on that node, 
+to get the new $f_d'$.} \\
+
+{\small To estimate the slack on each processor, we use ideas from
+ Adagio (see next slide for impl). \\ We compared multiple methods,
+ and chose the \textit{callsite\_fd} method.} \\
+
+{\small Reducing dynamic fraction reduces overall overhead.}
+
+\end{frame}
+
+\comments{
+\begin{frame} 
+\frametitle{Slack Prediction Mechanism and Usage}  
+\begin{enumerate}
+\tiny \item \tiny On each process, retrieve that process's invocation of the
+  last MPI collective, where the invocation of the last MPI collective is
+retrieved through the callsite slack-prediction method (see paper for
+details on implementation details of slack prediction).
+ \item \tiny Given the identifier of the last the MPI collective call
+invoked, estimate that collective call's slack value from the
+history of slack values stored by the slack-conscious runtime.
+The slack estimate is based on the slack value recorded
+in the previous MPI collective invocation, as is done in the
+cited work of Adagio.
+ \item \tiny On each process, adjust its dynamic fraction based on the
+   slack value. This adjustment is done using the formula 5 in section
+   3 of Chapter 4  and implementation of section 4 of
+   Chapter 4. The static fraction used in the
+   loop bound is 1- $f_d$.
+\end{enumerate}
+\end{frame} 
+}
+
+\begin{frame}
+\frametitle{Software Architecture}
+\begin{figure}
+\begin{center}
+\label{code:architecture}
+\includegraphics[scale=0.56]{../images/architecture}
+\end{center}
+\end{figure} 
+
+\begin{itemize}
+\tiny \item \tiny The white rectangles taken by themselves show the
+interaction between the MPI+OpenMP application code and the
+MPI \& OpenMP runtimes.  
+%how a basic MPI+OpenMP
+%application is run.  
+\item \tiny Our contributions in this work are shown in gray
+  rectangles. %Involves source-to-source transformation and adaptiv
+\item \tiny Predict static fraction call (arrow going from compilation
+  to Adaptive runtime library) is how MPI runtime
+  communicates with OpenMP runtime to tune OpenMP scheduler parameters
+  (and other parameters). 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Code Transformation}
+\vspace*{-0.4in}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{figure}
+\label{code:origOMPcode}
+%\subfloat[\label{code:origOMPcode}{\tiny Loop transformed for slack-conscious scheduling.}]
+\begin{center} 
+\lstinputlisting{../listings/omp-static.c}
+\end{center} 
+\end{figure}
+\column{0.5\textwidth}
+\begin{figure}
+\label{code:refactoredOMPcode}
+\begin{center} 
+\lstinputlisting{../listings/omp-hybrid.c}
+\end{center} 
+%\caption{\label{code:refactoredOMPcode}\tiny Loop transformed for
+%  slack-conscious scheduling.}
+\end{figure}
+\end{columns}
+\begin{enumerate}
+\tiny \item \tiny The \texttt{decide\_static\_fraction()} and 
+\texttt{endLoop()} functions are calls to the slack-conscious runtime. 
+\item \tiny The runtime maintains a \texttt{LoopTimeRecord} struct
+  \texttt{lr} across invocations for a threaded computation region. 
+  The \texttt{LoopTimeRecord} struct includes storage for
+  parameters of loop time, slack, est. sched overhead time, and number of
+  iterations, along with various timers obtained at different points during
+  the execution of the OpenMP threaded computation region. 
+\item \tiny Using wrappers around the MPI collective, the 
+  slack-conscious runtime predicts slack, and calculates optimal
+  static fraction using the model. 
+\item \tiny For the first invocation of the threaded computation
+  region, \texttt{lr} is empty, so the runtime system uses static
+  fraction of 100\%. 
+  % the simpler model without slack to determine the
+  % static fraction. 
+  % calls around the MPI comm. 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label=runtimeparameterestimation]
+\frametitle{Scheduler Parameter Estimation}
+%{\small To calculate the value of $\delta$, $\frac{N \cdot t_1}{p}$ 
+%  and $q$ for computing the slack-conscious static fraction
+%  based on \hyperlink{slackfs}{\beamerbutton{Slide 46}}}:}
+\begin{itemize}
+\small \item \small The value of the noise parameter $\delta$ is 
+estimated in the \texttt{MPI\_Init()} function: we subtract the
+maximum and minimum times for the iterations of a basic OpenMP loop
+performing a square root operation. 
+\comments{and then do an
+MPI\_Allreduce() with the max operator to collect the maximum across
+all iteration times.}
+\item \small We estimate the scheduler overhead $q$ by subtracting 
+performance of a statically scheduled OpenMP loop doing a dot product
+from a dynamically scheduled OpenMP loop doing a dot product.  
+\item \small The time $\frac{N \cdot t_1}{p}$ is estimated by taking 
+the time taken for statically scheduled section. 
+ \comments{of the last 5 invocations of the threaded computation 
+region and taking the minimum execution time of these times.} We 
+obtain $t_1$ by dividing this time by the number of iterations
+executed statically, and use it to calculate $\frac{N\cdot t_1}{p}$.  
+% during the execution of the threaded computation
+% region, 
+
+%Note that this gives an estimate of 
+%scheduler overhead, in order to give a tighter bound on the static 
+%fraction. 
+\end{itemize}
+%\comments{ 
+\begin{enumerate}
+\tiny \item \tiny We perform our estimates within the MPI\_Init() 
+function (intercepted by PMPI), using a wrapper script. Our calculations needed are done
+after the real MPI\_Init() has finished. 
+%\tiny \item \tiny The value for noise estimated is 5.4\% greater than that of netgauge
+%noise measurements.(possible future direction for netgauge is to make
+%it output noise event length delta, rather than percent noise). 
+%\tiny \item \tiny Note that values noise and scheduler overhead are estimates, rather
+%than the exact values; as we will see in the results section, 
+%these estimates are adequate to give us significant performance
+%gains. 
+\end{enumerate}
+%}
+\end{frame}
+
+\begin{frame}
+\frametitle{Process-local Slack Measurement}
+%{\small To calculate the slack S, for computing the slack-conscious static fraction based on 
+%\hyperlink{slackfs}{\beamerbutton{Slide 46}}:} 
+\begin{itemize} 
+\small \item \small \textbf{Callpath.} Associate slack trace values
+with only the type of collective operation that had the slack. 
+\item \small \textbf{Collective.} Storing the full callpath requires
+  overhead of unwinding the stack. Associate slack trace values with
+  only the type of the collective operation that had the slack.
+\item \small \textbf{Naive.} Forget slack tracing. Predict
+  slack based on a precomputed experiment. Specifically, 
+  run 1,000 invocations of a simple MPI\_Allreduce() with a
+  message size of 4 bytes on all MPI processes before the
+  application begins, i.e., right after MPI\_Init(). 
+\end{itemize}
+
+\begin{enumerate}
+\tiny \item \tiny Tradeoff between runtime overhead for the slack measurement, and the 
+advantage due to Adaptive Hybrid Static/Dynamic Scheduling.
+\item \tiny Note that this implementation is based on the Adagio
+runtime, and that we did not use the Adagio runtime directly. 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slack Prediction Mechanism Overheads and Errors}
+\begin{itemize}
+\tiny \item \tiny \textit{Slack prediction error} for a particular MPI
+region is the percentage difference 
+between the predicted slack before the MPI region begins 
+and the actual slack recorded at the end of the MPI region.
+\item \tiny \textit{Slack prediction overhead} for a particular MPI
+  region is the time spent in our slack prediction runtime.
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.30]{../plots/slackErr-fastNUMA2}
+\includegraphics[scale=0.30]{../plots/slackOvhd-fastNUMA2} \\
+\includegraphics[scale=0.30]{../plots/slackErr-rzuseq}
+\includegraphics[scale=0.30]{../plots/slackOvhd-rzuseq}
+%TODO: see if schemes or runtimes is better
+\caption{\tiny Overheads and errors of different available slack
+  prediction schemes in our runtime system. Each process sums the
+  total error and overhead across all MPI regions, and we report below
+  average overhead and error across MPI processes.}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Improving Performance through Model-guided Optimization And Slack-Conscious Scheduling}
+%\frametitle{Can We Use This Slack Information to Adjust the Scheduler Parameters So As to Reduce this Cost?}
+\begin{figure}
+\includegraphics[scale=0.34]{../plots/app-scaling-fastNUMA2}
+\caption{\small Speedup of slack-conscious hybrid static/dynamic scheduling over OpenMP static scheduling for cab with varying number of nodes.}
+\end{figure}
+\begin{itemize}
+\tiny \item \tiny Using a theoretical analysis to acheive the minima
+with Static-Hybrid helps to provide 13-16\% performance gains for a
+particle simulation (nbody) and SNAP (reg. mesh), each tested on a
+16-core non-NUMA architecture and 16-core NUMA architecture.
+\item \tiny Slack-conscious scheduling  provides additional gains
+  of 23.5\% for NASLU-MZ and 25.5\% for SNAP.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Improving Performance through Model-guided Optimization And Slack-Conscious Scheduling}
+%\frametitle{Can We Use This Slack Information to Adjust the Scheduler Parameters So As to Reduce this Cost?}
+\begin{figure}
+\includegraphics[scale=0.34]{../plots/app-scaling-rzuseq}
+\caption{\small Speedup of slack-conscious static fraction over OpenMP
+  static for rzuseqwith varying number of nodes.}
+\end{figure}
+\begin{itemize}
+\tiny \item \tiny Using our scheduling strategy does not incur
+significant performance degradation (less than 1\% on all node counts
+tested) for a non-noisy machine. 
+\item \tiny We are able obtain some performance gain (5.5\% at 1024 
+  nodes) for our amg experiment which has a small amount of application load imbalance in the code.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=bestfsvsadpt]
+%\frametitle{Why Should We Care About Model-guided and Runtime-guided Optimizations to Our Lightweight Scheduling Strategies?}
+\frametitle{Benefits of Using Runtime Adjustment over Experimental Tuning}
+\begin{figure}
+\includegraphics[scale=0.50]{../plots/best-fs-vs-adpt}
+\caption{\small Shows how runtime-adjusted static fraction for each application run on cab
+works better than the tuning approach (which is best static fraction
+(\textit{besf}) strategy). Speedup of slack-conscious static fraction
+over best static fraction is shown.}
+%This shows the importance of model-guided optimization and
+%runtime-based adjustment (esp. with increasing nodes). }
+\end{figure}
+\end{frame}
+
+\begin{frame}[label=locOptHybrid]
+\frametitle{Locality-Optimized Mixed Static/Dynamic Scheduling}
+\begin{columns}[T]
+\column{0.5\textwidth}
+{\small \underline{\textbf{Introduction:}}} \\
+\begin{itemize}
+  \comments{\tiny \item \tiny We need to avoid disturbing spatial locality while also making our scheduler as lightweight as possible.}
+  \tiny \item \tiny We first describe our locality-optimizations,
+  explaining why the original disturbs spatial locality and how we can
+  improve it while maintaining our original lightweight scheduling
+  scheme's benefits. 
+\item \tiny We describe our implementation of a library that is
+  invoked within an OpenMP threaded computation to schedule
+  iterations, explaining that it is low overhead compared to OpenMP
+  static.  
+%\item \tiny We show results for a Barnes-hut pthread code and regular mesh OpenMP code using our scheduling library. 
+\item \tiny We show results for a Barnes-hut and regular mesh code 
+  using our scheduling library.
+\item \tiny We show results that indicate that our locality-optimized 
+strategy controls the performance variation (discussed
+\hyperlink{perfVar}{\textcolor{blue}{here}}) just as well or better than
+does the basic hybrid static/dynamic scheduling. 
+%\comments{(which is beneficial for scalability)}. 
+\end{itemize}
+\vrule{}
+\column{0.5\textwidth}
+       {\tiny  \underline{\textbf{Scheduling Strategy Optimizations}}}\\
+       \begin{itemize}
+         \tiny \item \tiny \textcolor{gray}{ mixed static/dynamic $\rightarrow$ hybrid static/dynamic  (base)}
+       \item \tiny  \textcolor{gray}{lightweight scheduling (which includes locality-aware scheduling and skewed workloads)}
+       \item \tiny \textcolor{gray} {weighted locality-sensitive scheduling}
+       \item \tiny \textcolor{gray} {slack-conscious scheduling}
+       \item \tiny \textcolor{black} {staggered hybrid static/dynamic scheduling}
+       \end{itemize}
+    {\tiny \underline{\textbf { Methodology for Tuning Scheduler Parameters}}}
+    \begin{itemize}
+      \tiny \item \tiny \textcolor{black} {experimental tuning}
+    \item \tiny \textcolor{white} {model-guided optimization} %TODO: change to pruning search space 
+    \item \tiny \textcolor{white} {runtime adjustment} %TODO: add within-node runtime adjustment and across node adjustment
+    \end{itemize}
+\end{columns}
+\end{frame}
+
+\comments{
+low-probability term  for terms  -     precise  approximation .    
+
+-    correctness of the equality . 
+- intuition 
+
+-  storyboard   
+
+simple techniques can make your code faster.   
+}
+
+\begin{frame}
+\frametitle{Improving Spatial Locality in Dynamically Scheduled Iterations}
+{\tiny Ignoring slack for the moment, consider the diagram shown in slide 45
+  showing hybrid static/dynamic scheduling. \\}
+{\tiny  From this diagram, consider the sequence of loop iterations that
+  all 4 threads work on. (Note that the x-axis below is increasing
+  iteration numbers, and not time ). \\} 
+\begin{center}
+\includegraphics[scale=0.35]{../images/sdSched} \\
+\end{center}
+\begin{itemize}
+\small \item \small The consecutive iterations typically access consecutive memory locations. 
+\item \small Spatial locality benefits static iterations, but is lost in dynamic iterations. 
+\item \small Given this, we could get additional performance benefit if we bias distribution of dynamic iterations, so that each thread is likely to execute dynamic iterations 
+that are contiguous with its static iterations.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=sdsSched]
+%\frametitle{Question: Can we Re-distribute the Iterations So that Spatial Locality Isn't Lost?}
+\frametitle{Spatial Locality in the Hybrid Static/dynamic Scheduling Approach}
+\begin{center}
+\begin{figure}
+\includegraphics[scale=0.35]{../images/sdsSched}
+%TODO: update the below, to word better for intent. 
+\caption{\small We stagger the dynamic iterations in order to improve spatial locality of the basic static/dynamic scheduling.}
+\end{figure}
+\end{center}
+
+\begin{itemize}
+\small \item \small Strategy: Each thread finishes its static iterations, then does dynamic iterations marked for it if available, and only then looks for other dynamic work. 
+\item \small Spatial locality will not be lost in common cases: 
+\begin{enumerate}
+\small \item \small When there is no imbalance. 
+\item \small Even when there is imbalance espeicially for noise, most threads are able to complete their own dynamic iterations.
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=efficientImpl]
+%\frametitle{Question: Can we develop an efficient scheduler library that handles different tradeoffs between load balance and locality?}
+\frametitle{Note on Efficient Implementation of Scheduler Library}
+\begin{center}
+\input{../plots/runtime-costs}
+\end{center}
+\begin{itemize}
+\small \item \small Overhead of our library is relatively small. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=claresults]
+%TODO: add in varying number of cores to show improvements. 
+\frametitle{Performance Improvements with Varying Problem Sizes}
+\begin{figure}
+\includegraphics[scale=0.40]{../plots/bh-16cores}
+\includegraphics[scale=0.35]{../plots/st-16cores}
+\caption{\small Shows performance improvements when using our vSched
+  library (having staggered static/dynamic scheduling strategy), for a
+  Barnes-Hut pthread particle simulation code (right) from the
+  Lonestar Benchmark Suite and the SNAP 2D regular mesh code (right).}
+\end{figure}
+\begin{itemize}
+\tiny \item \tiny Using our staggered hybrid static/dynamic
+scheduling (\textit{stag}) for the 2D regular mesh code
+with 65536 mesh points, we get reasonable performance gain of 6.45\% 
+over OpenMP static scheduling. 
+\item \tiny Using our staggered static/dynamic scheduling approach for
+ the Barnes-Hut code at 100,000 particles, we get significant gains of
+ 18.53\%.
+\item \tiny Our strategy provides increased performance gains as we
+  increase the problem size. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=controlPerfVar]
+\frametitle{Controlling Performance Variability}
+%\frametitle{Do the optimizations maintain performance consistency characteristics of static/dynamic scheduli}
+\begin{center}
+\input{../plots/runtime-stddev}
+\end{center}
+\begin{itemize}
+\tiny \item \tiny With dynamic scheduling, performance can vary 
+from run to run (even for static/dynamic scheduling).
+\item \tiny Runtime standard deviations are controlled with our
+  scheduler optimizations done in vSched, probably because of more
+  persistent and predictable behavior(because each timestep each
+  thread is likely executing the same dynamic iterations). 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=combinedintro]
+\frametitle{Scheduler Composition}
+\begin{columns}
+\column{0.5\textwidth}
+{\small \textbf{\underline{Introduction}:}}\\
+\begin{itemize}
+\tiny \item \tiny Some schedulers may benefit in some cases, others elsewhere.
+\item \tiny Problem: Machine and application has all above mentioned factors involved. 
+\item \tiny We show how to combine all schedulers. We also apply it to 3 different application codes. 
+\item \tiny We discuss application programmer usability. 
+\item \tiny Finally, we re-visit the amplification problem, and discuss how our schedulers work at large-scale.
+\end{itemize}
+
+\vrule{}
+ 
+\column{0.5\textwidth}
+{\tiny  \underline{\textbf{Scheduling Strategy Optimizations:}}}\\
+\begin{itemize}
+  \tiny \item \tiny mixed static/dynamic (base)
+\item \tiny lightweight scheduling 
+\item \tiny weighted locality-sensitive
+\item \tiny slack-conscious scheduling
+\item \tiny constrained staggering
+\item \tiny $\rightarrow$ Each opens up new opportunities to balance the tradeoff between load balance and locality. % The main \point is that there are many dimensions of scheduler 
+\end{itemize}
+
+{\tiny \underline{\textbf { Methodology for Tuning Scheduler Parameters}}}\\
+\begin{itemize}
+  \tiny \item \tiny experimental auto-tuning
+\item \tiny model-guided optimization
+\item \tiny runtime adjustment
+\item \tiny $\rightarrow$ Each are important mechanisms to find the best tradeoff between load balance and locality.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label=combinedSched]
+\frametitle{Components of Example Composed Scheduler}
+\begin{itemize}
+\small \item \small \textbf{uSched}: Use model-guided optimization
+  to determine the static fraction (we have separate cases for load
+  imbalanced due to noise and load imbalance due to the application), 
+  and then experimentally tune the static fraction $0.05$ below static
+  fraction and $0.05$ above static fraction ($0.05$ is a configurable
+  parameter). 
+\item \small \textbf{vSched}: Almost the same as the \textit{ssds}
+  scheduling strategy. The difference here is that we use the 
+  static fraction obtained from \textbf{uSch} above
+  rather than experimentally tuning the static fraction. 
+\item \small \textbf{callsite\_fd}: Almost the same as the Slack-conscious Scheduling strategy. 
+  The difference here is that initial static fraction to use is obtained from \textbf{uSched} above. 
+\item \small \textbf{comboSched}: We start with the staggered static/dynamic
+  scheduling scheme defined in \textbf{vSched} above, and then do the 
+  slack-conscious adjustment described in slack-conscious scheduling section.
+\end{itemize}
+\end{frame} 
+
+\comments{
+\begin{frame}[label=combined] 
+\frametitle{Scheduler Composition of Example Composed Scheduler} 
+\begin{figure}[ht]
+\label{fig:sched-composition}
+\begin{center}
+\includegraphics[scale=0.35]{../pictures/sched-composition-diagram}
+\end{center}
+\caption{\label{fig:sched-composition} Composition of 3 schedulers
+which make ComboSched.}
+\end{figure} 
+\end{frame} 
+}
+
+\begin{frame}[label=combinednbody]
+\frametitle{Combined Scheduling Results for Rebound}
+{\tiny Rebound(*) is an MPI+OpenMP particle simulation code involving large load
+imbalances as well as irregular data access patterns.}
+\begin{figure}
+\includegraphics[scale=0.43]{../plots/app-scaling-strat-nbody-fastNUMA2}
+\caption{\tiny Percent speedup over OpenMP static scheduling for each
+  scheduling strategy for the particle simulation code. Run on
+  \texttt{cab} using 16 threads per node (and 1 MPI process per
+  node).}
+
+\end{figure}
+\begin{itemize}
+\tiny \item \tiny Combining different techniques seems to add on
+benefits, i.e., they don't cancel benefit out. 
+\item \tiny Because they are based on complementary factors. Spatial
+  locality in the static/dynamic scheduling vs. reducing dynamic
+  scheduling. 
+%\item \tiny better combination could lead to even more improvement 
+\end{itemize}
+
+{ \tiny *Rebound is actually the name a suite of particle simulation application
+  codes, and we considered the shearing sheet simulation. Here, we use the  
+  name Rebound to identify the shearing sheet application run in our experiments.  }
+\end{frame}
+
+\begin{frame}[label=combinedfe]
+\frametitle{Combined Scheduling Results for MiniFE}
+{\tiny  CORAL miniFE MPI+OpenMP code runs a finite element method. 
+  This involves irregular computation, and relatively low load imbalance.} 
+\begin{figure}
+%\includegraphics[scale=0.38]{../plots/app-scaling-strat-SNAP-craybw}\\
+\includegraphics[scale=0.43]{../plots/app-scaling-strat-SNAP-fastNUMA2}
+\caption{\tiny Shows how the application of full scheduling to miniFE 
+works better than the application of other approaches, by showing speedup over OpenMP
+static scheduling for each scheduling strategy for different numbers
+of nodes. Run on \texttt{cab} using 16 threads per node
+(and 1 MPI process per node).}
+\end{figure}
+
+\begin{itemize}
+\tiny \item \tiny Dynamic scheduling causes significant degradation 
+even though there is imbalance. 
+\item \tiny Our scheduling strategies provides notable performance 
+improvement over static scheduling, though gains less than performance gains for n-body.
+\item \tiny One reason is that code\comments{'s computation} has 
+relatively significant amount of across-node load imblance relative
+to within-node load imbalance, while n-body has little to no load
+imbalance. 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[label=combinedregmesh]
+\frametitle{Combined Scheduling Results for Regular Mesh}
+{\tiny CORAL SNAP is an MPI+OpenMP code that does a regular mesh
+  computation used in heat diffusion. This computation is similar to
+  that in chapter 2.}
+\begin{figure}
+\includegraphics[scale=0.43]{../plots/app-scaling-strat-fe-fastNUMA2}\\
+\caption{\tiny Shows how the full scheduling for SNAP 
+works better than other approaches, by showing speedup over OpenMP
+static scheduling for each scheduling strategy for different numbers
+of nodes. The above is run on \texttt{cab} using 16 threads per node, 
+and 1 MPI process per node.}
+\end{figure}
+
+\begin{itemize}
+\tiny \item \tiny Even when dynamic strategies worsen performance, the
+combined strategies show a small benefit. 
+%\item \tiny uSched doesn't do as well 
+\end{itemize}
+\end{frame}
+
+\comments{
+\begin{frame} 
+\frametitle{Code with Scheduling Composition} 
+\begin{figure}[h!t]
+              \label{code:dvSchedMacro}
+              \begin{center}
+                \lstinputlisting{../listings/dvSchedMacro-CG.c}
+             \end{center}
+              \caption{\label{code:dvSchedMacro}{\small NAS CG code
+                  modification using our scheduling lib\
+rary.}}
+            \end{figure}
+\end{frame} 
+}
+
+\begin{frame}[label=programmerEffort]
+\frametitle{Is Our Method Easy to Use for the Application Programmer?}
+{\tiny Rebound: (-add total loc-) SNAP: (-add total loc-)  miniFE: (-add total loc-) \\}
+\input{../plots/linesOfCodeChanged}
+%Experiment: Show lines of code modified, as shown in fourth quadrant
+%of SC poster. 
+
+\begin{itemize}
+\tiny \item \tiny Lines of code changed is minimal for all three codes. 
+\item \tiny Code transformation via ROSE \comments{(and changes to
+  GOMP)} can reduce or eliminate need for code change.
+\end{itemize}
+%TODO: explain
+\end{frame}
+
+\comments{
+\begin{frame} 
+\frametitle{Load Imbalance Metrics With Increasing Numbers of Nodes}
+\begin{figure}
+\label{fig:bh-withinAcrossImb-cab}
+\begin{center}
+  \subfloat[Load Imbalance Across Nodes] {\includegraphics[width=0.5\textwidth] {../plots/imb-maxavg-nbody-cab-inodes}}
+  \subfloat[Load Imbalance Across Cores] {\includegraphics[width=0.5\textwidth] {../plots/imb-maxavg-nbody-cab-icores}}
+\end{center}
+\caption{\label{fig:bh-withinAcrossImb-cab}{Standard load imbalance metrics taken for a galaxy 
+    simulation running on 1024 nodes of \textit{cab}, which is an Intel Westmere
+    machine with 16 cores per node. The code is run with one MPI process per core.}}
+% Overheads of our scheduling runtime.\comments{shown through comparison between our static scheduling implementation and OpenMP static scheduling.}
+\end{figure} 
+\end{frame}
+}
+\comments{
+\begin{frame}[label=ampProbRevisit]
+\frametitle{Amplification Problem Revisited}
+{\tiny (Ignore for now.)} 
+\begin{figure}
+\label{fig:modeledScurve}
+\begin{center}
+\includegraphics[scale=0.38]{../plots/amplification-model-Scurve1}
+\end{center}
+\caption{\label{fig:modeledScurve}\small Modeled scaling curve based
+  on formula for expected length of the $k^{th}$ iteration,
+  described~\hyperlink{noiseampformula}{\beamerbutton{here}}. In the formula, we use I=1000, $\delta$ = 5 ms, $\phi$ = 1.}
+\end{figure}
+\end{frame}
+}
+
+\begin{frame}[label=ampProbRevisit]
+\frametitle{Impact to Extreme-Scale}
+\begin{itemize} 
+ \small \item \small As we go to future machines including exascale
+\begin{enumerate} 
+ \tiny  \item \tiny  number of nodes increases 
+\item \tiny cores per node increases 
+\end{enumerate} 
+\item most importantly, static and dynamic variabilty increases. 
+\begin{enumerate}
+\tiny \item \tiny Operating voltage might decrease, which increases
+  variability and decreases reliability. 
+\item \tiny  Fault rates increase; these will be contained
+through multiple mechanisms locally, but this will lead to transient
+load imbalances. 
+ \end{enumerate} 
+\item \small Applications will need strong scaling, as exascale reports say,
+  because memory per core will be lower, and scientists would want to
+  solve the same problem faster rather than a larger problem at the
+  same speed. 
+\item \small All of the above reasons will increase the impact of
+  amplification. 
+\item \small Thereby increasing the need for the kind of schedulers we have developed in
+  this dissertation 
+\begin{itemize} 
+ \item \small Number of cores per node will be substantially higher, which our
+techniques can leverage.
+\end{itemize} 
+
+\item {\small the multiple techniques that we developed are in
+  extensible software library that can be extended for exascale
+  machines with newer features and future sophisticated applications. }
+% can be
+% selectively combined in different 
+\end{itemize} 
+
+\comments{
+adaptive componets of hardware and software, low power  node 
+
+The number of errors will increase, but it is expected that errors
+will be contained localily 
+
+impact of transient events is larger impact of applications .. 
+This will lead to   
+}
+\end{frame} 
+
+\begin{frame}[label=relatedWork]
+\frametitle{Related Work}
+\begin{itemize}
+\item \small DPLASMA: dynamic scheduling for specific Numerical Linear
+  Algebra application, not tunable static fraction. 
+\item \small Work-stealing: Ignores locality, and can't tune the
+  dynamic scheduler. 
+\item \small OpenMP loop scheduling: Sarkar, Chapman, deSupinski.
+\item \small TBB, Habanero.
+%Some work by Sriram et al tries to fix outer
+%iteration locality 
+\item \small Co-scheduling: Schedule all events together to make only 
+  some timesteps be impacted by noise, but can't co-schedule all
+  events. 
+\item \small Hyperthreading with SMT at LLNL: shows benefits with SMT 
+  and can be lightweight, but is a hardware solution (not tunable to
+  avoid overheads). 
+\item \small Runtime for Irregular applications (Galois): Transient
+  load imbalances, but dealing with more frequent irregularity on each
+  timestep, and load imbalances are coarse-grained. 
+\item \small UPC task scheduler: Can move work across threads with
+  some affinity, but this can't be tuned (all is done at runtime).
+\end{itemize}
+%*Some work/discussions have been done to integrate our scheduler into this runtime
+\end{frame}
+
+\begin{frame}[label=conclusions]
+  \frametitle{Conclusions}
+  \begin{itemize}
+  \item \small Performance irregularities create scaling challenges
+    and are difficult to handle through conventional techniques. 
+  \item \small Locality-aware hybrid static/dynamic scheduling
+    provides a way to cost efficiently handle within-node 
+    load imbalance induced by performance irregularity. 
+  \item \small Formalization and Numerical Linear Algebra Application
+    Case Studies. 
+  \item \small Additional scheduling techniques and optimizations:
+    model-guided determination of $f_d$, adaptive per-thread static fraction, slack-conscious static
+    fraction (staggered scheduling for spatial locality in dynamic
+    section). 
+  \item \small Our runtime does not introduce significant overheads. 
+\begin{itemize} 
+  \item \small So, even if runtime slowdowns due to performance
+    irregularity are small, it can be used.
+\end{itemize}  
+  \item \small Feasible to integrate into applications through
+    compiler transformations and adaptive runtime library. 
+  \item \small Demonstrated a novel set of scheduling strategies that
+    can be used to overcome challenges posed by dynamic
+    irregularities, while minimizing data movement and synchronization
+    costs. 
+\item \small Directions for future work: (a) can use within MPI-shared memory extensions and
+  MPI+X models; and (b) can combine with other across-node load balancers.
+%  \item \small Can further refine accuracy of slack prediction through
+%   risk model.
+%  \item \small Can use mixed non-blocking + blocking collectives,
+%  inspired by mixed static/dynamic scheduling.  
+    % \item \small Plan to provide more loosely coupled interface between OpenMP and MPI, or between any two programming models.
+  \end{itemize}
+\end{frame}
+
+%Acknowlegdments of people
+%\input{ack}
+%NOTE: this marks the end of the presentation. 
+%TODO: figure out if we should add ``questions'' slide.
+
+%\input{thanks}
+%People involved in the project 
+%\input{people} 

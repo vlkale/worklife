@@ -1,0 +1,23 @@
+Job, JobDesc, Category, coverLetter, applied, phoneScreen, interview, result, salary, benefits
+llnla, tba, 1, 1, 1, 1, 1, 0, na, na
+brnlb, tba, 1, 1, 1, 1, 1, 1, 140k, na 
+sdsca, tba, 1, 0, 0, 1, 0, 0, na, na 
+lbnla, tba, 2, 1, 1, 1, 1, ta, ta, na
+arnla, tba, 2, 1, 1, 0, 0, 0, na, na
+intla, tba, 2, 1, 1, 1, 0, ta, na, na
+appla, tba, 2, 1, 1, 1,	0, ta, na, na
+lanl, tba, 4, 3, 5, 3, 
+emu, tba, 
+arro, tba,
+sig, tba, 
+rut,
+iit,
+utd, 
+ucm,
+utk,
+ucsd,
+uoreg,
+intel,
+llnla,
+brnlb,
+lbnla,

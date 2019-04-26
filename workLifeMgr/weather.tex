@@ -1,0 +1,21 @@
+%\documentclass{article}
+\immediate\write18{ansiweather -f 7 -s false -a false -l Champaign  > currWeather.tex}
+%\begin{document}
+%
+
+%\begin{frame}{Weather}{Week of \today}
+%\input{|''ansiweather -l Champaign -F -s false -a false''}
+%\end{frame}
+
+\begin{frame}{Weather}{Week of \today}
+
+\input{./currWeather.tex}
+
+%\begin{figure}
+%\includegraphics[scale=0.4]{currLocWeather.png}
+%\end{figure}
+
+\end{frame}
+
+
+%\end{document}

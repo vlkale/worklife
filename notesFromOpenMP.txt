@@ -1,0 +1,40 @@
+Alex Duran .
+
+1. simd 
+
+
+2. assembly code 
+
+
+3. static
+
+
+4. 
+
+expression versus function 
+
+
+5. logical versus physical 
+
+
+6. static 
+
+   dynamic 
+
+
+ omp_arg1, omp_arg2, omp_arg3, omp_arg4 
+
+
+7. 
+
+
+8. should store information - init 
+
+
+9. loop construct needs to be extended
+
+
+10. loop record   
+
+
+11. 

@@ -1,0 +1,82 @@
+\begin{frame}{CkLoopHyb Proposal}{TODO}
+\underline{\textbf{\small Deadline:} \small September $22^{nd}$, 2018}
+\begin{enumerate}
+\small \item \small Add template to git repository.
+\item \small Add writeup for dot product results on Cori. 
+\item \small Get PIC results with Charm++-everywhere for BW. 
+\item \small Need a new application.
+\item \small Update the paper technique to be consistent with experiments.
+\item \small  Work: update paper .tex file with dot prod. \te{30 minutes}
+\item \small  Add PAPI cache misses for problem statement. 
+\item \small Fix diagrams.
+\item \small Add content in extended paper.
+\item \small Add to related work.
+\item \small Get PIC results with Charm++-everywhere, Charm++ + CkLoop for Cori.
+\item \small Get results for Charm++ + CkLoop for missing data points.
+\item \small Show results for dot product using Charm++ + OpenMP, and for dot product with Charm++ + CkLoop. 
+\seti 
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{CkLoopHyb Proposal}{TODO}
+
+\begin{enumerate}
+\conti
+\item \small Merge with git repository.
+\item \small Send message to meet for results.
+\item \small Add code to git repository.
+\item \small Add in problem statement with load imbalance metrics with Lassen, making the argument that the metrics show that one needs to use different load balancing across and within-node because persistence characteristics are different.
+\item \small Get cache misses for CkLoop dot product with static, dynamic and guided schedules to show problem of data locality. Maybe get time to redistribute work across logical nodes as a comparable across node metric. 
+\item \small Add explanation of the ease of use of our technique for application programmers by showing code and run command of a dot product implemented in Charm++ + CkLoop and comparing that code with the code and run command of a dot product computation implemented in MPI+OpenMP. Also, talk about implementation of CKLoop library. 
+\item Write up of proposal. 
+\begin{itemize}
+\small \item \small Short version for machine time to do experiments  applications with Charm++ + CkLoop. 
+ \item \small Full version for research activity on Charm++ + CkLoop research activity. 
+\end{itemize}
+
+\item \small  Maybe integrate CkLoophybrid library into current main branch of Charm++ . 
+\item  \small Reduce implementation overheads of CKLoop. Add more features to CkLoop.
+\end{enumerate}
+
+\end{frame}
+
+%<sub><sup><sub><sup>Tiny text</sup></sub></sup></sub>
+
+\begin{frame}{CKLoop Hyb Paper}{Schedule}
+\underline{Week of June $10^{th}$}\\ 
+\begin{enumerate}
+\tiny \item \tiny add results for lassen and decide metrics. 
+\item \tiny look at integration of CkLoop in Charm++ ? 
+\item \tiny show ease of use of technique and some implementation details of CKLoop library
+\end{enumerate}
+
+\underline{Week of June $17^{th}$} \\
+\begin{enumerate}
+\tiny \item \tiny Use metrics to quantitatively show the need for a synergistic strategy for performance optimization that involves using an combination of inter- node load balancing and intranode loop scheduling.
+\item \tiny add qualitative argument for the strategy too 
+\item \tiny describe extensions  new ideas in documentation and slides. 
+\item \tiny  check that implementation overheads better are reasonably comprehensive 
+\end{enumerate}
+
+\underline{Week of June $24^{th}$}\\
+\begin{enumerate}
+\tiny \item \tiny finish todo item \#2 of cache misses Ovhds and other parts of slides
+\item \tiny finish showing problem of a different cost-benefit of (a) internode load balancing versus cost of internode load balancing, e.g., sending messages across network, and (b) intranode load balancing and overhead of intranode load balancing, e.g., cost of a coherence cache miss.
+\end{enumerate}
+
+\underline{Week of July $2^{nd}$}\\
+
+\begin{enumerate}
+\tiny \item \tiny clean up all parts of slides.
+\item \tiny Submit a short proposal of the work  
+\end{enumerate}
+
+\underline{Week of July $9^{th}$: } \\
+\begin{enumerate}
+\item \tiny Submit a short proposal of the work for 
+\item \tiny Try to start writing long proposal
+\item \tiny Think about plan based on situation then. 
+\end{enumerate}
+
+\end{frame}

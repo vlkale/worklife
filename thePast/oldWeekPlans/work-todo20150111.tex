@@ -1,0 +1,249 @@
+\documentclass[12pt] {article} 
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\usepackage{ulem}
+\usepackage{caption}
+\usepackage{courier}
+
+\usepackage{verbatim}
+
+\usepackage[usenames,dvipsnames]{xcolor}        
+\usepackage{listings}
+
+\usepackage{float}
+\usepackage{subfig}
+
+%TODO: understand why doneTask can't have an item around it. 
+%TODO: see if macros can create enumerate groups. 
+%TODO: get parens to show .
+
+\def \doneNewTask [#1][#2][#3][#4]{\small \item {\sout{\small ``#1''}\textit{TimeEst:}{``#2''}{\textit{Deadline:}{``#3''}}{\textit{Priority:}{``#4''}}}}
+
+%\newcommand{\doneNewTask}[1][2][3][4]{\small \item 
+%{\sout{\small{#1}}\textit{TimeEst:}{#2}{\textit{Deadline:}#3}{\textit{Priority:}#4}}
+
+%\newcommand{\doneNewTask}[1][2][3][4]{\small \item
+%  {\sout{\small{#1}}\textit{TimeEst:}{#2}{\textit{Deadline:}#3}{\textit{Priority:}#4}}
+
+%\newcommand{\NewTask}[1][2][3][4]{\small \item \small {#1}\textit{TimeEst:}{#2}{\textit{Deadline:}#3}{\textit{Priority:}#4}} 
+
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\textcolor{blue}{\sout{#1}}}
+\newcommand{\optTask}[1]{\item \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\item \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\deadline}[1]{#1}
+\newcommand{\comments}[1]{} 
+
+\newcommand{\dl}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:} \textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:} \textit{#1}} 
+
+% model after a paper organization 
+\begin{document} 
+
+\underline{\textbf{ Current Work Todo}}\\
+\begin{enumerate}
+\tiny \item \tiny Finish last thesis chapter writing, and naming convention. 
+\item \tiny Finish introduction portion in the slides. 
+\item \tiny Get bw results for a single application  = ( run on machine + run on machine  + setup ). 
+\item \tiny Message to Garzaran. 
+\item \tiny Message to Padua. 
+\item \tiny Message to Bronis. 
+\end{enumerate}
+
+\underline{\textbf{Work Todo}}\\
+\begin{enumerate}
+\tiny \item \tiny Finish last thesis chapter writing, and naming convention. \item \tiny Get bw results for a single application  = ( run on machine + run on machine  + setup ). 
+\end{enumerate}
+
+\underline{\textbf{Work:Mgmt Todo}}\\
+\begin{enumerate} 
+\item that's this page! 
+\end{enumerate} 
+
+\underline{\textbf{Work:Impl/ActiveDocs Todo}}\\
+\begin{enumerate} 
+\item \tiny \texttt{thesis/researchQuestionsAndData.tex}
+\item \tiny \texttt{scheduleForThesis.tex}
+\item \tiny \texttt{combinedScheduling/techniques.tex}
+\item \tiny \texttt{combinedScheduling/results.tex}
+\item \tiny \texttt{plots/nbody-craybw.dat}
+\item \tiny \texttt{plots/Snap-craybw.dat}
+\item \tiny \texttt{plots/fe-craybw.dat}
+\item \tiny \texttt{plots/imb-final.tex}
+\end{enumerate} 
+
+% All tasks for work should go here 
+% Break down each task into smaller tasks. Each small task should be
+% 30 mins  
+% Do each small task fully and to completion (don't leave behind any 
+% parts) 
+% Prioritize tasks (order based on urgent and important) 
+% Have six tasks going each day
+% break down into even smaller tasks in paper 
+% add tasks that are generated from tasks here 
+
+\underline{\textbf{Work:Pres Todo}}\\
+\begin{enumerate}
+\item fix transition at the beginning. \te{20 mins} \dl{by lunch} 
+\item clean up transitions at the latter parts \te{} \dl{} 
+\item \doneTask{Work: pres: Fix chapter 1 organization, make it
+  clean.}  \te{1 hour} \dl{Sunday} \pr{U} 
+\item \doneTask{Work: Make sure logical flow is maintained for chapter
+  1.} \te{} \dl{} 
+\item \doneTask{Work: finish thesis chapter 1 writing = Work: finish 
+idle time calculations and graphs \te{1 hrs} \dl{}  +  Work: write the
+outline. \te{1 hrs} \dl{-} + Work: do naming \te{2 hrs} \dl{} + Work: put in
+figures properly \te{1 hrs} \dl{-}
+
+\item \doneTask{Finish chapter 1 to check for remaining holes.} \te{}
+  \dl{} \pr{} 
+\item \doneTask{Work: add graphs for last chapter.} \te{4 hours}
+\item \doneTask{Work: pres: Get synchronization overheads graphs.} 
+\item \doneTask{Work: pres: update slides for Prof. Gropp.  = Work:pres: add 
+load imbalance data at the end. + Work: pres: consider table at the end.} 
+\te{1 hour} \dl{Christmas} \pr{UI}.
+
+\item Work: pres: write out amplification explanation = ( work:pres:explanation of amplification connected to nbody / spmv  +  explanation of amplification in theory) \te{1 hour} \dl{1 hour} \pr{-}
+
+\item Work: pres: refine the avg/max explanation by getting to the 
+ point for thesis \dl{} \te{} \pr{}
+
+\item Work: pres: finish fixing structure  \dl{} \te{} \pr{}
+\item Work: pres: refine inevitability of problem for cache misses. =
+  (Think about probability argument + Formalize better )  \te{} \dl{}
+  \pr{}
+
+\item Work: pres: show inevitability of problem for synchronization 
+overheads = (Refine explanation of serialization overheads)  \te{} \dl{} \pr{}
+
+\item \doneTask{Work: pres: show inevitability of problem for idle
+  times = (Work: find example  for increasing idle time   + Work: find
+  slack example)}  \te{1 hr} \dl{} \pr{-}. 
+
+\item \doneTask{Work: pres: fix how to say it for the first chapter.}
+  \dl{} \te{} \pr{}
+
+\item \doneTask{Work: fix the last summary paragraph.} 
+\item \textbf{curr $\rightarrow$} \\
+\item \doneTask{Work: fix the transient vs persistent paragraph} \te{}
+  \dl{} \pr{}
+\item \doneTask{Work: add intro to last chapter \dl{Sat}
+  \pr{SoonToGetACompleteProduct}} \te{1 hour}
+\item \doneTask{Work: fix description in last chapter} \te{1 hour}
+  \dl{Sat}\pr{lowerButImportantBeforeSendingOutSoNoOneGetsConfused}.
+
+\item \doneTask{Work: (cm): get data sheet}
+\item \doneTask{Work:(cm): and find cycle time}
+\item \doneTask{Work:(cm): do calculation and find total data movement time \te{} \dl{}.}
+
+\item \doneTask{Work:(cm): explain the parts that might be off.} \te{}\dl{}
+
+\item Work:(cm): explain \textit{half} scheduling for nbody in terms of cache misses. 
+
+\item Work:(Naslu): fix NASLU cache misses times.
+\item Work:(NASLU): explain why original numbers were wrong.
+\item Work:(NASLU): verify that measurements are correct with new cache
+misses for NASLU. 
+\item Work:(NASLU): go into cache miss table for NASLU and edit + Work:(NASLU): find way to get total cache misses for NASLU. 
+
+\item Work:(cm): explain that more trials for n-body PAPI cache misses
+ for dynamic scheduling may be needed to explain the differences also.
+
+\item Work:(cm): explain that we should take the maximum instead of average
+for n-body PAPI cache misses. 
+
+\item Work: fix comments for chapter 2 \te{--} \dl{Sat} \pr{--} 
+
+\item Work: bring in slack data in problem statement of hybrid 
+scheduling, and don't repeat it. \te{} \dl{} \pr{}. 
+
+\doneTask{Work:admin:/ Mgmt:Money: re-imbursements.}
+
+\item Work: make descriptions in last chapter easy to read, 
+i.e.,L3:howtosayit revision. \te{1 hour} \dl{Sun} 
+\pr{lowerButImportantBeforeSendingOutSoNoOneGetsConfused}.
+
+\item Work: check naming of terms = check for consistency + check for goodness 
+  \te{} \dl{} \pr{}.
+
+\item Work: make better title for last chapter \te{5mins}\dl{Mon}\pr{}
+
+\item Work: Make sure naming of overhead and cost is consistent 
+throughout last chapter and rest of thesis + Work: Make sure
+distinction between noise event length vs. imbalance due to noise 
+is consistent throughout last chapter and rest of thesis \dl{} \pr{}
+\te{}.
+\item Work: add graphs for last chapter (adg) = 
+  Work:(adg): add graphs for rzuseq on nbody \te{} \dl{} + 
+  Work (adg): add graphs for weighted scheduling for each 
+  graph\te{} \dl{} \pr{}.
+% may be needed
+% for dynamic scheduling may be needed to explain the differences
+% also. 
+\item Work: put in data set for spatial locality to explain problem in
+  staggered static/dynamic. 
+\doneTask{Work: Comm: Send Padua message about defense} \te{10 mins}\dl{}\pr{EasyAndGetItDoneQuickly}.
+\doneTask {Work: Comm: Send Bronis to let him know about the defense.} \te{20 mins} \dl{Sunday} \pr{IU}. 
+\item Work: Comm: Contact for jobs. 
+
+\item Work:(cme): explain cache misses to measurements for half for 
+  n-body + Work(cme): explain cache misses to measurements \textit{besf} for n-body. 
+
+\doneTask{ Work: add in slides for all tasklets.} \te{} \dl{} \pr{} 
+
+\doneTask{Work: write slides for explaining skewed tasklets.} \te{} \dl{} \pr{}. 
+
+\item Work: Make notes on figures for slack. \te{} \dl{} \pr{}. 
+
+\item Work: Make notes on figures for spatial locality. \te{} \dl{} \pr{}. 
+
+\item Work: finish writing the beginning of chapter 2 intro.  \te{} \dl{} \pr{}.  (Note:Break this down further).
+
+\item Work: finish writing the explanation for figure about tasklet size \te{} \dl{} \pr{}
+
+\doneTask{Work: do explanation for histograms scaling}  \te{} \dl{} \pr{}
+
+\item Work: pres: write out amplification explanation = ( work:pres:explanation of amplification connected to nbody / spmv  + explanation of amplification in theory)\te{1 hour}\dl{1 hour}\pr{-}
+
+\end{enumerate}
+
+%\underline{\textbf{Work:should have}}\\ 
+%\begin{enumerate} 
+%\item Work: results: add in the result on topology \te{1 hours}  \pr{IU-ProfGroppExpectedThisAMonthBack}
+%\end{enumerate} 
+
+\underline{\textbf{Work:Nice To have}}\\
+\begin{enumerate}
+\optTask{do model for static fraction for persistent load imbalance, add
+  this in the last chapter.} 
+\item Work:Mgmt: update the schedule to show for yourself, and to show
+  to Prof Gropp \te{} \dl{} \pr{}
+\item Work: add relevant related work in intro and in literature 
+survey to improve justification (arr) \te{30 mins} \dl{Wednesday}
+\pr{ProfGroppToldToDoThisAndItHelpsToStrengthen}. 
+\item Work:(arr): add STREAM benchmark citation when you mention the
+bulk-synch code + Work:(arr): add STREAM benchmark. 
+\item Work:(arr): add green work steal explanation in the
+  conclusions. 
+\item Work:(arr): discuss desktop computing benefits to improve
+  Excel. 
+\item Work:(arr):add senstrom citation when you mention coherence
+  cache misses. 
+\end{enumerate} 
+
+\end{document} 

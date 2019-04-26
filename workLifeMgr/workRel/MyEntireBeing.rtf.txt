@@ -1,0 +1,520 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;\red185\green0\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid103\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid202\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid203\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid302\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid303\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid402\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid403\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid404\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid502\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid503\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2160\lin2160 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid504\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li2880\lin2880 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\margl1440\margr1440\vieww20980\viewh13560\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs22 \cf0 \CocoaLigature0 \
+My Entire Being \
+\
+TODO: check point and sub-point.\
+\
+Point: To convince you and myself that my life is under control.\
+\
+1. Work: \
+  	a. Applications\
+	 	1) Job applications \'97> Goal: I want a job that\'92s out of here\
+		2) Publications.\
+		3) salary+bonus.\
+\
+    b. Project code/library/software. \
+		  - Job talk.\
+          - code project of google. \
+	      - police data. \
+\
+    c. Interview coding preparation \'97> see document outline. \
+		1) look at coding websites and glassdoor. \
+		2) cracking coding interview book + programming, watching lectures, rehearsing from mock interviews. \
+		1) Math. \
+		2) Computational Complexity. \
+		3) Algorithms.\
+		4) Programming. \
+         5) Behavioral questions. \
+\
+  	e. 	Cover letter, resume, website and emails, networking, reference letters. \
+    f. 	Travel / Event planning. \
+\
+2. Health insurance: \
+    a. Happiness. \
+ 	b. Govt ID papers:   birth cert:     ppn:028361799 exp:   |  ssn:  driver's license/govt ID: K400-8728-4051 exp:2-20-18 \
+   	c. Doctors. \
+    d. CBT. \
+    e. Dentist. \
+	f. Health insurance numbers. \
+    h. Food: spices, recipes, throw old food away. \
+    i. Exercise: Yoga, Gym. \
+\
+3. Money: \
+	a. 401k + retirement + fidelity + bank (money owing)  Credit card \
+    b. Work pay and holidays / hours.\
+    c. Reimbursements from travel from interviews.\
+    d. Airfare points: American AAdvantage, Southwest Rapid Rewards, expedia.com. \
+   	e. Hotels.com \
+    f. Rental car from National\
+	g. Amtrak \
+\
+6. Apartment:\
+   a. Apartment lease + apartment rent \'97> condo \
+   b. Renter's insurance  \
+\
+7. Utilities: \
+    a. Wifi account by comcast + netgear routers/wires + TV subscription from xfinity + TV/stand - troubleshooting internet,  Switching name and password of internet. \
+    b. printer/scanner/fax. \
+    c. Electricity from ComEd. \
+    d. Water from Amwater. \
+    e. Garbage and recycling. \
+    f. Mail. \
+\
+8. Transportation\
+    a. Car\
+       1) Car insurance from American Family. \
+       2) Warranty + Repairs + Check for oil change/fluids. \
+       3)\cf2  \cf0 car parking. \
+\
+    b. Ventra Train card / BART card / Bus  maps of system. \
+\
+\
+14. Family and Friends:\
+     - call mom. \
+\
+15. Matrimony, Dating and Relationships \
+     - \
+     - \
+______________________________ \
+\
+\
+\
+\
+Cover Letter: \
+\
+\
+\
+\'97\'97\'97\'97\'97\'97 \
+\
+\
+\
+Talking about research: \
+\
+Job Talk: \
+\
+\
+\
+\
+Thesis + defpres: \
+\
+\
+Journal Paper: \
+\
+1. Why you did it: \
+2. What you did:\
+3. What you got: \
+\
+\
+Amplification paper: \
+\
+1. \
+2. \
+3. \
+\
+Loop Scheduling on GPU paper: \
+\
+\
+\
+\
+\
+\
+\
+\
+Goal: find a job at a national lab or company. \
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0
+\f1\b\fs24 \cf0 \CocoaLigature1 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Administrative:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls1\ilvl1
+\b0 \cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}
+\f2 Websites for applications: indeed.com, hpcwire.com,
+\f1 \expnd0\expndtw0\kerning0
+\
+\ls1\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}
+\f2 Applications information: \
+\ls1\ilvl1
+\f1 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Resume: \
+\ls1\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Cover Letter: \
+\ls1\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}Website: \expnd0\expndtw0\kerning0
+\
+\pard\tx720\tx1440\pardeftab720
+\cf0 \expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0
+\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Technical
+\b0 \expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls2\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Mathematics\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls2\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Combinatorics, counting problems, probability\
+\ls2\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Numerical algorithms\'a0\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls3\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Computational Complexity:\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls3\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Understand Big-O notation\
+\ls3\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Able to calculate time and space complexity\
+\ls3\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Understand P vs NP, NP-hard, NP-complete,\'a0\
+\ls3\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Problems like TSP, Knapsack, 3 SAT\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls3\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Algorithms:\
+\pard\tx720\tx1440\pardeftab720
+\cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls4\ilvl2\cf0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Graph & Tree algorithms\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls5\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Prim / Kruskal for MST\
+\ls5\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Djikstra for SSSP)  \
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls5\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Dynamic programming as an algorithm design method.\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls5\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Prefix sum\
+\ls5\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Text justification\
+\ls5\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Edit-distance\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Searching\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+BFS / DFS\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Binary search\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Sorting\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Bubble\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Insertion\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Quick\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Merge\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}
+\f2 \uc0\u9642 
+\f1 \expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Data Structures:\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Linked Lists (Singly & Doubly)\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Hash Tables\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Implementation\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Table doubling, Karp-rabin/rolling hashing\'a0\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Open addressing\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Stacks & Queues:\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Heaps / Priority Queues\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Insert/delete\'a0\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Algorithms\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Binary Search Tree:\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Pre-order, in-order , post-order traversals\'a0\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+AVL vs Red-black\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Programming\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Scalability\
+\ls6\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Object Oriented Programming:\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+pass by value, pass by reference, pass by pointer\'a0\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+const correctness\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+C++:\'a0\
+\pard\tx2380\tx2880\pardeftab720\li2880\fi-2880
+\ls6\ilvl3\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+compilation\
+\ls6\ilvl3\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+pointers\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+Threaded Programming, Operating Systems\'a0\
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls6\ilvl0
+\b \cf0 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Behavioral
+\b0 \expnd0\expndtw0\kerning0
+\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Questions about Thesis work\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Questions about other experience listed on your resume\
+\pard\tx1660\tx2160\pardeftab720\li2160\fi-2160
+\ls6\ilvl2\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+"Tell me about this project"\
+\ls6\ilvl2\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9642 
+\f1 	}\expnd0\expndtw0\kerning0
+"What was the most important project you worked on"\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440
+\ls6\ilvl1\cf0 \kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Questions about why you want the job\
+\ls6\ilvl1\kerning1\expnd0\expndtw0 {\listtext	
+\f2 \uc0\u9702 
+\f1 	}\expnd0\expndtw0\kerning0
+Prepare questions for the interviewer. \
+\pard\tx720\tx1440\pardeftab720
+\cf0 \
+\
+\pard\tx720\tx1440\pardeftab720
+\cf0 \expnd0\expndtw0\kerning0
+\
+Know difference between quick judgements and careful thinking.
+\f0\fs22 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+\
+References: \
+\
+1. http://steve-yegge.blogspot.com/2008/03/get-that-job-at-google.htm \
+2. Algorithms textbook\
+3. MIT OCW \
+\
+4. MIT crosslinks -  creates links between content within CS . It ought to create links between in CS and other courses like physics and calc\
+ \
+5. MIT syllabus\
+\
+Acknowledgements: Thanks to Atul Kale for providing a re-organization of the outline. 
+\f1\fs24 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx720\tx1440\pardeftab720
+\cf0 \expnd0\expndtw0\kerning0
+\
+Schedule: \
+\
+1. \
+\
+2. \
+\
+3.  \
+
+\f0\fs22 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\cf0 \
+\
+\
+\
+\
+\
+Health Insurance Group Number: 940408859-01 \
+\
+CC1 num: CC2 num: Dbtnum:  bank acct num:  \
+VIN:        License Plate:  E61 2444    Atul's lic: P84 \
+Parking location codes:   Parking signs: \
+\
+VivekInternet\'92s: FightingIllini  wifi pass: 2173900374 WPA\
+xfinity account number: 0149024144.  pswd:  \
+\
+AAdvantage number: 847JJP0 password: \
+\
+ |   Dad's AAdvantage number: BRU6630 Password: polarwind \
+Emerald Club number :  140294615  | pass: \
+\
+Netflix user:  lvk2408@gmail.com  Netflix password: chitrapat \
+\
+\
+Todo:  \
+\
+1. Get interviews taken care of  \'97> see schedule in sup doc and integrate it with this \
+2. Write up job applications \
+3. Health insurance  + CBT \
+4. Dentist \
+5. Refining the above documents and the documents/syllabus. \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}

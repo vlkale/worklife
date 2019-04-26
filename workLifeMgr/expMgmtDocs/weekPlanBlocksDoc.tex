@@ -1,0 +1,248 @@
+\documentclass[serif, mathserif, final]{beamer}
+\mode<presentation>{\usetheme{Lankton}}
+\usepackage[orientation=landscape,size=a0,scale=1.6, debug]{beamerposter}
+%\usepackage[orientation=landscape,size=a0,scale=1.4,debug]{beamerposter}   
+%\usepackage[absolute,overlay]{textpos} % <-- can  use this to
+%position text (solves problem of earlier yesterday with poster placement).  
+%\documentclass[serif,mathserif,final]{beamer}                               
+%\mode<poster>{\usetheme{RicePoster}}                                      
+%\documentclass{beamer}
+
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\usepackage{pgfpages}
+\usepackage{pgf}
+
+
+\pgfpagesdeclarelayout{9 on 1}
+{
+  \edef\pgfpageoptionheight{\the\paperheight}
+  \edef\pgfpageoptionwidth{\the\paperwidth}
+  \edef\pgfpageoptionborder{0pt}
+}
+{
+  \pgfpagesphysicalpageoptions
+  {
+    logical pages=9,
+    physical height=\pgfpageoptionheight,
+    physical width=\pgfpageoptionwidth
+  }
+  \def\pgfpgtemp{}
+  \foreach \i in {1,...,3} {
+    \foreach \j in {1,...,3} {
+      \pgfmathtruncatemacro\n{(\j-1)*3 + \i}
+      \pgfmathsetmacro\ri{1 - (\i - .5)/3}
+      \pgfmathsetmacro\rj{(\j - .5)/3}
+      \edef\temp{%
+        \noexpand\pgfpageslogicalpageoptions{\n}
+      {
+        border code=\noexpand\pgfsetlinewidth{2pt}\noexpand\pgfstroke,
+        border shrink=\noexpand\pgfpageoptionborder,
+        resized width=.33\noexpand\pgfphysicalwidth,
+        resized height=.33\noexpand\pgfphysicalheight,
+        center=\noexpand\pgfpoint{\rj\noexpand\pgfphysicalwidth}{\ri\noexpand\pgfphysicalheight}
+      }
+      }
+      \expandafter\expandafter\expandafter\gdef\expandafter\expandafter\expandafter\pgfpgtemp\expandafter\expandafter\expandafter{\expandafter\pgfpgtemp\temp}
+    }
+  }
+  \pgfpgtemp
+}
+
+\usepackage{ulem}
+\usepackage{caption}
+\usepackage{courier}
+
+\usepackage{verbatim}
+
+%\usepackage[usenames,dvipsnames]{xcolor}                                    
+\usepackage{listings}
+
+\usepackage{float}
+\usepackage{subfig}
+\setbeamertemplate{caption}[numbered]
+
+\usepackage{calendar}
+\usepackage{geometry}
+
+%\graphicspath{{./figures/}}                                                   
+%\usepackage{beamerposter}                                         
+%\graphicspath{{./figures/}}  
+ 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue}
+  {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item
+  \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item
+  \textcolor{magenta}{\textit{Situation:} #1\
+}}
+\newcommand{\deadline}[1]{#1}
+\newcommand{\dl}[1]{#1}
+\newcommand{\comments}[1]{} 
+
+%\graphicspath{{./figures/}}                                             
+%\usepackage[orientation=landscape,size=a0,scale=1.6,debug]{beamerposter}
+
+%-- Header and footer information ----------------------------------          
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this
+                                % should be     
+\newcommand{\footright}{August 2015}
+
+%------------------------------------------------------------------          
+%-- Main Document -------------------------------------------------          
+\title{Month-Week-Day Plan}
+\author{Vivek Kale$^1$}
+\institute{$^1$ University of Illinois at Urbana-Champaign}
+\date{\today}
+
+\pgfpagesuselayout{9 on 1}[a0paper, border shrink=5mm,landscape]
+
+%\pgfpagesuselayout{16 on 1}[a0paper, border shrink=5mm,landscape]
+
+\begin{document}
+
+%\foreach \k in {1,...,20} {
+%
+%\begin{frame}{Frame \k}
+
+%This is frame \k.
+%It is exciting.
+%\end{frame}
+%}
+%\end{document}
+      %-- Block 1-1                                                     
+      \begin{frame}
+        \frametitle{Happiness}
+        \begin{enumerate}
+          \item Think about happy thoughts about meeting
+          someone else.
+        \item \tiny
+        \end{enumerate}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{Stresses}
+        % Recognize emotions / recognize (precisely) what you're
+        % worried about 
+        % clean out old worries, put them in pastWorries doc.      
+        % remember t define precisely                                      
+% order from top-to bottom                                              
+        \begin{itemize}
+        \item \tiny Work: worrying about interviewing: just
+          focus on the work.
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{Real-time Confidence}
+        \begin{itemize}
+          \tiny \item \tiny If you do something sloppy, don't
+          think about it and don't say sorry.
+        \item \tiny don't think someone is trying to hurt you if
+          they say something.
+        \item \tiny know the paths of least stress.
+        \item \tiny if mom does something, don't let that bite you.
+        \end{itemize}
+      \end{frame}
+
+
+
+     %-- Block 1-3                                            
+      \begin{frame}
+        \frametitle{Life notes}
+        \begin{itemize}
+          \tiny \item \tiny Level 0+1: focus on finding Happiness.
+        \item \tiny Level 2: 
+        \item \tiny Level 4.1: Writing: prefer standard to offbeat.
+        \item \tiny Level 4.2: Body Language: lips relaxed
+        \item \tiny Level 4.3: Vocal Variety: shout.
+        \item \tiny TM: work on speech for submission to blog,
+          increasing intentionality.
+        \item \tiny Mgmt/habits: finish chapter 1 reading notes and
+          habits.
+        \end{itemize}
+      \end{frame} 
+
+
+    \begin{frame}
+      \frametitle{Week Plan} 
+        \begin{itemize}
+          \tiny \item \tiny
+        \item \tiny
+        \item \tiny
+        \item \tiny
+        \end{itemize}
+      \end{frame}
+
+    \begin{frame}
+      \frametitle{Running TODO} 
+        \begin{itemize}
+          \tiny \item \tiny
+        \item \tiny
+        \item \tiny
+        \item \tiny
+        \end{itemize}
+      \end{frame}
+
+
+    \begin{frame}
+      \frametitle{Running TODO} 
+        \begin{itemize}
+          \tiny \item \tiny
+        \item \tiny
+        \item \tiny
+        \item \tiny
+        \end{itemize}
+      \end{frame}
+
+
+    \begin{frame}
+      \frametitle{News} 
+        \begin{itemize}
+          \tiny \item \tiny
+        \item \tiny
+        \item \tiny
+        \item \tiny
+        \end{itemize}
+      \end{frame}
+
+    \begin{frame}
+      \frametitle{Weather} 
+        \begin{itemize}
+          \tiny \item \tiny
+        \item \tiny
+        \item \tiny
+        \item \tiny
+        \end{itemize}
+      \end{frame}
+
+   \begin{frame}
+      \frametitle{Situations} 
+        \begin{itemize}
+          \tiny \item \tiny
+        \item \tiny
+        \item \tiny
+        \item \tiny
+        \end{itemize}
+      \end{frame}
+
+\end{document}
+  

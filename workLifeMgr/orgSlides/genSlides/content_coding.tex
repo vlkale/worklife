@@ -1,0 +1,131 @@
+\begin{frame}
+\frametitle{Coding Table of Contents}
+\tableofcontents[part=1]
+\end{frame} 
+
+\subsection{Scheduler Runtime}
+\subsubsection{Scheduler Runtime: Must have} 
+\begin{frame}
+\frametitle{$\mu$-Scheduler runtime: Must Have}
+\begin{enumerate} 
+\bllt \sout{create interface}
+\bllt Consider usage in context of MPI shared memory extensions.
+\bllt Testing infrastructure for correctness. 
+\begin{itemize} 
+\item \tiny Check answer of Dot Product. Can use norms. 
+\item \tiny Check all threads are running and doing work. 
+\item \tiny Check for lock and unlock (no data races). 
+\item \tiny Check total work done, regardless of sched. (no tasks should be left behind) 
+\item \tiny Check locality state info is getting updated. 
+\end{itemize}
+\bllt Incorporate state information in scheduler. 
+\begin{itemize}
+\item \tiny Add integrate MPI slack-conscious sched. 
+\item \tiny Add in thread slack-conscious sched. 
+\item \tiny Add in tasklet locality tags. 
+\end{itemize}
+\end{enumerate} 
+\end{frame} 
+
+\subsubsection{Sched Runtime Should have}
+\begin{frame}
+\frametitle{Sched Runtime: Should Have}
+\begin{enumerate} 
+\bllt Create separate files for schedulers(?). 
+\bllt See if we can get an OpenMP like interface. 
+\bllt make proper output, and redirect to file. 
+\bllt use gnuplot scripts to get data from output file. 
+\bllt package into ar and shared library. 
+\end{enumerate}
+\end{frame}
+
+\subsubsection{Sched Runtime : Nice to have}
+\begin{frame}
+\frametitle{Sched Runtime: Nice to have}
+\begin{enumerate} 
+\bllt put in proper timers for slack-conscious scheduling
+\bllt get profiling to measure dequeue overhead 
+\end{enumerate} 
+\end{frame} 
+
+\subsubsection{Post-processing data}
+\begin{frame}
+\frametitle{Plotting data}
+\begin{enumerate} 
+\bllt Plotting for num processes versus perf 
+\bllt Transpose
+\bllt Runtime overheads for different tuned versions
+\bllt output parsing scripts 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Output post-processing}
+\begin{enumerate} 
+\bllt Memorize the code needed for file I/O. Consider C++ file I/O. 
+\bllt Have a standard table for printing the output through a set of parameters.
+\bllt Learn python to post-process the output from an application. 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Plotting}
+\begin{enumerate} 
+\bllt Understand how to create a histogram 
+\bllt Know how to label axes and graph title. 
+\end{enumerate} 
+\end{frame} 
+
+\subsubsection{Git Repo}
+\begin{frame}
+\frametitle{Git Repo}
+\begin{enumerate} 
+\bllt Make sure everything compiles before checking in. 
+\bllt Check how to do branches in git. 
+\bllt Do frequent check-ins. 
+\bllt Know what to do in the event of a conflict. 
+\end{enumerate} 
+\end{frame} 
+
+\subsubsection{Git Repo}
+\begin{frame}
+\frametitle{Git Repo}
+\begin{enumerate} 
+\bllt Make sure everything compiles before checking in. 
+\bllt Check how to do branches in git. 
+\bllt Do frequent check-ins. 
+\bllt Know what to do in the event of a conflict. 
+\end{enumerate} 
+\end{frame} 
+
+\subsubsection{SSH login guide}
+\begin{frame}
+\frametitle{SSH login guide}
+\begin{enumerate} 
+\bllt Fix \texttt{known\_hosts} if login creates a problem. 
+\bllt Make sure there is an easy way to login without the RSA key.
+\end{enumerate} 
+\end{frame} 
+
+\subsubsection{Benchmark tests}
+\begin{frame}
+\frametitle{Tests}
+\begin{enumerate} 
+\bllt Benchmark tests for load imbalance across cores \texttt{ld} is the linker.
+\bllt test for variation across Iteration timesteps
+\bllt test for variation across different MPI procs 
+\bllt test for variation of dequeue overheads, for one particular thread. 
+\bllt test for non-uniformity of dequeue overhead, across threads. 
+\end{enumerate} 
+\end{frame} 
+
+\subsubsection{Work Improvement}
+\begin{frame}
+\frametitle{ }
+\begin{enumerate} 
+\bllt Send email on tasks/habits on Monday
+\bllt Add tasks in JIRA 
+\bllt finish cases for theoretical analysis + send this out
+\bllt finish writing of theoretical analysis. 
+\end{enumerate} 
+\end{frame} 

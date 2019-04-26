@@ -1,0 +1,237 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\froman\fcharset0 TimesNewRomanPSMT;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 AmericanTypewriter;\f4\fnil\fcharset0 Menlo-Regular;\f5\fmodern\fcharset0 CourierNewPSMT;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid401\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid501\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid601\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid7}
+{\list\listtemplateid8\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid701\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid8}
+{\list\listtemplateid9\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid801\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid9}
+{\list\listtemplateid10\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid901\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid10}
+{\list\listtemplateid11\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1001\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid11}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}{\listoverride\listid9\listoverridecount0\ls9}{\listoverride\listid10\listoverridecount0\ls10}{\listoverride\listid11\listoverridecount0\ls11}}
+\margl1440\margr1440\vieww18920\viewh14400\viewkind0
+\deftab720
+\pard\pardeftab720\ri720
+
+\f0\fs18 \cf0 \ul \ulc0 Work:code: Project - Research Paper:\
+\pard\pardeftab720\li720\fi-360\ri720
+\ls1\ilvl0
+\fs12 \cf0 \ulnone 1.	Put up latex.  \
+2.	Gather all research. \
+3.	Gather project work. \
+4.	Write down introduction.     \
+5.	Gather data for OpenACC. \
+6.	Explain other details of setup.\
+7.	Note data for OpenMP.  
+\f1 \
+8.	Work(cp): make plan for coding = \strike \strikec0 \
+\ls1\ilvl0\strike0\striked0 9.	Work: plan for paper = Work: organize code. \strike \strikec0 \
+\ls1\ilvl0\strike0\striked0 10.	Work: put together code paper + Work: go through problem for stencil + Work: organize code. \strike \strikec0 \
+\pard\pardeftab720\ri720
+
+\f0 \cf0 \strike0\striked0 Schedule: March 24\super th\nosupersub : do latex, March 25\super th\nosupersub , March 26\super th     . \
+\
+\pard\pardeftab720\ri720
+\cf0 \nosupersub \ul Work:code: - Project - Coding practice: p for interview \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls2\ilvl0\cf0 \ulnone 1.	Work:code(cp.bm): finish bit manip:  finish problem 5 from book \
+2.	Work:code(cp.bm): finish bit manip:  finish problem 6 from book \
+3.	Work:code(cp.bm): finish bit manip:  finish problem 7 from book\
+4.	Work:code(cp.bm): finish bit manip:  finish problem 8 from book  \
+5.	Work:code(cp.bm): finish bit manip:  finish problem 9 from book \
+6.	Work:code(cp.bm): finish bit manip:  finish problem on\
+7.	Work:code(cp.bt): review brainteasers \'96 1 day. \
+8.	Work:code(cp.bmpie): do graphics problem from bit manip: rectangular overlap. \
+9.	Work:code(cp.bmpie): do big endian vs. little endian := \
+10.	Work:code(cp.bmpie): number of ones  := \
+11.	Work:code(cp.bmpie): code up bit manip problems :=  \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls2\ilvl0\cf0 \strike \strikec0 12.	Work:code(cp.bt): finish brain teasers:  finish problem on egg drop from book.  \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls2\ilvl0\cf0 \strike0\striked0 13.	Work: code(cp.bt): talk about and write 100 lockers. \
+14.	Work: code(cp.bt):  finish brain teasers: finish problem on heavy pill . \
+15.	Work:code(cp.btpie): finish brain teaser problems from programming interviews exposed. \
+16.	Work:code (cp.): go through C++, Work:code (cp.): go through Java + Work:code (cp.): go through OOP. \
+17.	Work:code (cp.): code up problems.  \'96 1 week. \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls2\ilvl0\cf0 \strike \strikec0 18.	Work:code (cp.): integer problems + numerics   -- 1 week. \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls2\ilvl0\cf0 \strike0\striked0 19.	Work:code (cp.): practice mock interview problems. \'96 1 week.  \
+20.	Work:code (cp.): finish recursion + BFS/DFS \'96 1 week  +    
+\f1 \
+21.	Work(cp): coding problem := Work(cp): coding problem on bits and arrays and hash tables. \
+22.	Mgmt:Spaces: decide what to do for moving to Boston + Mgmt:Spaces: decide where to move\
+23.	Work(cp): MIT lecture on depth first search.\
+24.	Work(cp): MIT lecture on Dijktra\'92s = Work(cp): print out lecture notes from Dijktra\'92s + Work(dj): \
+25.	Work(cp): MIT lecture on hashing.
+\f0 Schedule: Work:code (cp.): finish bit manipulation ? Work(cp.): review brain teasers in book, Work(cp.): Work(cp.): go through  ++.   
+\f1 \
+\pard\pardeftab720\ri720
+
+\f0 \cf0 Work:code(cp.): finish recursion, Work:code(cp. ): code up problems, Work(cp.): practice mock interview problems. \
+\pard\pardeftab720\ri720
+
+\f1 \cf0 \
+\pard\pardeftab720\ri720
+
+\f0 \cf0 \ul Work: comm: Project \'96general: \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls3\ilvl0
+\f2 \cf0 \ulnone 1.	Work(pappub): setup for SBAC in Los Angeles + Work(pappub): \strike \strikec0 \
+\ls3\ilvl0\strike0\striked0 2.	Work: message to Stephen + Work: send OpenMP notification to Stephen + Work: send message to Micheal Klemm about OpenMP + Work: send message to Ron Brightwell +\strike \strikec0  \strike0\striked0 Work: check about the meeting. \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls3\ilvl0
+\f0\fs18 \cf0 \
+\pard\pardeftab720\ri720
+\cf0 \ul Work:rel: Project \'96 Awards: \
+\pard\pardeftab720\li1080\fi-360\ri720
+\ls4\ilvl0\cf0 \ulnone \strike \strikec0 1.	Figure out write-up for Fulbright. \
+2.	Attend Fulbright : \
+\pard\pardeftab720\ri720
+\cf0 \ul \strike0\striked0 Work:rel: Project \'96 interview with Berkeley/MIT/industry:  \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls5\ilvl0\cf0 \ulnone 1.	Cover letter:   \
+2.	CV: + Research Summary:  -- 1 week.  \
+3.	Business cards:  - use latex  -- 40 minutes. \
+4.	Behavioral questions answers:   -- 1 week. \
+5.	Send emails \'96 1 day. \
+6.	Structure in latex. \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls5\ilvl0
+\f2\fs12 \cf0 7.	Work(codingPractice): Do coding project. 
+\f0\fs18 \
+\ls5\ilvl0
+\f2\fs12 8.	Work: gather emails of Professor Gropp\'92s for review? \
+9.	Work(codingPractice): Do coding for. \
+10.	Work:rel: network with people from HLF \\te\{45 minutes\}. \
+\pard\pardeftab720\ri720
+
+\f0\fs18 \cf0 Schedule: Behavioral answers \'96 1 week, CV prep - 1 day, business cards.  \
+\
+Mgmt:Health:Project \'96 summer health (TODO: fix this) \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls6\ilvl0\cf0 1.	Mgmt:Health: find dentist for checkup  \
+2.	Mgmt:Health: see hair specialist \
+3.	Mgmt:Health: see doctor. \
+\pard\pardeftab720\ri720
+\cf0 \
+\pard\pardeftab720\ri720
+\cf0 \ul Worklife: - Project: \'96 Comm:rel:  \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls7\ilvl0\cf0 \ulnone 1.	Worklife: link management together. \
+2.	Worklife: link habits comm and Toastmasters.\
+3.	Worklife: latex viewpoint. \
+4.	Comm: read social intelligence first four chapters.\
+5.	Comm: link all comm together. \
+6.	Worklife: get emails and texts to analyze. \
+7.	Worklife: figure out how to book flights and trips quickly \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls7\ilvl0
+\f2\fs12 \cf0 8.	Worklife: plan out 7 habits + social intelligence  + Worklife: read article on social intelligence.\strike \strikec0 \
+\pard\pardeftab720\li720\ri720
+
+\f0\fs18 \cf0 \strike0\striked0 Schedule: Comm: read social intelligence first four chapters and get a method to take in information \'96 5 hours. \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls8\ilvl0
+\f2\fs12 \cf0 1.	Work:rel: message to Yavatkar Kaka about VMWare. \
+2.	Worklife(commPractice): write down social intelligence notes from abstract and from first chapter.\strike \strikec0 \
+\ls8\ilvl0\strike0\striked0 3.	worklife(po): update worklife \\te\{3 hours\} = worklife: clean up by writing in latex file \strike \strikec0 =\strike0\striked0  
+\f3 worklife: finish comm section 
+\fs16  
+\fs12 \\te\{30 minutes\} \\dl\{next Week\}.  
+\f2 \strike \strikec0 \
+\ls8\ilvl0\strike0\striked0 4.	\strike \strikec0 Work:rel(web): update website with cover letter\strike0\striked0  + Work:rel(cvr): update website with personal and hobbies + Work:rel(): update LinkedIn page with new role + Work:rel(): update LinkedIn page with better description.\strike \strikec0  
+\f0\fs18 \strike0\striked0 Comm: link comm together, worklife: latex viewpoint. GenKnowledge: 
+\f2\fs12 \strike \strikec0 \
+\pard\pardeftab720\ri720
+
+\f0\fs18 \cf0 \strike0\striked0 House of cards:\
+\
+\pard\pardeftab720\ri720
+\cf0 \ul Mgmt:Spaces: \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls9\ilvl0\cf0 \ulnone 1.	Cars.  \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls9\ilvl0
+\f2\fs12 \cf0 2.	Mgmt:Spaces(GetThingsSpring2016): get Things = 
+\f4\fs10 \strike \strikec0 Mgtmt:Spaces(getThings): checkout the BMW key case\strike0\striked0  + Mgmt:spaces: get suit 
+\f2\fs12 \
+3.	Mgmt:Spaces: get voicemail fixed  - \'91Hi, you have reached Vivek\'92s phone. I\'92ll call you back as soon as possible.\'92 + Mgmt:Spaces: delete voicemails\'92 \
+\
+\pard\pardeftab720\ri720\sa240
+\cf0     1. Mgmt:Spaces: get iPhone 7  = Mgmt:Spaces: decide b/w iPhone 7 and iPhone 7 Plus + Mgmt:Spaces: get 1 TB disk drive. 
+\f0\fs18 \
+\pard\pardeftab720\ri720
+\cf0 \ul Work:comm: (can impact work): \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls10\ilvl0\cf0 \ulnone \strike \strikec0 1.	
+\f2\fs12 Work:rel: add Jim Birchfield to connections \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls10\ilvl0
+\f0\fs18 \cf0 \strike0\striked0 2.	
+\f2\fs12 Work: rel: consider adding Tony Baylis L0: Pro: keep in touch with LLNL Con: can intrude \
+\ls10\ilvl0
+\f0\fs18 3.	
+\f2\fs12 Work:rel: add Hirve Kaka. \
+\pard\pardeftab720\ri720
+\cf0 \
+\pard\pardeftab720\ri720
+
+\f0\fs18 \cf0 \ul Work:rel: -  Project \'96 Comm: rel:\
+\pard\pardeftab720\li720\fi-360\ri720
+\ls11\ilvl0
+\f2\fs12 \cf0 \ulnone {\listtext	1.	}3.	\strike \strikec0 Comm: Mona and Leena message =: Not sure we were going to meet, and I\'92m busy too. Thanks for having me.  
+\f0 \strike0\striked0 Schedule: meet others over summer, meet girl over summer. 
+\f2 \strike \strikec0 \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls11\ilvl0
+\f5 \cf0 \strike0\striked0 {\listtext	2.	}4.	Comm: message to Labonee.\
+{\listtext	3.	}5.	Comm:rel: meet others:  Sweta Kambaskadwar. + 
+\f2 Mgmt:webpresence: fb like of Shalaka\'92s. L3:past: she liked and suggested to come, lots of time delayed. I didn\'92t like back.  Intent: show interest. Outcome: stay alive with Rucha? \strike \strikec0 \
+\pard\pardeftab720\li720\fi-360\ri720
+\ls11\ilvl0\cf0 \strike0\striked0 {\listtext	4.	}6.	Respond to Vinayak and Saranne Perman
+\f5 \
+\ls11\ilvl0
+\f2 {\listtext	5.	}7.	Comm: Message to Labonee about moving.\
+{\listtext	6.	}8.	Mgmt:webpresence: take Xin Zhao off and remove anyone else that you don\'92t want from work.   
+\f3 \
+\ls11\ilvl0
+\f2 {\listtext	7.	}9.	\strike \strikec0 Comm: message to Rayna about re-union + Comm:\
+\pard\tx720\pardeftab720\ri720
+\cf0 \
+\pard\pardeftab720\ri720
+
+\f0\fs18 \cf0 \strike0\striked0 \
+\
+\
+Monday:  \
+\
+\
+Tuesday: \
+\
+Work: \
+Work: message to Chapman \
+\
+Mgmt:Spaces: \
+\
+Comm: message to Atul\
+Comm: reply about TM\
+\
+\
+Wednesday: \
+\
+\
+Thursday: \
+\
+\
+Friday: \
+\
+\
+Saturday: \
+}

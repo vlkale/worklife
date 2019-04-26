@@ -1,0 +1,171 @@
+\documentclass{beamer}
+%% Possible paper sizes: a0, a0b, a1, a2, a3, a4.
+%% Possible orientations: portrait, landscape
+%% Font sizes can be changed using the scale option.
+\usepackage[size=a0,orientation=landscape,scale=1.8]{beamerposter}
+\usetheme{LLT-poster}
+%\usecolortheme{ComingClean}
+\usecolortheme{Entrepreneur}
+% \usecolortheme{ConspiciousCreep}  %% VERY garish.
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage[scaled=0.92]{inconsolata}
+\usepackage[libertine]{newtxmath}
+\usepackage[numbers]{natbib}
+
+\usepackage{framed} % used for putting a frame, or box, around text
+
+\usepackage{multicol}
+\renewcommand{\bibfont}{\small}
+
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+%TODO: consider changing the name of this macro to be what it's                                                                            
+%used for below.     
+\newcommand{\projectTask}{\tiny \item \tiny}
+\newcommand{\pitem}{\tiny \item \tiny}
+\newcommand{\ptask}{\tiny \item \tiny}
+\newcommand{\mpitem}{\tiny \item \tiny}
+\newcommand{\doneTaskNoItemNewLine}[1]{\sout{#1}}
+
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:}\textit{#1}}
+
+\newcommand{\deadline}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dl}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:}\textit{#1}}
+
+
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\comments}[1]{}
+
+
+\newcommand{\texthash}{\#}
+
+%% Load the markdown package
+\usepackage[citations,footnotes,definitionLists,hashEnumerators,smartEllipses,tightLists=false,hybrid]{markdown}
+\markdownSetup{rendererPrototypes={
+ link = {\href{#2}{#1}},
+ headingFour = {\begin{block}{#1}},
+ horizontalRule = {\end{block}}
+}}
+
+\author[vivek.lkale@gmail.com]{Vivek Kale}
+\title{Week Plan Doc}
+\institute{Charmworks, Inc.}
+% Optional foot image
+%\footimage{\includegraphics[width=4cm]{}}
+
+\begin{document}
+
+\begin{frame}[fragile]\centering
+
+\markdownInput{workLifeMgr/content_yearPlan_plan.md}
+
+\markdownInput{workLifeMgr/content_monthPlan_plan.md}
+
+\bigskip
+{\usebeamercolor[bg]{headline}\hrulefill}
+\bigskip
+
+\end{frame}
+
+\begin{frame}[fragile]\centering
+
+\input{workLifeMgr/content_projects_plan.tex}
+
+\bigskip
+{\usebeamercolor[bg]{headline}\hrulefill}
+\bigskip
+
+\begin{columns}[T]
+
+%%%% First Column
+\begin{column}{.22\textwidth}
+\markdownInput{workLifeMgr/content_worries_plan.md}
+
+\end{column}
+
+%%%% Second Column
+
+\begin{column}{.56\textwidth}
+\markdownInput{workLifeMgr/content_runningToDoPlan.md}
+\end{column}
+
+%%%% Third Column
+\begin{column}{.22\textwidth}
+\markdownInput{workLifeMgr/content_news.md}
+
+%\begin{markdown}
+
+%#### This is a sample
+%
+%- One, two, pick up my shoe
+%- Three, four, shut the door
+%- Five, six, pick up sticks
+%- Seven, eight, lay them straight
+%- Nine, ten, a big fat hen
+%- One, two, pick up my shoe
+%- Three, four, shut the door
+%- Five, six, pick up sticks
+%- Seven, eight, lay them straight
+%- Nine, ten, a big fat hen
+
+%----
+
+%#### This is another sample
+
+%- Some maths material
+
+%\begin{align}
+%A &= U \times S \times V^T\\
+%\sigma &= \frac{x\times y}{\sqrt[3]{\alpha + \beta}}
+%\end{align}
+
+%----
+
+%\end{markdown}
+\end{column}
+\end{columns}
+
+
+\begin{markdown}
+
+#### This is a sample of a wiiiide column
+
+- One, two, pick up my shoe
+- Three, four, shut the door
+- Five, six, pick up sticks
+- Seven, eight, lay them straight
+- Nine, ten, a big fat hen
+
+----
+
+
+#### Bibliography
+
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
+
+----
+
+\end{markdown}
+
+\end{frame}
+
+
+\end{document}

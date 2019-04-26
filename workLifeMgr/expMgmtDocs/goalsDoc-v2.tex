@@ -1,0 +1,225 @@
+\documentclass[serif, mathserif, final]{beamer}
+\mode<presentation>{\usetheme{Lankton}} 
+\usepackage[orientation=landscape,size=a0,scale=1.6, debug]{beamerposter}
+%\usepackage[orientation=landscape,size=a0,scale=1.4,debug]{beamerposter}
+%\usepackage[absolute,overlay]{textpos} % <-- can  use this to position text (solves problem of earlier yesterday with poster placement). 
+
+%\documentclass[serif,mathserif,final]{beamer}
+%\mode<poster>{\usetheme{RicePoster}}
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\usepackage{ulem}
+\usepackage{caption}
+\usepackage{courier}
+
+\usepackage{verbatim}
+
+%\usepackage[usenames,dvipsnames]{xcolor}                                                                                                                            
+\usepackage{listings}
+
+\usepackage{float}
+\usepackage{subfig}
+\setbeamertemplate{caption}[numbered] 
+
+%\graphicspath{{./figures/}}                                                                                              
+%\usepackage{beamerposter}
+%\graphicspath{{./figures/}} 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\item \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\item \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\item  \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\item  \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\deadline}[1]{#1}
+\newcommand{\comments}[1]{}
+
+%\graphicspath{{./figures/}}
+%\usepackage[orientation=landscape,size=a0,scale=1.6,debug]{beamerposter}
+
+%-- Header and footer information ----------------------------------
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this should be 
+\newcommand{\footright}{November 2014}
+
+%------------------------------------------------------------------
+%-- Main Document ------------------------------------------------- 
+\title{Goals Document} 
+\author{Vivek Kale$^1$}
+\institute{$^1$ University of Illinois at Urbana-Champaign}  
+\date{\today}
+
+% TODO: make the below document neater 
+% TODO: consider stretching center column 
+% TODO: check how to fit week daily plan together .  
+\begin{document} 
+
+\begin{frame}{} 
+  \begin{columns}
+    %-- Column 1 --------------------------------------------------- 
+    \begin{column}{0.22\linewidth}
+      \begin{block}{Happiness Generation - must maintain every week.}                                          
+        % explain happiness: show gratitude
+        % remember to show gratitude
+        \begin{itemize}
+          \tiny \item \tiny happy that I have Atul to show me.  
+        \item \tiny Happy that I have normal life up to this point.  
+        \item \tiny Thankful that I got a chance to do what I did on Saturday. 
+        \item \tiny Think about Neha Jamb. 
+        \item \tiny Think about dad saying, I understand, and want you to be happy. 
+        \end{itemize}
+      \end{block} 
+
+
+    \begin{block}{Habits} 
+      \begin{itemize} 
+        %\tiny \item \tiny move feet less, don't scrub on floor. 
+        \tiny \item \tiny back straight + eye contact. 
+      \item \tiny Reduce things. 
+      \item \tiny lips relaxed. 
+      \item \tiny watch what happens when a hot girl talks to you. 
+      \end{itemize} 
+    \end{block} 
+  \end{column} %1
+
+  \begin{column}{0.5\linewidth}
+      %-- Block 2-1 
+    \begin{block}{ 3-year plan }
+      \begin{itemize}
+      \item \small find someone
+      \item \small make 150K
+      \item \small network
+      \end{itemize}
+    \end{block}
+    
+    \begin{block}{ 6-month plan}
+      \begin{itemize}
+        \small \item \small results + thesis
+      \item \small routine + worklife
+      \item \small 
+      \end{itemize}
+    \end{block}
+    \begin{block}{Month-by-month}
+      \begin{itemize}
+      \item \small March:
+      \item \small April:
+      \item \small May:
+      \item \small June: org thesis. Org Amanda's application, figure out outstanding system's issues.
+      \item \small July: Finish integration in last chapter, data. Amanda's application.
+      \item \small August: org thesis, data collection
+      \item \small September: Prep other paper for IPDPS
+      \item \small October: Get slides ready for defense
+      \item \small November: get slides ready for defense 
+      \end{itemize}
+    \end{block}
+    
+%\begin{column}{0.33\linewidth} {\textbf{\underline{Month Plan for August 2014}}}      %-- Block 1-1   
+\begin{block}{\underline{\textbf{November goals}}}
+\begin{enumerate}
+\item \small Work: thesis defense. 
+\item \small Work: finish code. 
+\item \small Comm: practice body language. + Comm: practice vocal variety. 
+\item \small Comm: finish the reading for empathy and social intelligence. 
+\item \small Comm: take notes. 
+\item \small Worklife: integrate all. 
+\item \small Worklife: practice with integration of all. 
+\item \small Mgmt: dentist appt. 
+\end{enumerate}
+\end{block}
+
+\begin{block}{\small \underline{\textbf{Week of Nov. $1^{st}$}}}
+\begin{enumerate}
+\tiny \item \tiny Work: finish poster. 
+\item \tiny Work: finish results. 
+\item \tiny Comm: finish notes on empathy. \timeEst{2 hours} 
+\item \tiny Comm: finish notes on social intelligence. \timeEst{2 hours} 
+\end{enumerate}
+\end{block}
+
+\begin{block}{\small \underline{\textbf{Week of November $8^{th}$}}}
+\begin{enumerate}
+\tiny \item \tiny Work: finish the writing . Coordinate for thesis. 
+\item \tiny  Work: finish thesis writing. 
+\item \tiny  Comm: practice situations.
+\end{enumerate}
+\end{block}
+
+\begin{block} {\small \underline{\textbf{Week of November $16^{th}$}} }
+\begin{enumerate}
+\tiny \item \tiny Work: send poster into printing \timeEst{1 hour}. 
+\item \tiny Work: get poster ready \timeEst{1 hour} \priority{UrgentButDontOverThink}. 
+\item \tiny Work: get slides ready to present \timeEst{3 hours} \priority{Important}. 
+\item \tiny worklife: get cheatsheet ready \timeEst{4 hours}. 
+\item \tiny Mgmt: Spaces: Have flight info done, along with hotels \timeEst{1 hour}. 
+\end{enumerate}
+\end{block} 
+\end{column}%2
+
+%-- Column 3 ---------------------------------------------
+\begin{column}{0.28\linewidth}
+\begin{block}{\small \textbf{\underline{Regular Routines}} }
+\underline{\textbf{Morning}}
+\begin{itemize}
+\tiny \item \tiny Brush Teeth \timeEst{4 mins}. 
+\item \tiny Mouthwash, Clean tongue - it helps with breath\timeEst{1mins} 
+\item \tiny Eating small breakfast. 
+\item \tiny Check your schedule for meetings / appointments for that day: Is anything urgent? \timeEst{5 mins}. 
+\item \tiny Excercise: 1 hour ( Stretch for 10 mins, Treadmill for 30 mins , Lift weights or Yoga 1 hour, Meditation for 10 mins). 
+\item \tiny Shave (at least every other day) \timeEst{5 mins}. 
+\item \tiny Shower : (shampoo+conditioner, acne wash,  soap on underarms/underbody)
+\timeEst{10 mins}
+\item \tiny dry hair, dry face, arms, legs, back, stomach \timeEst{3 mins}
+\item \tiny Clothing: belt, check collar, shirt not half-tucked, matching socks \timeEst{5 mins}
+\item \tiny Comb hair, hair gel optional \timeEst{ 1 min}
+\item \tiny Check Keys/Wallet/Cell/Badge (get a bucket) \timeEst{1 min}
+\item \tiny Open meds cabinet, get water, take medicines \timeEst{1 min}
+\item \tiny Wear lenses and rinse out case \timeEst{ 2 mins}
+\item \tiny Deodorant or cologne depending on the day \timeEst{1 min}
+\item \tiny Wash your face with a face wash - it helps with acne \timeEst{3 mins}
+\item \tiny Moisturize - apply lotion \timeEst{ 2 min}
+\item \tiny Neti pot / clean out sinuses - if you’re feeling congested \timeEst{5 min}
+\item \tiny clean out ears, nose \timeEst{5 mins}
+\item \tiny Remember to lock door \timeEst{1 mins}
+\end{itemize} 
+
+\underline{\textbf{Evening}}
+\begin{itemize}
+\tiny \item \tiny Call family: 30 mins
+\item \tiny meet friends: 20 mins
+\item \tiny Cleaning dishes / cleaning house: 10 mins
+\item \tiny Lay out clothes for the next day, iron if necessary
+\item \tiny start laundry if needed: 10 mins,
+\item \tiny Collect anything you’ll need for the next day (e.g. dry cleaning to drop off): 5 mins,
+\item \tiny Check Facebook/linkedin/google+: 10 mins, matrimony stuff: 10 mins,
+\item \tiny Food for lunch/dinner the next day: 10 mins
+\end{itemize}
+
+\underline{\textbf{Night before bed}}
+%TODO: why isn't enumerate working???
+%\begin{enumerate}
+\begin{itemize}
+\tiny \item \tiny Finish computer stuff \timeEst{5 mins}
+\item \tiny Get into sleeping clothes \timeEst{1 mins}
+\item \tiny Before sleeping: brush teeth, floss \timeEst{ 2 min}
+\item \tiny Properly wash and put away contacts \timeEst{ 2 mins}
+\item \tiny Review the days good things \timeEst{ 10 min}
+\item \tiny Light Reading \timeEst{ 10 min}
+\item \tiny Prayer \timeEst{10 mins}
+%\end{enumerate} 
+\end{itemize}
+\end{block} 
+\end{column}%3 
+\end{columns} 
+\end{frame} 
+
+\end{document}

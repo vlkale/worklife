@@ -1,0 +1,487 @@
+\documentclass[serif, mathserif, final]{beamer}
+\mode<presentation>{\usetheme{Lankton}} 
+\usepackage[orientation=landscape,size=a0,scale=1.6, debug]{beamerposter}
+%\usepackage[orientation=landscape,size=a0,scale=1.4,debug]{beamerposter}
+%\usepackage[absolute,overlay]{textpos} % <-- can  use this to position text (solves problem of earlier yesterday with poster placement). 
+
+%\documentclass[serif,mathserif,final]{beamer}
+%\mode<poster>{\usetheme{RicePoster}}
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\usepackage{ulem}
+\usepackage{caption}
+\usepackage{courier}
+
+\usepackage{verbatim}
+
+%\usepackage[usenames,dvipsnames]{xcolor}                                                                                                                            
+\usepackage{listings}
+
+\usepackage{float}
+\usepackage{subfig}
+\setbeamertemplate{caption}[numbered] 
+
+%\graphicspath{{./figures/}}                                                                                              
+%\usepackage{beamerposter}
+%\graphicspath{{./figures/}} 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\item \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\item \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\item  \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\item  \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\deadline}[1]{#1}
+\newcommand{\comments}[1]{}
+
+%\graphicspath{{./figures/}}
+%\usepackage[orientation=landscape,size=a0,scale=1.6,debug]{beamerposter}
+
+%-- Header and footer information ----------------------------------
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this should be 
+\newcommand{\footright}{November 2014}
+
+%------------------------------------------------------------------
+%-- Main Document ------------------------------------------------- 
+\title{Month-Week-Day Plan} 
+\author{Vivek Kale$^1$}
+\institute{$^1$ University of Illinois at Urbana-Champaign}  
+\date{\today}
+
+% TODO: make the below document neater 
+% TODO: consider stretching center column 
+% TODO: check how to fit week daily plan together .  
+\begin{document} 
+
+\comments{
+\begin{frame}{} 
+  \begin{columns}
+    %-- Column 1 --------------------------------------------------- 
+    \begin{column}{0.22\linewidth}
+      \begin{block}{Happiness Generation - must maintain every week.}                                          
+        % explain happiness: show gratitude
+        % remember to show gratitude
+        \begin{itemize}
+          \tiny \item \tiny happy that I have Atul to show me.  
+        \item \tiny Happy that I have normal life up to this point.  
+        \item \tiny Thankful that I got a chance to do what I did on Saturday. 
+        \item \tiny Think about Neha Jamb. 
+        \item \tiny Think about dad saying, I understand, and want you to be happy. 
+        \end{itemize}
+      \end{block} 
+
+
+    \begin{block}{Habits} 
+      \begin{itemize} 
+        %\tiny \item \tiny move feet less, don't scrub on floor. 
+        \tiny \item \tiny back straight + eye contact. 
+      \item \tiny Reduce things. 
+      \item \tiny lips relaxed. 
+      \item \tiny watch what happens when a hot girl talks to you. 
+      \end{itemize} 
+    \end{block} 
+  \end{column} %1
+
+  \begin{column}{0.5\linewidth}
+      %-- Block 2-1 
+    \begin{block}{ 3-year plan }
+      \begin{itemize}
+      \item \small find someone
+      \item \small make 150K
+      \item \small network
+      \end{itemize}
+    \end{block}
+    
+    \begin{block}{ 6-month plan}
+      \begin{itemize}
+        \small \item \small results + thesis
+      \item \small routine + worklife
+      \item \small 
+      \end{itemize}
+    \end{block}
+    \begin{block}{Month-by-month}
+      \begin{itemize}
+      \item \small March:
+      \item \small April:
+      \item \small May:
+      \item \small June: org thesis. Org Amanda's application, figure out outstanding system's issues.
+      \item \small July: Finish integration in last chapter, data. Amanda's application.
+      \item \small August: org thesis, data collection
+      \item \small September: Prep other paper for IPDPS
+      \item \small October: Get slides ready for defense
+      \item \small November: get slides ready for defense 
+      \end{itemize}
+    \end{block}
+    
+%\begin{column}{0.33\linewidth} {\textbf{\underline{Month Plan for August 2014}}}      %-- Block 1-1   
+\begin{block}{\underline{\textbf{November goals}}}
+\begin{enumerate}
+\item \small Work: thesis defense. 
+\item \small Work: finish code. 
+\item \small Comm: practice body language. + Comm: practice vocal variety. 
+\item \small Comm: finish the reading for empathy and social intelligence. 
+\item \small Comm: take notes. 
+\item \small Worklife: integrate all. 
+\item \small Worklife: practice with integration of all. 
+\item \small Mgmt: dentist appt. 
+\end{enumerate}
+\end{block}
+
+\begin{block}{\small \underline{\textbf{Week of Nov. $1^{st}$}}}
+\begin{enumerate}
+\tiny \item \tiny Work: finish poster. 
+\item \tiny Work: finish results. 
+\item \tiny Comm: finish notes on empathy. \timeEst{2 hours} 
+\item \tiny Comm: finish notes on social intelligence. \timeEst{2 hours} 
+\end{enumerate}
+\end{block}
+
+\begin{block}{\small \underline{\textbf{Week of November $8^{th}$}}}
+\begin{enumerate}
+\tiny \item \tiny Work: finish the writing . Coordinate for thesis. 
+\item \tiny  Work: finish thesis writing. 
+\item \tiny  Comm: practice situations.
+\end{enumerate}
+\end{block}
+
+\begin{block} {\small \underline{\textbf{Week of November $16^{th}$}} }
+\begin{enumerate}
+\tiny \item \tiny Work: send poster into printing \timeEst{1 hour}. 
+\item \tiny Work: get poster ready \timeEst{1 hour} \priority{UrgentButDontOverThink}. 
+\item \tiny Work: get slides ready to present \timeEst{3 hours} \priority{Important}. 
+\item \tiny worklife: get cheatsheet ready \timeEst{4 hours}. 
+\item \tiny Mgmt: Spaces: Have flight info done, along with hotels \timeEst{1 hour}. 
+\end{enumerate}
+\end{block} 
+\end{column}%2
+
+%-- Column 3 ---------------------------------------------
+\begin{column}{0.28\linewidth}
+\begin{block}{\small \textbf{\underline{Regular Routines}} }
+\underline{\textbf{Morning}}
+\begin{itemize}
+\tiny \item \tiny Brush Teeth \timeEst{4 mins}. 
+\item \tiny Mouthwash, Clean tongue - it helps with breath\timeEst{1mins} 
+\item \tiny Eating small breakfast. 
+\item \tiny Check your schedule for meetings / appointments for that day: Is anything urgent? \timeEst{5 mins}. 
+\item \tiny Excercise: 1 hour ( Stretch for 10 mins, Treadmill for 30 mins , Lift weights or Yoga 1 hour, Meditation for 10 mins). 
+\item \tiny Shave (at least every other day) \timeEst{5 mins}. 
+\item \tiny Shower : (shampoo+conditioner, acne wash,  soap on underarms/underbody)
+\timeEst{10 mins}
+\item \tiny dry hair, dry face, arms, legs, back, stomach \timeEst{3 mins}
+\item \tiny Clothing: belt, check collar, shirt not half-tucked, matching socks \timeEst{5 mins}
+\item \tiny Comb hair, hair gel optional \timeEst{ 1 min}
+\item \tiny Check Keys/Wallet/Cell/Badge (get a bucket) \timeEst{1 min}
+\item \tiny Open meds cabinet, get water, take medicines \timeEst{1 min}
+\item \tiny Wear lenses and rinse out case \timeEst{ 2 mins}
+\item \tiny Deodorant or cologne depending on the day \timeEst{1 min}
+\item \tiny Wash your face with a face wash - it helps with acne \timeEst{3 mins}
+\item \tiny Moisturize - apply lotion \timeEst{ 2 min}
+\item \tiny Neti pot / clean out sinuses - if you’re feeling congested \timeEst{5 min}
+\item \tiny clean out ears, nose \timeEst{5 mins}
+\item \tiny Remember to lock door \timeEst{1 mins}
+\end{itemize} 
+
+\underline{\textbf{Evening}}
+\begin{itemize}
+\tiny \item \tiny Call family: 30 mins
+\item \tiny meet friends: 20 mins
+\item \tiny Cleaning dishes / cleaning house: 10 mins
+\item \tiny Lay out clothes for the next day, iron if necessary
+\item \tiny start laundry if needed: 10 mins,
+\item \tiny Collect anything you’ll need for the next day (e.g. dry cleaning to drop off): 5 mins,
+\item \tiny Check Facebook/linkedin/google+: 10 mins, matrimony stuff: 10 mins,
+\item \tiny Food for lunch/dinner the next day: 10 mins
+\end{itemize}
+
+\underline{\textbf{Night before bed}}
+%TODO: why isn't enumerate working???
+%\begin{enumerate}
+\begin{itemize}
+\tiny \item \tiny Finish computer stuff \timeEst{5 mins}
+\item \tiny Get into sleeping clothes \timeEst{1 mins}
+\item \tiny Before sleeping: brush teeth, floss \timeEst{ 2 min}
+\item \tiny Properly wash and put away contacts \timeEst{ 2 mins}
+\item \tiny Review the days good things \timeEst{ 10 min}
+\item \tiny Light Reading \timeEst{ 10 min}
+\item \tiny Prayer \timeEst{10 mins}
+%\end{enumerate} 
+\end{itemize}
+\end{block} 
+\end{column}%3 
+\end{columns} 
+\end{frame} 
+}
+
+\begin{frame}{} 
+  \begin{columns}
+    %-- Column 1 --------------------------------------------------- 
+    \begin{column}{0.25\linewidth} %{\textbf{\underline{Week Aspects(new name)}}}
+      %-- Block 1-1 
+      \begin{block}{Stresses}
+        % Recognize emotions / recognize (precisely) what you're worried about -> methods for eliminating worry. 
+        % clean out old worries, put them in pastWorries doc.  
+        % remember to define precisely 
+        % order from top-to bottom
+        \begin{itemize} 
+        \item \tiny Worrying about thesis finish. Be sincere and work, we
+          make mistakes with time. Get the facts about completion.  Go
+          find the path. If I can't get it done, then we'll do something
+          else. 
+          % \item \tiny Comm: Worrying about not losing it (check this/ define this better) : work on sheet.  
+          %    \item \tiny Worrying about deep: forget her, because there's much more to be done.  She may not be interested because it's a brother. 
+        \end{itemize} 
+      \end{block} 
+
+  %-- Block 1-2 
+  \begin{block}{Real-time confidence}
+    \begin{itemize} 
+      \tiny \item \tiny if you do something sloppy, don't think about it and don't say sorry. 
+    \item \tiny don't think someone is trying to hurt you if they say something.       
+    \item \tiny know the paths of least stress. 
+    \item \tiny if mom does something, don't let that bite you 
+    \end{itemize} 
+  \end{block} 
+
+  %-- Block 1-3
+  \begin{block} {Life notes} 
+    \begin{itemize} 
+      \tiny \item \tiny Level 0+1: focus on finding Happiness. 
+    \item \tiny Level 2: 
+    \item \tiny Level 4.1: Writing: prefer standard to offbeat 
+    \item \tiny Level 4.2: Body Language: lips relaxed
+    \item \tiny Level 4.3: Vocal Variety: shout. 
+    \item \tiny TM: work on speech for submission to blog, increasing intentionality. 
+    \item \tiny Mgmt/habits: finish chapter 1 reading notes and habits. 
+    \end{itemize}     
+  \end{block} 
+\end{column} %2 
+
+%-- Column 2 --------------------------------------------- 
+\begin{column}{0.50\linewidth}
+%{\textbf{\underline{Week TODO}}} 
+% NOTE: Current policy is to comment out days as they come. 
+  % TODO: put in the regular routines here for each day, in the schedule box. 
+  %--- Block 2-1 
+  \begin{block}{Week TODO} 
+    \begin{enumerate} 
+    \item Work: finish thesis 
+    \item Mgmt: finish flight booking. 
+    \end{enumerate}
+  \end{block} 
+
+  \begin{block}{Week Daily Schedule} 
+    \textbf{todo} 
+    \textbf{\small \underline{Mon}}
+    \begin{enumerate} 
+    \item \tiny Work: fix placement of graphs on slides \timeEst{2 hours}. 
+    \item \tiny Work: finish re-writing slides, send to Prof Gropp. \timeEst{1 hour} \priority{UrgentAndSendToProfGroppSoon} 
+    \item \tiny Work: send Prof. Gropp an update \timeEst{10 mins} \priority{Urgent}. 
+      \tiny \item \tiny Work: fix all graphs \timeEst{1 hr}. 
+    \item \tiny Work: fix idle time graph for 16 cores. \timeEst{1 hr} 
+    \item \tiny Work: get idle time graph for BG/Q. for both NAS LU and n-body.
+    \item \tiny Work: consider getting locality-aware data. 
+    \item \tiny Work: add in cost model. 
+    \item \tiny Work: finish results for SNAP weak scaling on bg/q bw and cab. \timeEst{30 mins} 
+    \item \tiny Work: add NAS for all problem sizes. 
+    \item \tiny Comm: write down two parts from emotional intelligence book in notes \timeEst{1 hour} . Do analysis. 
+    \item \tiny Comm: go through howtosayit lesson. 
+    \item \tiny Mgmt: Spaces: dentist appt \timeEst{10 mins}. 
+    \item \tiny Comm: prefer standard to offbeat. 
+    \item \tiny Comm: facial expressions. 
+    \item \tiny Comm: keep all layers active, do all 4 app excercise, keep learning something, make plan to do all of this for month long, and week long. 
+  \end{enumerate} 
+  \textbf{\small \underline{Tue}} 
+  \textbf{todo} 
+  \begin{enumerate} 
+  \item \tiny \doneTask{Work: add diagram for spatial locality.} \timeEst{30 mins}. 
+  \item \tiny Work: fix spatial locality slide to have just data on improvement. \timeEst{40 mins}. 
+  \item \tiny Work: fix the static/dynamic scheduling graph. 
+  \item \tiny Work: fix y-axis of dequeue overheads. 
+  \item \tiny Work: get cache misses for baseline data in slide 7. 
+  \item \tiny Work: get cache misses in baseline data in slide 20.  - get this figured out from someone. 
+
+  \item \tiny Work: explain cores per node and application settings. \priority{ImportantAndHasntbeenDone} 
+  \item \tiny Work: explain why you used a particular experimental methodology \priority{ImportantAndHasntBeenDone}
+  \item \tiny Work: explain experimental methodology. 
+  \item \tiny Work: do code for baseline data. 
+  \item \tiny Work: do cost model for baseline data.
+  \item \tiny Mgmt:Health: Traffic ticket.  
+  \item \tiny Mgmt:Health: dentist appt.
+  \item \tiny Mgmt:Spaces: finish the hotel finalizations. 
+  \item \tiny Comm: update the TM page to get the eval role. \timeEst{10 mins} 
+  
+  \item \tiny Mgmt: Spaces: hotel booking \timeEst{30 mins}. 
+  \item \tiny Work: finish graphs.  
+  \item \tiny Work: add the data for static for idle time \timeEst{1.5 hr} 
+  \item \tiny Work: fix the graph for scenarios \timeEst{1 hour} 
+  \item \tiny Work: add dequeue and data movement times to graph.  \timeEst{30 mins} 
+  \item \tiny Work: add NAS benchmarks. \timeEst{1 hour}.  
+  \item \tiny Mgmt:Comm: talk to Amanda about the code 
+  \item \tiny songs : aint about the money.     
+  \end{enumerate}  
+
+  \textbf{schedule} 
+  \begin{enumerate} 
+    \tiny \item \tiny - 
+    \item \tiny 
+    \item \tiny  ?? : tarun's talk 
+    \item \tiny 4-5PM : seminar 
+    \item \tiny 
+  \end{enumerate} 
+
+  \textbf{\small {\underline{Wed}}}
+  \begin{enumerate} 
+    \tiny \item \tiny Work: finish data for idle times \priority{UI} 
+  \item \tiny Work: finish data for data movement overheads. \priority{UI} 
+  \item \tiny Work: write up explanations for data \priority{UI} 
+  \item \tiny Work: organize the slack and amplification sections. 
+    \tiny \item \tiny Work: get data. \priority{UI}. \timeEst{2 hours} 
+  \item \tiny Work: put data in graphs. \priority{IU}. \timeEst{1 hour}
+  \item \tiny Work: write about the data. \priority{U}. \timeEst{30 mins} 
+  \item \tiny worklife: do situations list. 
+  \item \tiny worklife: revise process to sheet, add confidence to sheet, make notes on how to get confidence up.  
+  \end{enumerate} 
+
+  \textbf{\small{\underline{Thu}}}
+  \begin{enumerate}
+    \tiny \item \tiny Comm: Get ready for TM eval role \timeEst{20 mins} \priority{ImportantToImproveSkills}.
+  \item \tiny \item Work:pres: update slides in svn.
+  \item \tiny Work: update data to have cache misses. 
+
+    \tiny \item \tiny finish adding and organizing chapter 1.  
+    
+  \item \tiny Work: specify what was measured in each of the graphs. 
+  \item \tiny Work: provide justification on why it was measured that way. 
+  \item \tiny Work: specify how it was measured in each of the graphs, i.e., code. 
+  \item \tiny Work: get data correctly answered. 
+  \item \tiny Comm: send message to Rupali, confirming time of
+    departure. 
+  \item \tiny Mgmt: Spaces: get hotels for Saturday night.  
+  \item \tiny Mgmt: Spaces: get hotels for Sunday night.  
+  \end{enumerate}
+  %\end{column} 
+  %\begin{column}{0.5\columnwidth} 
+  
+  \textbf{\small {\underline{Fri}}} 
+  \begin{enumerate} 
+
+  \tiny \item \tiny Work: specify what was measured in each of the graphs. 
+  \item \tiny Work: provide justification on why it was measured that way. \timeEst{1 hours} \priority{UI} 
+  \item \tiny Work: specify how it was measured in each of the graphs, i.e., code. \timeEst{2 hours} \priority{UI} 
+
+  \item \tiny Work: add in application graphs.  \timeEst{2 hours} \priority{UI} 
+
+\item \tiny Work: update worklife doc 
+\item \tiny Work: update doc 
+
+  \item \tiny Work: do slides \timeEst{1 hour}
+  \item \tiny Work: finish chapter writing. \timeEst{1 hr} 
+  \item \tiny Comm: send ashwini message. \timeEst{20 mins}. \priority{Urgent} 
+  \end{enumerate} 
+
+\textbf{schedule} 
+\begin{enumerate} 
+\tiny \item \tiny 6-7PM: finish the situations + worklife sheet \timeEst{10 min} 
+\item \tiny 7-8PM: add in application graphs. \priority{1 hour} 
+\item \tiny 8-9PM: send Prof. Gropp message about the slides. \timeEst{10 mins} 
+\item \tiny 8-9PM: excercise 
+\item \tiny 9PM - 10PM: 
+\end{enumerate}   
+
+\textbf{\small \underline{Sat}} 
+\begin{enumerate} 
+\item \tiny Work: poster  \deadline{  }  \timeEst{   }  \priority{ } 
+\item \tiny Work: comm:  send emails  to Amanda + Work: comm: send email to Tanzima  + Work:plan out 
+\item \tiny Mgmt: Spaces: dentist appt  + Mgmt: Spaces: 
+\item \tiny worklife: write todos for worklife sheet 
+\item \tiny worklife: fix weekPlanDoc.tex 
+\item \tiny worklife: start writing step by step instructions for worklife maturity. 
+
+\item \tiny worklife: write instructions on new ideas.  + worklife: note techniques to build ideas.  
+
+\item \tiny worklife: know hwo to use stress skills in real-time 
+
+\item \tiny worklife: define where you are at, and where you want to be. 
+
+\item \tiny worklife: have cross-link down  
+\item \tiny worklife: logic 
+\item \tiny worklife: have cache ready 
+
+  \tiny \item \tiny Stress: go through reduction of stress. 
+\item \tiny worklife: fix up sheet. 
+\item \tiny worklife: create worries sheet. 
+\item \tiny worklife: add situations in. 
+\item \tiny Work: Finish thesis writing results. \priority{UI}
+\item \tiny Work: Finish plotting results. 
+\item \tiny Work: write explanations for the results. \priority{UI} 
+\item \tiny Work: send email for summary for results. 
+\item \tiny Work: do ethics training.  
+\item \tiny Mgmt: finish flight booking. 
+\item \tiny Comm: send message to Rupali. 
+\item \tiny Comm: send Happy Diwali to Ashwini. 
+\end{enumerate} 
+
+\textbf{\small \underline{Sun}}
+\begin{enumerate} 
+\tiny \item \tiny Work: finish slides \timeEst{1 hour 30 mins} 
+\item \tiny Work: go through slides with dad \timeEst{1 hour} 
+\item \tiny Comm: talk to Ashwini \timeEst{20 mins}. 
+\item \tiny Mgmt: dentist appt .
+\item \tiny Mgmt: clean room 
+\item \tiny Mgmt: nails 
+\end{enumerate} 
+\end{block} 
+
+\end{column}%2  
+
+%-- Column 3 --------------------------------------------------- 
+\begin{column}{0.20\linewidth}
+  %-- Block 3-1
+  \begin{block}{Clothes plan} 
+    \begin{itemize} 
+      \tiny \item \tiny Saturday: wear polo shirt. 
+    \item \tiny Saturday night: wear light blue dress shirt and jeans. (or maybe khakis and polo shirt). 
+    \item \tiny Sunday: business casual shirt. 
+    \item \tiny Wednesday : 
+    \item \tiny Thursday: 
+    \item \tiny Friday : 
+    \item \tiny Saturday : Blue full shirt . 
+    \item \tiny Sunday : Red shirt .
+    \end{itemize} 
+  \end{block}
+  %-- Block 3-2
+
+  \begin{block}{Food plan } 
+    \begin{itemize} 
+      \tiny \item \tiny Skip meals this week to take out fat from weekend. 
+    \item \tiny Be very careful about food for Saturday night, along with Brunch for Sunday and dinner for Sunday. 
+    \end{itemize} 
+  \end{block} 
+  %-- Block 3-3
+  \begin{block}{Situations} 
+    \begin{itemize} 
+    \item \tiny \textit{Meet with Prof Gropp: } Pre- : Have results ready, make plan to discuss thesis, don't say too much about thesis completion, feel good about working more, be sure to take criticism, avoid going on tangents when he says something.   
+      Post-: plan out time before meeting, so there is time to plan. 
+    \item \tiny \textit{SC} : Pre-: clothes   Post-:  
+    \item \tiny \textit{Group Lunch}:  Pre-: Send Email.  Post-: 
+    \end{itemize}
+  \end{block}
+\end{column}%3 
+
+\end{columns}
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,2 @@
+  
+ *Sa*: Work: coding Work: finish wl cheatsheet, Mgmt:Spaces: flight stuff, Comm: aditi message, Comm: send Sneha message,    | *Su* : Work: finish wl, Work: review wl, Work: paper stuff, work: comm: reply to ProfGrigori, mgmt:Spaces: flight stuff, Comm: message to girl,  |  *M*:   |  *T*:  | *W*: |     *R*:   |     *F*: 

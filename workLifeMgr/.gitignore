@@ -1,0 +1,8 @@
+*.tex~
+*~
+*.nav
+*.log
+*svn*
+*base*
+*.rtf
+*.pps

@@ -1,0 +1,52 @@
+
+happiness: 
+
+
+
+long-term: 
+
+6-month: 
+
+month: Thesis, coordination of thesis. 
+
+
+
+routines: 
+
+Friday, November 21st: 
+
+
+  Work: put up data. 
+
+  Work: NAS LU idle times. 
+  Work: NAS LU cache misses. 
+  Work: NAS LU dequeue overheads. 
+
+  Work: explain in thesis how cache misses were calculated. 
+  Work: revise in thesis how idle times were calculated. 
+
+  Work: n-body idle times. 
+  Work: n-body cache misses. 
+  Work: n-body dequeue overheads. 
+
+  Work: finish all NAS results for all problem sizes. 
+
+  Work: finish all the results (n-body weak-scale). 
+  Work: discuss results conclusions. 
+
+ Work: talk to Padua and Garzaran about thesis. 
+
+ Mgmt: Spaces: book flight - 30 mins 
+
+ Mgmt: Spaces: reimbursements for SC - 3 hours priority(high) deadline(Nov. 30th) 
+
+ 
+
+Comm: talk to Rupali 
+Comm: talk to dad 
+Comm: talk to Atul
+
+work life: update situations,  write down images for cross-link maturity, etc. 
+
+
+

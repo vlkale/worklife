@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+
+\usepackage{ulem}
+\usepackage{color}
+\usepackage{xspace}
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\item \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\item \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\item  \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\item  \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{Time:} \textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:} \textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:} \textit{#1}}
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\deadline}[1]{#1}
+
+\begin{document}
+\underline{\huge{\textbf{Month Plan}}} \\
+\input{monthPlanCurr}
+\newpage
+
+
+\underline{\huge{\textbf{Week Plan}}} \\
+%\input{weekPlanDoc}
+\newpage
+
+
+% This should be printed here
+%\underline{\textbf{Regular Routines(for reference)}} \\
+%\input{regularRoutines}
+%the below is optional, and we really need the current four weeks
+%\input{yearWeeksPlanCurr}
+
+% the below are in the workLife doc, but could later be transcribed here if needed (but main home is there)
+%\input{yearGoals}
+%\input{lifeGoals}
+
+% Note: remember to look at project plan to help with long-term plans
+
+\end{document}

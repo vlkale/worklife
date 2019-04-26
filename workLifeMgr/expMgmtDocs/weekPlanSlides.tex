@@ -1,0 +1,144 @@
+\documentclass{beamer}
+%\usetheme[
+%          titlepagelogo=bold50-illinois,% Logo for the first page
+%          pageofpages=of,% String used between the current page and the total page count
+%          titleline=true,% Show a line below the frame title
+%          ]{TorinoTh}
+
+%\usetheme{Luebeck}
+
+\usetheme{Dresden}
+\usecolortheme{beaver}
+\setbeamercolor{itemize item}{fg=darkred!80!black}
+
+\useoutertheme{infolines}
+
+\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\usepackage{comment}
+\usepackage{ulem}
+\usepackage{color}
+\usepackage{xspace}
+
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{courier,cite}
+%\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage{color,cite}
+%\usepackage{scalefnt}
+\usepackage{listings}
+
+%\newcommand{\comments}[1]{}
+
+%\setbeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+
+\usepackage{outlines} 
+\usepackage{enumitem}
+\setenumerate[1]{label=\Roman*.}
+\setenumerate[2]{label=\Alph*.}
+\setenumerate[3]{label=\roman*.}
+\setenumerate[4]{label=\alph*.}
+
+
+%\usepackage{flushend}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{tikz}
+
+%Get this updated in macports
+%\usepackage{biblatex}
+%\usepackage{footcite}
+
+\lstset{
+    language=C++,
+    %basicstyle=\footnotesize\ttfamily, % Standardschrift
+    basicstyle=\tiny\ttfamily, % Standardschrift
+    numbers=left,               % Ort der Zeilennummern
+    numberstyle=\footnotesize\ttfamily,          % Stil der Zeilennummern
+    %stepnumber=2,               % Abstand zwischen den Zeilennummern
+    numbersep=6pt,              % Abstand der Nummern zum Text
+    tabsize=2,                  % Groesse von Tabs
+    extendedchars=true,         %
+         breaklines=true,            % Zeilen werden Umgebrochen
+        frame=single,
+         keywordstyle=[1]\textbf,    % Stil der Keywords
+ %        keywordstyle=[2]\textbf,    %
+ %        keywordstyle=[3]\textbf,    %
+ %        keywordstyle=[4]\textbf,   \sqrt{\sqrt{}} %
+         stringstyle=\ttfamily,
+         showspaces=false,           % Leerzeichen anzeigen ?
+         showtabs=false,             % Tabs anzeigen ?
+%         xleftmargin=17pt,
+%         framexleftmargin=17pt,
+%        framexrightmargin=5pt,                                                                                                                                                     %         framexbottommargin=4pt,
+         backgroundcolor=\color{white!97!black},
+         showstringspaces=false      % Leerzeichen in Strings anzeigen ?
+}
+
+
+\newcommand{\htor}[1]{\textcolor{OliveGreen}{[htor: #1]}}
+\newcommand{\tg}[1]{\textcolor{orange}{[tg: #1]}}
+\newcommand{\vivek}[1]{\textcolor{cyan}{[vivek: #1]}}
+
+\newcommand{\comments}[1]{}
+
+\newcommand{\bllt}{\item \small}
+
+\newcommand{\doneTask}[1]{\item \small \sout{#1}}
+
+\newcommand{\MyName}{Vivek~Kale}
+
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}} 
+\title{Notes}
+\author{\MyName}
+\date{\today} 
+%\title[Hybrid Static/Dynamic Scheduling]{Low-Overhead Scheduling for
+%Increasing Scalability of Synchronous MPI Programs on Clusters of
+%SMPs}
+\title{Management Slides} 
+\author[\today]{%
+  Vivek~Kale\inst{1}
+%  William~Gropp\inst{1}
+}
+
+%\institute[University of Illinois at Urbana-Champaign]{
+%  \inst{1}%
+%  Department of Computer Science\\
+%  University of Illinois at Urbana-Champaign
+%}
+
+\institute[UIUC]{
+  \inst{1}%
+ Department of Computer Science\\
+ University of Illinois at Urbana-Champaign
+}
+
+\date{\today}
+\subject{Computational Sciences}
+
+
+
+\begin{document}
+\AtBeginSection[]
+{
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[part=1, pausesections]
+\end{frame}
+}
+
+\titlepage
+%\section{Prelim Outline Notes}
+%\input{./content_defense}
+\input{./content_weekPlanSlides}
+%\input{acks}
+%\input{thanks}
+
+
+%\bibliographystyle{abbrv}
+%\bibliography{bibliography}
+
+\end{document}

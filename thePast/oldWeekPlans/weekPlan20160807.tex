@@ -1,0 +1,889 @@
+\documentclass[serif, mathserif, final]{beamer}
+\mode<presentation>{\usetheme{Lankton}}
+\usepackage[orientation=landscape,size=a0,scale=1.6, debug]{beamerposter}
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+\usepackage{graphicx,ragged2e,pgffor}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{courier}
+\usepackage{caption,verbatim,listings,float,subfig} %TODO: order these 
+\setbeamertemplate{caption}[numbered] 
+\usepackage{calendar}
+\usepackage{geometry}
+
+%TODO: remove unneeded items 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+
+\newcommand{\timeEst}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\deadline}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dl}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:}\textit{#1}}
+
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\comments}[1]{}
+
+%TODO: consider changing the below so you only use the text in the
+%document 
+
+
+%TODO: change Week plans 
+
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this should be 
+\newcommand{\footright}{August 2016}
+%-- Main Document ------------------------------------------------- 
+\title{Month-Week-Day Plan}\author{Vivek Kale$^1$}\institute{$^1$ 
+University of Illinois at Urbana-Champaign}\date{\today} 
+
+
+\begin{document}
+\begin{frame} 
+\begin{columns}
+
+\column{1.0\linewidth}
+
+\begin{block}{Projects} 
+Work:code: Project - Research Paper: 
+\begin{enumerate} 
+\item \tiny \url{http://mpp2016.ime.uerj.br}. 
+\item \tiny \url {http://sbac-pad}  - registration is  \$ 500. 
+\item \tiny Put up latex.  
+\item \tiny Gather all research. 
+\item \tiny Gather project work. 
+\item \tiny Write down introduction.
+\item \tiny Gather data for OpenACC. 
+\item \tiny Explain other details of setup. 
+\item \tiny Note data for OpenMP. 
+\end{enumerate} 
+
+\textit{Schedule:} March 24th: do latex, March 2
+Work:code:
+
+- Project - Coding practice: p for interview.
+\begin{enumerate} 
+\tiny \item \tiny Work:code(cp.bm): finish bit manip:  
+\item \tiny Work:code(cp.bm): finish bit manip:  finish problem 5 from book 
+\item \tiny Work:code(cp.bm): finish bit manip:  finish problem 6 from book 
+\item \tiny Work:code(cp.bm): finish bit manip:  finish problem 7 from book
+\item \tiny Work:code(cp.bm): finish bit manip:  finish problem 8 from book  
+\item \tiny Work:code(cp.bm): finish bit manip:  finish problem 9 from book 
+\item \tiny Work:code(cp.bm): finish bit manip:  finish problem on
+\item \tiny Work:code(cp.bt): review brainteasers – 1 day. 
+\item \tiny Work:code(cp.bmpie): do graphics problem from bit manip:
+  rectangular overlap. 
+\item \tiny Work:code(cp.bmpie): do big endian vs. little endian := 
+\item \tiny Work:code(cp.bmpie): number of ones  := 
+\item \tiny Work:code(cp.bmpie): code up bit manip problems :=  
+\item \tiny Work:code(cp.bt): finish brain teasers:  finish problem on
+  egg drop from book.  
+\item\tiny Work: code(cp.bt): talk about and write 100 lockers . 
+\item \tiny Work: code(cp.bt):  finish brain teasers: finish problem on heavy
+pill. 
+\item \tiny Work:code(cp.btpie): finish brain teaser problems from
+  programming interviews exposed. 
+\item \tiny Work:code (cp.): go through C++, Work:code (cp.): go through Java +
+Work:code (cp.): go through OOP. 
+\item \tiny Work:code (cp.): code up problems.  – 1 week. 
+\item \tiny Work:code (cp.): integer problems + numerics   -- 1 week. 
+\item \tiny Work:code (cp.): practice mock interview problems. – 1 week.   
+\item \tiny Work:code (cp.): finish recursion + BFS/DFS – 1 week. 
+Work:code(cp.): finish recursion, Work:code(cp. ): code up problems,
+Work(cp.): practice mock interview problems. 
+\item \tiny Work: comm: Project –general,  Work:comm: talk to Stephen.
+\end{enumerate} 
+\textit{Schedule:} Work:code (cp.): finish bit manipulation, Work(cp.): review
+brain teasers in book, Work(cp.): Work(cp.): go through C++.  \\ 
+
+Project: GenKnowledge:  
+House of cards: Mgmt:Spaces: 
+1. Cars.  Work:rel: -  Project – Comm: rel: 
+2. Comm:rel: meet others:  Sweta K. 
+{\it Schedule:} meet others over summer, meet girl over summer. 
+
+{Project: awards }  
+\begin{enumerate} 
+\tiny \item \tiny Figure out write-up for Fulbright. 
+\item \tiny Attend Fulbright : 
+\end{enumerate} 
+\textit{Schedule:} April 15th: message to Stephen – 1 hour, Work:rel:Project – Awards:,  Work:rel: Project – interview with
+Berkeley/MIT/industry. 
+
+\begin{enumerate} 
+\tiny \item \tiny Suny sb / suny sb / LLNL / 
+\item \tiny Intel, NVIDIA, Apple
+\item \tiny Google/ms / software companies, Database companies/Oracle,
+\tiny \item \tiny CV: + Research Summary:  -- 1 week.  - Talking about
+your research.
+\item \tiny Business cards:  - use latex  -- 40 minutes.
+\item \tiny Behavioral questions answers:    -- 1 week. 
+\item \tiny Send emails – 1 day. 
+\item \tiny Structure in latex. 
+\end{enumerate}  
+\textit{Schedule:} Behavioral answers – 1 week, CV prep - 1 day,
+business cards, cover letter -1 hour.  
+
+{\bf Worklife: - Project: –Comm:rel: } 
+\begin{enumerate} 
+\tiny \item \tiny Worklife: link management together.  
+\item \tiny  Worklife: link habits comm and Toastmasters.
+\item \tiny Worklife: latex viewpoint. 
+\item \tiny Comm: read social intelligence first four chapters.
+\item \tiny  Comm: link all comm together.
+\item \tiny Worklife: get emails and texts to analyze. 
+\item \tiny  Worklife: figure out how to book flights and trips quickly. 
+\end{enumerate}
+\textit{Schedule:}  Comm: read social intelligence first four chapters
+and get a method to take in information – 5 hours. 
+Comm: link comm together, worklife: latex viewpoint. 
+Looking ahead: 
+
+\underline{\textit{2-month plans}}
+\underline{\textit{January and February:}}
+\underline{\textit{March and April:}} 
+\underline{\textit{May and June:}}
+\begin{itemize}
+\tiny \item \tiny do scheduling strategies. 
+\item \tiny work on job talk. 
+\item \tiny do travel. 
+\item \tiny social on facebook, catch up with Rishi. 
+\end{itemize}
+
+\begin{block}
+2-Month Plan: December: code + worklife, January: study for interviews,  \\
+2-Month Plan: February: code | March:  code + interview review + finish coding work.    \\ 
+2-Month Plan: April: code, May: code paper review. \\
+2-month plan: June:  July:  \\ 
+2-month plan: August:  September: \\
+\end{block} 
+
+\bf{Week of August $1^{st}$, 2016:} \\
+\begin{itemize} 
+\tiny \item \tiny Work: write up SBAC. 
+\item \tiny Work: write up  cover letter. 
+\item \tiny Work: finish lectures up to BFS, DFS. 
+\item \tiny Work: finish coding problems on C++. 
+\end{itemize} 
+
+\bf{Week of August $7^{th}$, 2016:} \\
+\begin{itemize} 
+\tiny \item \tiny Work: write up SBAC. 
+\item \tiny Work: write up  cover letter. 
+\item \tiny Work: finish lectures up to BFS, DFS. 
+\item \tiny Work: finish coding problems on C++. 
+\item \tiny Comm: review win friends Inf people review + Comm: do one lesson with Social Intelligence thoroghly. 
+\end{itemize} 
+
+\bf{Week of August $14^{th}$, 2016:} \\ 
+\begin{itemize} 
+\tiny \item \tiny Work: review lectures for shortest path. 
+\item \tiny Mgmt:Spaces: 
+\tiny \item \tiny Work: review lectures + Work: do practice problems.
+\end{itemize}
+
+\bf{Week of August $24^{th}$, 2016:} \\
+\begin{itemize} 
+\tiny \item \tiny Work: review lectures. 
+\item \tiny Comm: review win friends Inf people
+\item \tiny Comm: read social intelligence chapter 2 
+\item \tiny Comm: read social intelligence Chapter 4. 
+\end{itemize} 
+
+
+\underline{\textit{July and August:}} 
+\begin{itemize}
+\tiny \item \tiny Settle with interviews. 
+\item \tiny move-in to apartment.
+\item \tiny do papers.
+\item \tiny finish social intelligence.
+\end{itemize}
+
+\underline{\textbf{Weekend Plans:}}
+\textbf{Weekend of August $5^{th}$ -$7^{th}$ : } Meet mom and Dad.
+\textbf{Weekend of August $12^{th}$ - $13^{th}$:} Go to San Francisco.
+\textbf{Weekend of August $20^{th}$ - August $22^{nd}$:} reunion.
+\textbf{Weekend of August $31^{st}$  to September $2^{nd}$ } Chicago summer.
+
+\underline{\textbf{Upcoming situations:}} re-union, Sangita's
+wedding. 
+
+\underline{\textit{Month Plan}:}  Work: do writing of papers, Work: do
+coding problems on databases and software engineering, Work: do social
+intelligence notes}.   
+
+\underline{\textit{Week Plan}:} 
+\textbf{Week of August 7:}
+\begin{itemize}
+\item \tiny Work: finish hashing
+\item \tiny Work: go through lectures for BFS and DFS. 
+\item \tiny Work: review prior material.+ Work: figure out weak points. 
+\item \tiny Work:rel: combine job talk. 
+\item \tiny Work: figure out method to create notes:= Work: read transcript + work: read book + work: read notes + work:read. 
+\item \tiny Mgmt:Spaces: get car checked.  + Mgmt:Spaces: get rid of apartment + Mgmt:webpresence: take webpage text down. 
+\item \tiny Comm: message to Mona- done + Comm: message to Rishi about re-union.+ Comm: message to Kavita. 
+\item \tiny Comm: message to Mugdha. 
+\item \tiny Comm: message to Dad about issues. 
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{columns}
+    %-- Page 2: Column 1 --------------------------------------------------- 
+    \begin{column}{0.25\linewidth} %{\textbf{\underline{Week Aspects(new name)}}}
+      %TODO: check where this should go. -done
+      %--- Page 2: Block 1-1
+      \begin{block}{Routines}
+        {{\tiny \bf Weather:} Warm through the week} 
+        {\tiny \bf Weekend Plan:}
+        \begin{itemize}
+        \item \tiny ppn:028361799  exp: driver's license:K400-8728-4051  exp:2-20-18 
+        \item \tiny CC1 num: CC2 num: Dbtnum:  bank acct num:  
+        \item \tiny VIN:        License Plate:  E61 2444 
+        \item \tiny VivekInternet’s FightingIllini  wifi pass: 2173900374 WPA 
+        \item \tiny xfinity account number: 0149024144. 
+        \item \tiny AAdvantage number: 847JJP0.
+        \item \tiny Dad's AAdvantage number: BRU6630 Password: polarwind.
+        \item \tiny Emerald Club number :  140294615   pass: 
+        \item \tiny Netflix user:  lvk2408@gmail.com  Netflix password: chitrapat. 
+        \end{itemize}
+      \end{block}
+      
+      \textbf{\underline{Sunday Routines:}} Experiences, week plan. \\ 
+      \textbf{\underline{Routines:}} Morning: bfast, exercise/brush,
+      floss, shower (hair, eyes, ears, underarms, feet), meds, belt,
+      comb hair / dishes, clean kitchen floor. |  Night: running/ put away dishes, clean kitchen floor / brush
+y      teeth, charge phone, clothes for tomorrow, contacts off. \\
+      
+      Day trip packing list: charger for iPhone, charger for laptop, car
+      keys, underwear, black socks, shoes, meds, halls meds, greyhound,
+      boarding pass, flight pass. \\ 
+      
+      Cover letter: 
+      Resume: 
+      Reference Letters: \\ 
+      
+      \end{block} 
+    %--- Page 2: Block 1-2
+    \begin{block}{Map} 
+      \begin{itemize} 
+      \item \tiny driver's license  exp. date .  Number. 
+      \item \tiny ppt number  exp. date.  
+      \end{itemize}
+      
+      \begin{itemize} 
+      \item \tiny bank account num 
+      \item \tiny cc num 
+      \end{itemize} 
+      
+      \begin{itemize} 
+        \tiny \item \tiny Amtrak  eVoucher numbers. \\
+      \item \tiny  Southwest credit:  \\   
+      \item \tiny  Mileage number: \\ 
+      \end{itemize} 
+      
+      \begin{itemize}
+        \tiny \item \tiny VIN:  License plate: ill e61 2444  
+      \item \tiny BT code for BMW:
+      \end{itemize} 
+      
+      \begin{itemize} 
+        \tiny \item \tiny other cars: lexus:  VIN:  license:
+      \item \tiny Hyundai: 
+      \item \tiny Audi: VIN:  License: P84  
+      \end{itemize} 
+      
+      \begin{itemize} 
+        \tiny \item \tiny Vivek's wifi:   wifi pass: 
+        \item \tiny Atul’s FightingIllini  wifi pass:  2173900374 WPA  \\
+        \item \tiny When tank light on, filling 13.3 gallons. 
+      \end{itemize} 
+      
+      Local space: 
+      Local map: 
+
+      \textbf{\underline{Urbana-Champaign:}} 
+        Campustown: 
+        North: Engineering: 
+        Main campus: 
+        Southside of campus:         
+        Urbana: 
+        Champaign: 
+        Savoy: 
+        \textbf{CMI} 
+        \textbf{Illini Terminal} 
+        Decatur/Springfield: 
+        Tuscola/Mattoon: 
+        Rantoul/Paxton: 
+        
+        Cover letter / Resume : 5 hours .
+        Behavioral questions : 
+        Review what you know : 
+    \end{block}
+    
+%--- Page 2: Block 1-3
+      \begin{block}{Local Happiness}
+        % howto:Recognize emotions / recognize (precisely) what you're
+        % worried about -> methods for eliminating worry. 
+        % clean out old worries, put them in pastWorries doc.  
+        % remember to define precisely 
+        % order from top-to bottom
+        \begin{itemize} 
+          \tiny \item \tiny Work: worrying about interviewing: just focus on the work. 
+        \item \tiny Worrying about gal: think about talking to others. 
+        \end{itemize}
+      \end{block} 
+      %--- Page 2: Block 1-4 
+
+      \begin{block}{AngersAndAnxieties}
+        % howto:Recognize emotions / recognize (precisely) what you're worried about -> methods for eliminating worry. 
+        % clean out old worries, put them in pastWorries doc.  
+        % remember to define precisely 
+        % order from top-to bottom
+        \begin{itemize}
+          \item \tiny Anger about UP -> think about the positive
+            perspective, and the original.
+          \tiny \item \tiny Work: worrying about interviewing: just
+          focus on the work. 
+          \item \tiny Anger about a b  -> ...
+        \end{itemize}
+      \end{block}
+      %-- Block 1-5
+      \begin{block}{Life notes}
+        \begin{itemize}
+        \tiny \item \tiny Social Intelligence: 
+        \item \tiny Social Intelligence: 
+        \end{itemize}
+      \end{block}
+% howto: 
+\end{column}
+
+%-- Column 2 ---------------------------------------------
+
+\begin{column}{0.5\linewidth} 
+      \begin{block}{Week Summary}
+        {\tiny \textbf{Week Plan:}  }
+        {\tiny \textbf{Weekend Plan:} see Mom and Dad}
+        {\tiny {\bf Week lessons:}}
+        \begin{enumerate}
+          \tiny \item \tiny Win Friends/ Influence People – no one
+          likes to take direct orders.
+        \item \tiny Go through 7 habits.
+        \item \tiny Coding problem: 
+        \item \tiny Chess tips: 
+        \item \tiny tm tips.
+        \end{enumerate} 
+
+        {{\tiny \bf News:} M: jobless rate, First Reprogrammable
+          quantum computer created, Google driver car CEO leaves, | S:
+          clinton leads, trump 2nd amdm,  Rio Opening Ceremony| E:
+          Fallon: }
+
+      \begin{block}{Running TODO} % find a better name 
+        \begin{enumerate}
+
+          \doneTask{Work:rel: reply to MongoDB} \te{20 minutes}
+          \pr{UI} \dl{Thurs night}. 
+
+                 \doneTask{Mgmt:Spaces: book flight to San Francisco} \te{20
+          minutes} \dl{Friday}. 
+        
+        \doneTask{ Work(pappub): look up papers and understand
+          architectures/trends, applications. \te{1 hr} \dl{} +
+          Work(pappub): read articles from hpcwire \te{1 hr} + Knight's
+          landing.}      
+        Knight's landing. 
+        GPU architecture. 
+        
+      \item \tiny Work:comm:(amrel): reply to Amanda's email :=
+        \doneTaskNoItem{Work:comm(amrel): tell her what's going on} +
+        Work:comm(amrel): consider going to Duke for meeting and
+        possibly a lecture. \doneTask{Mgmt:Time: plan out trip to San
+          Francisco} \te{1 hour} \dl{Sat night}
+        \pr{UrgentImportantEnoughToMaintainContacts}. 
+
+        \textbf{Curr} $\rightarrow$ 
+      \item \tiny Work(res): write journal paper. \te{2 days} \dl{}
+        \pr{IU}. 
+        
+      \item \tiny Work: Write paper for workshop here: 
+        http://mpp2016.ime.uerj.br/important-dates.html - due date
+        August $16^{th}$.  \te{20 hours} \dl{-}
+        \pr{ImportantToKeepYourselfKnown} + \doneTask{Work: Register
+          paper for workshop on accelerating mesh applications.} \te{1
+          hour}. \pr{} \dl{}.
+ 
+      \item \tiny Work: review material you know already \te{2 hours}.
+ 
+        \doneTask{ Work: make notes on how to take notes for a lecture}
+      \item \tiny Work(cp): review difference between book and
+        lectures. \te{} \dl{} \pr{} \item \tiny go through Harvard lectures. 
+        
+      \item \tiny Work: how to organize a project \te{30 minutes}\te{} \dl{}
+        \pr{}. 
+
+
+
+http://www2.sbc.org.br/sbac/2016/
+        
+
+I don't have plans to be at SC this year. However, I may be at
+SBAC-PAD 2016. Let me know if you'll be there.
+
+Vivek
+
+
+
+
+\item \tiny Mgmt:Spaces: check hair from
+  \url{http://restorehair.com/contact-us/}. 
+
+
+      \item \tiny Work(cp): coding problem := Work(cp): coding
+        problem on bits and arrays and hash table.  \te{1 hour}. \dl{} \pr{} 
+        
+      \item \tiny Work: coding review on hash tables \te{1 hour} \dl{Friday}
+        \pr{IU}. \doneTask{Work(cp): MIT lecture := Work(cp): MIT lecture on
+          hashing Karp-Rabin} \te{1.5 hours} \dl{before Wed}
+        \pr{reasonable}. 
+        
+      \item \tiny Work(cp): MIT ocw lecture on DFS \te{2 hour} + Work(cp):
+        MIT ocw lecture on BFS \te{2 hour}.
+
+      \item \tiny Mgmt:Spaces: post on craigslist the ad :=
+       One bedroom for rent in south loop.        
+
+       I'm subletting my 1 bedroom convertible apartment from Sept 1st through the
+       end of the lease on October 24th. The apartment has a view of
+       the Lake and a view of part of Chicago's skyline. Pictures are
+       below. 
+
+       A unique aspect of the apartments in the building are the high
+       cement ceilings and full-glass windows. The apartment has
+       24-hour security, fitness center, lounge, and outdoor bb       area. 
+       
+       Water and gas is included in the rent. 
+
+
+       \te{1 hour} \dl{Thursday} \pr{}. 
+
+      \item \tiny Comm: message to Kavita  \te{1 hour} \dl{Thursday}
+        \pr{} 
+
+        It's nice to hear from you. I'm in Chicago this month
+        studying. I plan to have friends over towards the end of
+        August at the place I'm staying at. I hope that you and
+        Ashish can join when I do.
+
+
+        TODO:L3: intent: past : meet up at Irazu 
+        TODO:L3: intent: I like you guys
+        TODO:L3: outcome: I'm still cool. 
+
+        TODO:L4: for when I do v VS when I do. just: gets ambiguity
+        out. 
+        
+        TODO:L4: can v VS will  just: not too imposing  
+ 
+      \item \tiny Work: organize job talk. \te{} \dl{} \pr{}.
+
+      \item \tiny Work:rel: finish cover letter + Work:rel:
+        respond to EPFL \te{20 minutes} \dl{Saturday night}  +
+        Work:rel: gather Lawrence Scholar.
+        
+      \item \tiny Work:rel(trp): make a template for replies to
+        companies \te{1 hour} = Work:rel(trp): respond for times that work + 
+        Work:rel(trp): confirm timings for interview + Work:rel(trp):
+        Thank You notes. 
+        
+      \item \tiny Comm: send message about a 10-year re-union \te{1 hour}. 
+  
+      \item \tiny Work:rel: review of interview \te{1 hour} \dl{}. 
+     
+      \item \tiny Work:rel: add in experiences. \te{} \dl{}. 
+        
+      \item \tiny Mgmt:Spaces: put up craigslist ad for apartment 
+        \te{} \pr{} \dl{}. 
+        
+        Hey Amanda, 
+        
+        I'm not going to SC this year, but I'm planning to go to SBAC-PAD in
+        Los Angeles this year. 
+        
+        Vivek 
+        
+      \item \tiny Comm: message to Labonee \te{1 hour}
+        \dl{Sat. night} \pr{ImportantToMaintainContacts}.
+        Seeing your photos of your ..., I look up to your commitment to
+        excellence in what you do. I don't think I'd find this
+        spirits elsewhere. This is one of the reasons I can't leave
+        the Bay Area. Getting to know you and others in the bay area, I think
+        there's one thing that defines this place - it's the undying
+        committment to excellence that's praised. 
+        P.S. The above is based on conversations I've had with Neil,
+        and he ought to be cited. It's that undying committment to
+        excellence that makes me want to do whatever I might do with
+        excellence rather than just getting the job done. This is
+        what defines the Bay Area to me. Sorry if this is lame. I
+        came up with it 10 minutes. I can't leave this place. This
+        is based on conversations with. 
+
+      \item \tiny Mgmt:webpresence: update LinkedIn cover photo to picture
+        of the globe \te{}\pr{}\dl{}. 
+        
+      \item \tiny Mgmt:Spaces(bfa): buy things for apartment =
+        Mgmt:Spaces(bfa): get a vaccuum cleaner + Mgmt:Spaces(bfa):
+        buy sticky putty + Mgmt:Spaces(bfa): buy a whiteboard. 
+
+      \item \tiny Mgmt:Spaces(afx): tell about the closet door. \te{} \dl{}.        
+      \item \tiny Mgmt:Spaces(bfhm): bring hamper from home +
+        \doneTaskNoItem{Mgmt:Spaces(bfhm): BMW key} +
+        Mgmt:Spaces(bfhm): get cereal box container \te{1 hour} \dl{}
+        \pr{} + Mgmt:Spaces(bfhm): 
+ 
+      \item \tiny Mgmt:Spaces(grc): get groceries = Mgmt:Spaces:
+        Malt-O-meal + Mgmt:Spaces: pasta + Mgmt:Spaces: pizza +
+        Mgmt:Spaces: cereal + 
+
+        Mgmt:Spaces: labels for organization of kitchen cabinets +
+        Mgmt:Spaces: labels for organization of fridge and freezer +
+        Mgmt:Spaces: labels for organization of bathroom +
+        \doneTask{Mgmt:Spaces: cucumber air freshner.} \te{} \dl{}
+        \pr{UI}. 
+         
+      \item \tiny Mgmt:Spaces(carwash): check car tailpipe + 
+        Mgmt:Spaces(carwash): Window + Mgmt:Spaces(car): get halogen
+        lights for fog lights \te{1 hour} 
+  
+      \item \tiny Mgmt:webpresence: update website(wsu) =
+        \doneTaskNoItem{Mgmt:webpresence(wsu): update formatting on
+          website} + Mgmt:webpresence(wsu): update description of work.
+       
+        
+      \item \tiny Work:rel: message to Yavatkar Kaka about
+        VMWare. \te{} \dl{} \pr{}. 
+        
+        
+\item \tiny Comm: message to Rishi and Amaeya about reunion \te{ 1
+  hour} \pr{UI}  \dl{aug15}  
+          
+\item \tiny Comm: meet Gary and KD \te{1 hour}. 
+  
+\item \tiny Comm: message to Dad and Atul about social stuff \dl{} \te{1 hour}.  
+          
+\item \tiny Comm: consider a view of girl on Shaadi. 
+\item \tiny Comm: consider what to do about Bhavna. 
+\item \tiny Comm: consider talking to Illina. 
+\item \tiny Comm: talk to friends from school.
+\item \tiny Mgmt:Spaces: plan trips. \te{}. 
+\item \tiny Mgmt:webpresence: delete Anil Taneja from
+  LinkedIn. \te{1 hour} \dl{Monday} \pr{UI}.
+\item \tiny Mgmt:webpresence: cancel FB friend request of
+  Jocelyn + Mgmt:webpresence: check other friend requests
+  sent. \te{}.
+\item \tiny Mgmt:Spaces(GetThingsSpring2016): get Things =
+  Mgmt:Spaces(getThings): get suit. \te{}
+        \end{enumerate}
+      \end{block}
+      
+      % howto: the below is a routine based on the job I'm doing and the
+      % circumstances I'm in. Note that this is different from routines
+      % above, which is true for a long-term period of over 10 years.  
+
+
+\begin{block}{Weekly routines} 
+\begin{itemize}
+\tiny \item \tiny 630 am: wake up, turn off alarm clock, brush teeth
+\item \tiny 645 am: eat breakfast
+715 am: lift weights
+730 am: look up weather, read emails
+800 am: watch algorithms lectures, review programming problems
+11 am : research stuff
+12 pm : eat lunch
+1 pm - 3 pm : programming
+3 pm - 5 pm : applications/emails/meetings/phone calls
+5 pm  - 6 pm : running
+6 pm  - 7:30 pm : dinner
+8 pm - 9 pm : talk to you and mom
+9 pm - 10:30 pm : finish emails
+10:30 pm - 11:30 pm : read books / articles on meditation or self-help.
+\end{itemize} 
+
+On weekends, I take care of chores and things I didn't finish during
+the weekday. 
+On Saturday: 
+
+\end{block} 
+
+\begin{block}{Weekly Meetings}
+  \begin{itemize} 
+  \item \tiny IWOMP affinity meeting Thursday 7 AM PDT / 9 AM
+    CDT call in: 805-639-779 pswd: places. 
+    https://llnl.webex.com/llnl/j.php?MTID=m33950b76befb72c0cbc31ea2e3be720c  
+  \item \tiny DEG group meeting. 
+  \item \tiny 
+  \end{itemize}
+\end{block} 
+
+
+\begin{block}{Week Daily Schedule} 
+  {\bf Sun:} Work: write paper for waacpd, Mgmt:Spaces: , Mgmt:Time:
+  organize weekPlanDoc, Mgmt:Time: make plan for doing different
+  things, Comm: 
+    \newline {\bf Mon:}
+    \newline {\bf Tues:}
+    \newline {\bf Wed:}
+    \newline {\bf Thur:} Work: finish putting amplification paper
+    together. Work: put paper on results for workshop. Work: do hash
+    table implementation, Mgmt:Spaces: do flight for SF, Comm: send message to Labonee. 
+    \newline {\bf Fri:} 
+    \newline {\bf Sat:} 
+\end{block} 
+
+% ------ Page 2: Column 3
+\begin{column}{0.25\linewidth}
+% ------ Block 2.3.1 
+
+      \begin{block}{Weather}
+        \begin{itemize}
+          \tiny \item \tiny Chicago: Cool throughout the week, Warm
+          Thursday and Friday. 
+          \item \tiny Champaign: Cool throughout the week. 
+        \end{itemize}
+      \end{block} 
+
+      \begin{block}{Food Plan} 
+        \begin{itemize}
+          \tiny \item \tiny 
+        \item \tiny 
+        \item \tiny 
+        \end{itemize}
+      \end{block} 
+
+      \begin{block}{Clothes plan} 
+        \begin{itemize}
+          \tiny \item \tiny Monday
+        \item \tiny Tuesday
+        \item \tiny Wednesday
+        \item \tiny Thursday
+        \item \tiny Friday
+        \end{itemize} 
+      \end{block}
+      %-- Block 3-2 
+
+      %-- Block 3-3 
+      \begin{block}{Situations}
+        % Summary: the below are the situations that define one
+        % another.        
+        % Howto: Put post notes of each situation from list of previous
+        % week. Put high importance situations in situationslist. 
+        % Put list of upcoming situations on Sunday morning with Pre. 
+        \begin{itemize}
+
+        \item \tiny \textit{Meet Mona and Leena} 
+          Pre-: Confirm time, leave by 7PM, wear business clothes, rent a car? Discuss
+          savv0ddude , talk about girl, explain what you are doing(rehearse),
+          have closing for meeting next, take picture and put post on
+          FB. 
+          Post-:          
+        \end{itemize} 
+      \end{block} 
+%Summary:  
+
+\begin{block}{Spaces}
+\begin{itemize} 
+\tiny \item \tiny 
+\item \tiny 
+\item \tiny 
+\end{itemize} 
+\end{block} 
+
+\begin{block}{Rel} 
+  \begin{itemize} 
+    \small \item \small  from SF. 
+    \item \small Shwetha K 
+    \item \small Mamta       
+    \item \small SH11680694 from San Francisco. 
+    \item \small Sandhya N. 22 Jun 2016 
+    \item \small Aarti S - 27 - 5' 9'' Charlotte.       
+    \item \small Anu M from Chicago, IL 
+    \item \small Pranati A from Cleveland, OH - 
+    \item \small Meghana K from New York - 
+    \item \small Ssd S - 28 , 5 5 , Boston, MA 
+    \item \small Anj B. - 30 yrs - SH13882555.
+  \end{itemize} 
+    %\small \item \small Meghan Joshi 
+
+% Accept our apologies for the delayed response. We spoke to our son
+% about your daughter and we are interested also. When is a good time
+% for us to call you? 
+
+\begin{itemize}
+\item \small
+  \url{http://profile.marathimatrimony.com/profiledetail/viewprofile.php?id=K658342&osa=dbos&memval=3&listtype=1&msgId=&rq=&loadPage=12&listtype=1&tabtype=16&filtertype=1&filtered=0&viewed=2&TotCnt=367&Show=Y&Module=} 
+\item \small \url{http://profile.marathimatrimony.com/profiledetail/viewprofile.php?id=M3730924&osa=dbos&memval=1&listtype=1&msgId=&rq=&loadPage=13&listtype=1&tabtype=16&filtertype=1&filtered=0&viewed=0&TotCnt=367&Show=Y&Module=}
+  
+\item \small \url{http://profile.marathimatrimony.com/profiledetail/viewprofile.php?id=R1194547&osa=dbos&memval=4&listtype=1&msgId=&rq=&loadPage=11&listtype=1&tabtype=16&filtertype=1&filtered=0&viewed=3&TotCnt=367&Show=Y&Module=}
+  
+\item \small \url{http://profile.marathimatrimony.com/profiledetail/viewprofile.php?id=R1762507&osa=dbos&memval=6&listtype=1&msgId=&rq=&loadPage=1&listtype=1&tabtype=16&filtertype=1&filtered=0&viewed=5&TotCnt=367&Show=Y&Module=}
+
+\item \small \url{http://profile.marathimatrimony.com/profiledetail/viewprofile.php?id=R1194547&osa=dbos&memval=4&listtype=1&msgId=&rq=&loadPage=11&listtype=1&tabtype=16&filtertype=1&filtered=0&viewed=3&TotCnt=367&Show=Y&Module=}
+
+\item \small \url{http://www.shaadi.com/profile?profileid=SH13882555&ubt=L2luYm94L3BlbmRpbmcvcmVjZW50LWludGVyZXN0c3xpbmJveDo1YjhmMGM0ZTViMTM4YmU2ZjUxNDAzMTVlM2M4OWJhMnw4NDI3ZGVlYjMzMTg2MmUzMDc1N2E5Mjg0OGEyZjc2OQ\%3D\%3D&source=unified&evt_ref=aW5ib3gtaW50ZXJlc3Rz&datasrc=api}
+
+\item \small \url{http://www.shaadi.com/profile?profileid=bSH74851794&ubt=L2luYm94L3BlbmRpbmcvcmVjZW50LWludGVyZXN0c3xpbmJveDo1YjhmMGM0ZTViMTM4YmU2ZjUxNDAzMTVlM2M4OWJhMnxlNzMxMWM0NmM2ODNjZmRhM2JlODY0NTQzMzIxODg5Mw\%3D\%3D&source=unified\&evt_ref=aW5ib3gtaW50ZXJlc3Rz&datasrc=api}
+
+\item \small \url{http://www.shaadi.com/profile?profileid=ISH08025255&ubt=L2luYm94L3BlbmRpbmcvcmVjZW50LWludGVyZXN0c3xpbmJveDo1YjhmMGM0ZTViMTM4YmU2ZjUxNDAzMTVlM2M4OWJhMnwyMDJhNGVlNzk5NGI0MjlmZTliMTkwODQzMDQ5NDRmYg\%3D\%3D&source=unified&evt_ref=aW5ib3gtaW50ZXJlc3Rz&datasrc=api} 
+\end{itemize} 
+\end{block} 
+
+\begin{block} 
+Mgmt:webpresence: 
+Researchgate, linkedIn, twitter, website, facebook 
+Friends: Amit, Sangita, Anchit, Kevin. 
+Rel: Sruthi 
+\end{block} 
+
+\end{column}%3 
+
+
+
+
+
+
+\comments{
+      \begin{block}{Week Daily Schedule} 
+        % howto: arrange items from running todo into the below
+        % sheet management document. 
+        \begin{columns} 
+          \column{0.14\textwidth}{\textbf{\small \underline{Mon}}}
+          \textbf{\small todo} \\ 
+          \begin{itemize}
+            \tiny \item \tiny Add in schedule
+          \item \tiny 
+          \end{itemize} 
+          \textbf{\small schedule} \\
+          \begin{enumerate} 
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \end{enumerate} 
+          
+          \column{0.14\textwidth}{\textbf{\small \underline{Tue}}}
+          \textbf{\small todo} \\
+          \begin{itemize}
+            \tiny \item \tiny Work: make project sheet \te{10 minutes} 
+          \item \tiny Mgmt:Spaces: check for diploma \te{10 minutes} 
+          \end{itemize}  
+          \textbf{\small schedule} 
+          \begin{enumerate}
+            \tiny \item \tiny 10AM - 11AM = 
+          \item \tiny 11AM - 12AM = make long-term goals 
+          \item \tiny 12PM - 2PM = 
+            \tiny \item \tiny 2PM -3PM = 
+          \item \tiny 6PM - 10PM = 
+          \end{enumerate} 
+          
+          \column{0.14\textwidth}{\textbf{\small {\underline{Wed}}}}
+          \textbf{\small todo} \\
+          \begin{itemize}
+           \tiny \item \tiny Work: finish slides for tomorrow. 
+           \item \tiny Mgmt: Spaces: update fb 
+         \item \tiny Comm: fb update 
+          \end{itemize}
+          \textbf{\small schedule} \\
+          \begin{enumerate}
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \item \tiny 9AM - 10AM: Send message 
+            \item \tiny 6:30PM - 7:30PM = 
+          \end{enumerate} 
+          \column{0.14\textwidth}{\textbf{\small{\underline{Thu}}}}
+          \textbf{\small todo}\\
+          \begin{itemize}  
+            \tiny \item \tiny 
+          \item \tiny 
+          \end{itemize} 
+
+          \textbf{\small schedule}\\
+          \begin{enumerate} 
+            \tiny \item \tiny 8-9AM = Regular Routines 
+            \item \tiny 12-1PM = gather notes about job org. during
+              session 
+            \item \tiny 3:30PM - 4:30PM = meeting 
+            \item \tiny 6PM - 9PM = revise emot. int. chapter and
+              structure wl-cheat based on it 
+          \end{enumerate}  
+          
+          \column{0.14\textwidth}{\textbf{\small{\underline{Fri}}}}
+          \textbf{\small todo}\\ 
+          \begin{itemize}
+          \item \tiny Work: code review. 
+          \item \tiny Work: finish work. 
+          \item \tiny Mgmt:Spaces: Haircut \te{10 minutes}. 
+          \item \tiny Comm: check messages 
+          \end{itemize}
+          \textbf{\small schedule}\\
+          \begin{enumerate}
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \end{enumerate}
+           
+          \column{0.14\textwidth}{\textbf{\small \underline{Sat}}}
+          \textbf{\small todo}\\
+          \begin{itemize} 
+            \tiny \item \tiny
+          \end{itemize}
+          \textbf{\small schedule}\\ 
+          \begin{enumerate}
+            \tiny \item \tiny 7-7:30PM = food + organize.  
+            \tiny \item \tiny 7:30 PM - 8 PM = 
+            \tiny \item \tiny 8 PM - 9 PM = 
+            \tiny \item \tiny 9:45 PM - 10:30 PM = go out 
+            \tiny \item \tiny 2AM -3AM =  message Samir + add people
+          \end{enumerate}
+          \column{0.14\textwidth}{\textbf{\small \underline{Sun}}}
+          \textbf{\small todo}\\
+          \begin{itemize} 
+           \tiny \item \tiny 
+          \end{itemize}
+          \textbf{\small schedule}\\
+          \begin{enumerate} 
+            \tiny \item \tiny 3PM - 4PM =  . 
+          \item \tiny 5-7PM = Comm work. 
+          \item \tiny 8PM - 10PM = worklife work. 
+          \end{enumerate} 
+        \end{columns}
+      \end{block}
+    \end{column}%2
+}
+
+
+\end{columns}
+\end{frame}
+
+    
+\end{document}
+
+
+% -- Attic -- % 
+
+%        \begin{itemize}
+%          \tiny \item \tiny If you do something sloppy, don't
+%          think about it and don't say sorry. 
+%        \item \tiny don't think someone is trying to hurt you if
+%          they say something.
+%        \item \tiny know the paths of least stress. 
+%        \item \tiny if mom does something, don't let that bite you. 
+%        \end{itemize}

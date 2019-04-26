@@ -1,0 +1,91 @@
+\ifdefined\POSTER
+\documentclass[serif, mathserif, final]{beamer}
+\mode<presentation>{\usetheme{Lankton}}
+\usepackage[orientation=landscape,size=a0,scale=1.6,debug]{beamerposter}
+\else 
+
+\ifdefined\DOUBLECOLUMN
+\documentclass[twocolumn,a4paper]{article}
+\else 
+\documentclass[a4paper]{article}
+\fi
+
+
+\usepackage{type1cm}
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+\usepackage{graphicx,ragged2e,pgffor}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{courier}
+\usepackage{caption,verbatim,listings,float,subfig} %TODO: order these 
+\ifdefined\POSTER
+\setbeamertemplate{caption}[numbered] 
+\fi
+
+\usepackage{calendar}
+\usepackage{geometry}
+
+\usepackage{pagecolor}
+
+
+
+
+%TODO: remove unneeded items 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+%TODO: consider changing the name of this macro to be what it's
+%used for below
+\newcommand{\doneTaskNoItemNewLine}[1]{\sout{#1}}
+
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+
+\newcommand{\timeEst}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:}\textit{#1}}
+%\newcommand{\t}[1]{\textit{TimeEst:}\textit{#1}} - command t already
+%defined in latex, so we can't use the preceding command. 
+\newcommand{\deadline}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:}\textit{#1}}
+%\newcommand{\d}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dl}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:}\textit{#1}}
+%\newcommand{\p}[1]{\textit{Priority:}\textit{#1}}
+
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+\newcommand{\comments}[1]{}
+
+%TODO: think of document as adding around ...
+%TODO: consider changing the below so you only use the text in the
+%document 
+%TODO: change Week plans 
+
+%TODO: consider putting making each frames have its own document. 
+%TODO: decide where social intelligence goes. 
+%TODO: decide how to separate work from life in social intelligence
+%notes. 
+
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this should be 
+\newcommand{\footright}{March 2017}
+%-- Main Document -------------------------------------------------
+%\title{Month-Week-Day Plan}\author{Vivek Kale$^1$}\institute{$^1$ University of Illinois at Urbana-Champaign}\date{\today}
+%TODO: get rid of extra numbers below
+\begin{document}
+\input{content_projects_plan-doc}
+\newpage
+\input{content_monthPlanDoc_plan}
+\newpage
+\pagecolor{yellow!40!orange}
+\input{content_weekPlanDoc_plan-doc}
+\newpage
+\pagecolor{red}
+\input{content_socialInt_plan-doc}
+\end{document}

@@ -1,0 +1,14 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+*.tex~
+*.docx~
+*.txt~
+*~
+*.aux
+*.snm
+*.log
+*.out
+*.vrb
+*.nav
+*.toc
+*.pdf
+.DS_Store

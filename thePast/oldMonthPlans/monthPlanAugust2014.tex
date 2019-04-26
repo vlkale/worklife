@@ -1,0 +1,132 @@
+%TODO: figure out how to get rid of extra page 
+
+\documentclass[serif, mathserif, final]{beamer}
+%\documentclass[serif,mathserif, final]{beamer} %values in brackets just adjust the text font 
+
+\usetheme{Lankton}
+%\mode<poster>{\usetheme{Lankton}} 
+%\mode<poster>{\usetheme{RicePoster}} 
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+%\usepackage{eulervm}
+\usepackage{graphicx, ragged2e}
+\usepackage{pgffor}
+\setbeamertemplate{caption}[numbered]
+
+%\usepackage{textbox} <-- use for aligning  text - get this from macports
+ 
+%\graphicspath{{./figures/}}
+\usepackage[orientation=landscape,size=a0,scale=1.6,debug]{beamerposter}
+
+%-- Header and footer information ----------------------------------
+\newcommand{\footleft}{Mgmt-WorkLife-Goalsplanning} % figure what this should be 
+\newcommand{\footright}{August 2014}
+\title{Goals Planning} 
+\author{Vivek Kale$^1$}
+\institute{$^1$ University of Illinois at Urbana-Champaign \quad}  
+
+%------------------------------------------------------------------
+%-- Main Document ------------------------------------------------- 
+
+\begin{document}
+\begin{frame}{}
+
+  \begin{columns}
+    %-- Column 1 ---------------------------------------------------
+    \begin{column}{0.33\linewidth} 
+      %-- Block 1-1 
+      \begin{block}{ 3-year plan }
+        \begin{itemize} 
+        \item \small find someone 
+        \item \small make 150K 
+        \item \small network
+        \end{itemize} 
+      \end{block} 
+    \end{column}%1 
+    
+
+%-- Column 2 ---------------------------------------------------  
+\begin{column}{0.27\linewidth} 
+
+%-- Block 2-1 
+\begin{block}{ 6-month plan  } 
+\begin{itemize} 
+\small \item \small results + thesis
+\item \small routine + worklife 
+\item \small 
+\end{itemize} 
+\end{block} 
+
+\begin{block}{ Month-by-month}
+\begin{itemize}
+\item \small March: 
+\item \small April:
+\item \small May: 
+\item \small June: org thesis. Org Amanda's application, figure out outstanding system's issues. 
+\item \small July: Finish integration in last chapter, data. Amanda's application. 
+\item \small August: org thesis, data collection
+\item \small September: Prep other paper for IPDPS
+\item \small October: Get slides ready for defense 
+\end{itemize}
+\end{block}
+\end{column} %2 
+
+%-- Column 3 --------------------------------------------- 
+%\begin{column}{0.27\linewidth} {\textbf{Month Plan for August 2014}} 
+\begin{column}{0.27\linewidth}
+%\begin{column}{0.33\linewidth} {\textbf{\underline{Month Plan for August 2014}}}
+      %-- Block 1-1 
+\begin{block}{\underline{\textbf{August goals}}}
+\begin{enumerate}
+\item \small Work: app results + papers.
+\item \small Work: thesis completion.
+\item \small Mgmt: Health: lose 10 pounds:  excercise butt, chest, wrists. Run without eating.
+\item \small worklife: Habits + empathy
+\item \small habits: lips relaxed, back straight, no teeth clicking/body noises, feet quiet.
+\end{enumerate}
+\end{block} 
+
+\begin{block}{\small \underline{\textbf{Week of August $4^{th}$}}} 
+\begin{enumerate}
+\tiny \item \tiny Work: get app results for nbody
+\item \tiny Work: get poster done + talk to Simplice.
+\item \tiny worklife: experiences sheet fix
+\item \tiny worklife: read habits and update
+\item \tiny Comm: finish last part of emotional intelligence.
+\end{enumerate}
+\end{block}
+
+\begin{block}{\small \underline{\textbf{Week of August $13^{th}$}}}
+\begin{enumerate}
+\tiny \item \tiny Work: Do additional results from HACC.
+\item \tiny Work: Update library/code.  +  Work: add code structure for data collection. +  Work: Send message to Tanzima about PAPI. Find any other systems issues and take care of them.
+\item \tiny Comm: read social intelligence to help with social life.
+\item \tiny worklife: read habits.
+\end{enumerate}
+\end{block} 
+
+\begin{block} {\small \underline{\textbf{Week of August $20^{th}$}} }
+\begin{enumerate}
+\tiny \item \tiny Work: additional results for other codes such as miniFE. 
+\tiny \item \tiny Work: finish results for nbody. 
+\item \tiny Work: library +  Work: integrate with slack-conscious +  Work: start integration of schedulers.
+\item \tiny Comm: read social intelligence to help with social life.
+\item \tiny worklife: read habits.
+\end{enumerate}
+\end{block}
+
+%\begin{block}{ \small \underline{\textbf{Week 3: Aug 27- Sept 1st }}}
+%\begin{block}{ \small \underline{\textbf{Week 4: Week of Aug. 27 }}}
+\begin{block}{ \small \underline{\textbf{Week of Aug $27^{th}$ }}}
+\begin{enumerate}
+\tiny \item \tiny Work: poster for EuroMPI + revisions in that chapter to finish off
+ \item \tiny netip:
+\end{enumerate}
+\end{block} 
+
+\end{column}%3 
+
+\end{columns} 
+
+\end{frame} 
+
+\end{document}

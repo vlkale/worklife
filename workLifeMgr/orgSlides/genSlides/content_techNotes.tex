@@ -1,0 +1,238 @@
+\begin{frame}
+\frametitle{Intro}
+\begin{enumerate} 
+\item \tiny 
+\item \tiny 
+\end{enumerate} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{ Problem} 
+\begin{itemize}
+\item \small Noise is a problem for current generation and next-generation hpc clusters. 
+\item \small We can see this through simulation, through Hoefler et. al. where ..
+\item \small We see this through theory, thorugh Tsasfir et. al where ..
+\item \small We see this through experimentation, as shown in Petrini et. al.  where ...
+\end{itemize} 
+\end{frame}  
+
+\begin{frame}
+\frametitle{Why Other Soln's don't work(listed in order of innovation date) } 
+\begin{enumerate} 
+\item \small co-scheduling: hard to schedule everything together, as some nodes will have timers. Also, can't coschedule hardware variations. 
+\item \small low-noise OS can't help because ...
+\item \small extra core (as on BG/Q) can't help because ...
+\item \small basic dynamic scheduling
+\begin{itemize}
+\item \tiny Cilk Work-stealing 
+\item \tiny OpenMP dynamic scheduling
+\end{itemize}
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Defining Problem Space} 
+\begin{enumerate} 
+\item  \small The problem space is for applications such as LU factorization, PDE's which can have fast computations. 
+\item \small Something like Quantum Monte Carlo can do with heavyweight mechanisms. 
+\item \small 
+\item \small 
+\end{enumerate} 
+\end{frame}
+
+
+\begin{comment}
+\begin{frame}
+\frametitle{What we are trying (and not trying) to do } 
+\begin{enumerate} 
+\item  
+\item 
+\item 
+\end{enumerate} 
+\end{frame} 
+\end{comment}
+
+\begin{frame}
+\frametitle{How do we solve this problem?} 
+\begin{enumerate} 
+\item \small Our basic solution: use lightweight scheduling to dampen
+  occasional noise within one node. 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame} 
+\frametitle{Justification of our solution}
+\begin{itemize} 
+\item \small within node is sufficient because once you go off-node,
+  the cost of coherence cache misses is very high, making it very hard
+  to make a lightweight mechanism work. 
+\item \small importance of lightweight (and why pure virtualization
+  approaches are not always adequate): pure virtualization is not
+  adequate due to cost of communication latency being high. 
+\item \small pure virtualization is not adequate due to cost of
+  communication latency being high. 
+\item \small measurement-based load balancing not sufficient due to
+  not being able to predict noise patterns a priori (as noise is a
+  transiently varying quantity). 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Perf. Model for noise}  
+\begin{itemize} 
+\item \small (obtain from docs)
+\item 
+\item 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Perf. Model for Dynamic Scheduling}  
+\begin{itemize} 
+\item \small (obtain from docs)
+\item 
+\item 
+\end{itemize}
+\end{frame} 
+
+\begin{frame}
+\frametitle{Perf. Model for MPI Slack}  
+\begin{itemize} 
+\item \small (obtain from docs)
+\item \small 
+\item \small 
+\end{itemize}
+\end{frame} 
+
+
+\begin{frame}
+\frametitle {How can scheduling decisions be made? }
+\begin{enumerate}
+\item \small \textbf{Compile time:} 
+\begin{itemize} 
+\item \tiny Tune static fraction. 
+\item \tiny Tune tasklet size
+\end{itemize}
+\item \small \textbf{Runtime:}
+\begin{itemize} 
+
+\item \tiny Implementation of new scheduler which decides how tasklets are distributed in the queue. 
+\end{itemize}
+\item \small \textbf{Across Runs:}
+\begin{itemize} 
+\item \tiny Each core/thread has preference for tasklets that run on it from before.  
+\item \tiny We can use patterns in persistent noise to make decisions
+  about weighting work from one core to the other. 
+\item \tiny We can use knowledge of slack to further avoid scheduling,
+  because we know we won't amplify when there it is known to have
+  adequate slack. 
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Algorithm for lightweight Scheduling} 
+\begin{enumerate} 
+\item \small Our basic solution: use lightweight scheduling to dampen
+  occasional noise within one node. 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame} 
+\frametitle{Algorithm for Slack-conscious lightweight Scheduling} 
+\begin{enumerate} 
+\item \small Our basic solution: use lightweight scheduling to dampen
+  occasional noise within one node. 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Implementation for lightweight Scheduling} 
+\begin{enumerate} 
+\item \small 
+\item \small 
+\item \small 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Implementation for Slack-conscious Lightweight Scheduling} 
+\begin{enumerate} 
+\item \small 
+\item \small 
+\item \small 
+\end{enumerate} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Problem/Issue --> Solution}
+\begin{itemize}
+\item \small Overhead of scheduling when task size is computationally
+  small --> \textit{extremely lightweight scheduling, including compile-time}. 
+\item \small  Importance of locality --> \textit{take locality into account in
+  decisions, while remaining lightweight}.
+\item \small Predicting performance imbalance is hard --> observe
+  correlation with communication delays --> use slack. Etc.  
+\end{itemize} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Sched} 
+\begin{table}[h!]
+  \begin{center}
+    \small
+    \begin{tabular}{ | c || c | c | c | c | c | c | c |}
+      \hline
+      & \underline{T1} & \underline{T2} & \underline{T3} & \underline{T4} & \underline{T5} & \underline{T6} & \underline{T7} \\ 
+      \hline
+      \tiny \textbf{I1(<weight>)}  &  \tiny - &\tiny -  & \tiny - & \tiny -  & \tiny -  & \tiny - & \tiny - \\ 
+     \hline
+      \tiny \textbf{I2(<weight>)}  &  \tiny - &\tiny -  & \tiny - & \tiny -  & \tiny -  & \tiny - & \tiny - \\ 
+      \hline
+      \tiny \textbf{I3(<weight>)}  &  \tiny - &\tiny -  & \tiny - & \tiny -  & \tiny -  & \tiny - & \tiny - \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+  \caption{<Table Caption goes here>}
+\end{table}
+\end{frame} 
+
+
+\begin{frame} 
+\frametitle{Thesis Committee} 
+\begin{enumerate}
+\item \small Maria Garzaran 
+\item \small Prof. Wen-mei Hwu OR Prof. David Padua
+\item \small Prof. William Gropp
+\item \small  Bronis de Supinski
+\end{enumerate}
+\end{frame} 
+
+\begin{comment}
+\begin{frame}
+\frametitle{}
+\begin{enumerate}
+\item \small \textbf{Item A}
+\begin{itemize} 
+\item \tiny 
+\item \tiny
+\end{itemize} 
+\item \small \textbf{Item B}
+\begin{itemize} 
+\item \tiny re-imbursements
+\item \tiny 
+\item \tiny 
+\end{itemize} 
+\item \small \textbf{Item C} 
+\begin{itemize} 
+\item \tiny 
+\item \tiny 
+\item \tiny 
+\end{itemize} 
+\end{enumerate}
+\end{frame}   
+\end{comment}

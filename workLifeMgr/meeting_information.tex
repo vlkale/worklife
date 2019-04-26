@@ -1,0 +1,143 @@
+\documentclass{beamer}
+%\usetheme[
+%          titlepagelogo=bold50-illinois,% Logo for the first page
+%          pageofpages=of,% String used between the current page and the total page count
+%          titleline=true,% Show a line below the frame title
+%          ]{TorinoTh}
+
+\usetheme{Luebeck}
+
+\useoutertheme{infolines}
+
+\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\usepackage{comment}
+\usepackage{ulem}
+\usepackage{color}
+\usepackage{xspace}
+
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{courier,cite}
+%\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage{color,cite}
+%\usepackage{scalefnt}
+\usepackage{listings}
+
+
+
+
+
+%\newcommand{\comments}[1]{}
+
+%\setbeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+
+\usepackage{outlines} 
+\usepackage{enumitem}
+\setenumerate[1]{label=\Roman*.}
+\setenumerate[2]{label=\Alph*.}
+\setenumerate[3]{label=\roman*.}
+\setenumerate[4]{label=\alph*.}
+
+\usepackage{flushend}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{tikz}
+
+\lstset{
+    language=C++,
+    basicstyle=\tiny\ttfamily, % Standardschrift
+    numbers=left,               % Ort der Zeilennummern
+    numberstyle=\footnotesize\ttfamily,          % Stil der Zeilennummern
+    %stepnumber=2,               % Abstand zwischen den Zeilennummern
+    numbersep=6pt,              % Abstand der Nummern zum Text
+    tabsize=2,                  % Groesse von Tabs
+    extendedchars=true,         %
+         breaklines=true,            % Zeilen werden Umgebrochen
+        frame=single,
+         keywordstyle=[1]\textbf,    % Stil der Keywords
+         stringstyle=\ttfamily,
+         showspaces=false,           % Leerzeichen anzeigen ?
+         showtabs=false,             % Tabs anzeigen ?
+         backgroundcolor=\color{white!97!black},
+         showstringspaces=false      % Leerzeichen in Strings anzeigen ?
+}
+
+\newcommand{\htor}[1]{\textcolor{OliveGreen}{[htor: #1]}}
+\newcommand{\tg}[1]{\textcolor{orange}{[tg: #1]}}
+\newcommand{\vivek}[1]{\textcolor{cyan}{[vivek: #1]}}
+
+\newcommand{\comments}[1]{}
+\newcommand{\bllt}{\item \small}
+\newcommand{\MyName}{Vivek~Kale}
+
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue}{\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+
+\newcommand{\timeEst}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\deadline}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dl}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:}\textit{#1}}
+
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item
+  \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item
+  \textcolor{magenta}{\textit{Situation:} #1}}
+
+\title{Notes}
+\author{\MyName}
+\date{\today}
+\title{Meeting Information}
+\author[\today]{
+  Vivek~Kale\inst{1}
+}
+
+%\institute[University of Illinois at Urbana-Champaign]{
+%  \inst{1}%
+%  Department of Computer Science\\
+%  University of Illinois at Urbana-Champaign
+%}
+
+\institute[UIUC]{
+  \inst{1}%
+ Department of Computer Science\\
+ University of Southern California
+}
+
+\date{\today}
+\subject{Computational Sciences}
+
+\begin{document}
+\AtBeginSection[]
+{
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[part=1, pausesections]
+\end{frame}
+}
+
+\titlepage
+%\section{Prelim Outline Notes}
+%\input{./content_defense}
+\input{./content_meeting_information}
+%\input{acks}
+%\input{thanks}
+
+
+%\bibliographystyle{abbrv}
+%\bibliography{bibliography}
+
+\end{document}

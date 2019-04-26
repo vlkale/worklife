@@ -1,0 +1,177 @@
+\documentclass[serif, mathserif, final]{beamer}
+%\mode<presentation>{\usetheme{Lankton}}
+\usepackage[orientation=portrait,size=a0,scale=1.6, debug]{beamerposter}
+\usetheme{Luebeck}
+\useoutertheme{infolines}
+%\usepackage{inputenc}
+
+\usepackage{graphicx}
+\usepackage[square,numbers]{natbib}
+\usepackage[final]{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage{booktabs} % For \toprule, \midrule and \bottomrule
+\usepackage{microtype}
+\usepackage{csvsimple}
+\usepackage{framed} % used for putting boxes around content easily
+\usepackage{type1cm}
+\usepackage{amsmath,amsfonts,amssymb,xspace}
+\usepackage{tikz}
+\usepackage{beamerthemesplit} 
+\usepackage{graphicx,ragged2e,pgffor}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{courier}
+\usepackage{verbatim,listings,float} %TODO: order these 
+\setbeamertemplate{caption}[numbered]
+\usepackage{etoolbox}
+
+\usepackage{lipsum}
+\usepackage{multicol}
+
+\def\POSTER{1}
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+\resetcounteronoverlays{saveenumi}
+
+\usepackage[hybrid]{markdown}
+
+\markdownSetup{rendererPrototypes={
+ link = {\href{#2}{#1}},
+ headingThree = {\begin{frame}\frametitle{#1}},
+ headingFour = {\begin{block}{#1}},
+ horizontalRule = {\end{block}}
+}}
+
+%TODO: remove unneeded items 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+%TODO: consider changing the name of this macro to be what it's
+%used for below
+
+\newcommand{\projectTask}{\tiny \item \tiny}
+\newcommand{\pitem}{\tiny \item \tiny}
+\newcommand{\ptask}{\tiny \item \tiny}
+\newcommand{\mpitem}{\tiny \item \tiny}
+\newcommand{\doneTaskNoItemNewLine}[1]{\sout{#1}}
+
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+\newcommand{\timeEst}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:}\textit{#1}}
+
+\newcommand{\deadline}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dl}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:}\textit{#1}}
+
+
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}} 
+\newcommand{\comments}[1]{}
+
+
+%TODO: think of document as adding around ...
+%TODO: consider changing the below so you only use the text in the
+%document 
+%TODO: change Week plans 
+%TODO: consider putting making each frames have its own document. 
+%TODO: decide where social intelligence goes. 
+%TODO: decide how to separate work from life in social intelligence
+%notes.
+
+\newcommand{\footleft}{Mgmt-WorkLife-monthweekPlan} % figure what this should be 
+\newcommand{\footright}{December 2018}
+
+%-- Main Document -------------------------------------------------
+%\title{Month-Week-Day Plan}\author{Vivek Kale$^1$}\institute{$^1$ University of Illinois at Urbana-Champaign}\date{\today}
+
+\begin{document}
+
+\section{Summary}
+\input{summarySlide.tex}
+
+\section{Long-term planning}
+\input{./workLifeMgr/content_year_plan.tex}
+
+\section{Project plans}
+\relax
+
+\begin{markdown}
+\markdownInput{./workLifeMgr/content_projectslist.md}
+\end{markdown}
+
+\section{Projects}
+
+
+% TODO: figure out why these won't work 
+% \ptype{Work}
+% \pname{User-defined Loop Scheduling for OpenMP(uds)}\\
+% \pdl{\textbf{Deadline:} November $15^{th}$, 2018} \\
+
+
+%\input{./workLifeMgr/content_projects_nsd}
+
+% TODO: figure out why these won't work
+% \ptype{Work}
+% \pname{User-defined Loop Scheduling for OpenMP}\\
+% \pdl{\textbf{Deadline:} November $15^{th}$, 2018} \\
+
+\input{./workLifeMgr/content_projects_uds}
+
+% \input{./workLifeMgr/content_projects_oaf}
+% \input{./workLifeMgr/content_projects_outreach}
+
+\section{Job Search}
+\input{./workLifeMgr/content_jobSearch_plan}
+
+\section{Planning}
+\begin{frame}{Month Plan}
+\input{./workLifeMgr/content_monthPlan_plan}
+\end{frame}
+
+\begin{frame}{Weekend Plans}
+\input{./workLifeMgr/content_weekendPlans_plan}
+\end{frame}
+
+\section{Week Plan}
+\input{./workLifeMgr/content_worries_plan}
+\input{./workLifeMgr/content_runningToDoPlan}
+
+\section{News}
+\input{./workLifeMgr/content_news}
+\input{./workLifeMgr/weather}
+
+
+%\undefine\PRES
+%\end{frame}
+
+\section{Daily Plans}
+\begin{frame}
+\input{./workLifeMgr/content_dayPlans_plan}
+\end{frame}
+
+%\section{Social Life}
+\section{Situations}
+\input{./workLifeMgr/content_situations_plan}
+
+\section{Meeting Information}
+\input{./workLifeMgr/content_meeting_information}
+\section{Dating and Relationships}
+\input{./workLifeMgr/content_rel_plan}
+\section{My Information} 
+\input{./workLifeMgr/content_my_information}
+\end{document}

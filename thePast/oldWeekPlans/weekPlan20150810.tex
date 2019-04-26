@@ -1,0 +1,457 @@
+\documentclass[serif, mathserif, final]{beamer}
+\mode<presentation>{\usetheme{Lankton}}
+\usepackage[orientation=landscape,size=a0,scale=1.6, debug]{beamerposter}
+\usepackage{amsmath,amsfonts,amssymb,pxfonts,xspace}
+\usepackage{graphicx,ragged2e,pgffor}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{courier}
+\usepackage{caption,verbatim,listings,float,subfig} %TODO: order these 
+\setbeamertemplate{caption}[numbered] 
+\usepackage{calendar}
+\usepackage{geometry}
+
+%TODO: remove unneeded items 
+\newcommand{\bllt}{\item \small}
+\newcommand{\doneTaskNoItem}[1]{\sout{#1}}
+\newcommand{\doneTask}[1]{\tiny \item \tiny \sout{#1}}
+\newcommand{\doneTaskHyp}[1]{\tiny \item \tiny \textcolor{blue} {\sout{#1}}}
+\newcommand{\optTask}[1]{\tiny \item \tiny \textcolor{green}{#1}}
+\newcommand{\prioTask}[1]{\tiny \item \tiny \textcolor{red}{#1}}
+
+\newcommand{\timeEst}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\te}[1]{\textit{TimeEst:}\textit{#1}}
+\newcommand{\deadline}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dueBy}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\dl}[1]{\textit{Deadline:}\textit{#1}}
+\newcommand{\priority}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\prio}[1]{\textit{Priority:}\textit{#1}}
+\newcommand{\pr}[1]{\textit{Priority:}\textit{#1}}
+
+\newcommand{\MyName}{Vivek~Kale}
+\newcommand{\fixme}[1]{\textcolor{blue}{[FIXME: #1]}}
+\newcommand{\revision}[1]{\textcolor{blue}{[FIXME comment : #1]}}
+\newcommand{\regItem}[1]{\item \textcolor{cyan}{#1}}
+\newcommand{\regRoutineItem}[1]{\item \textcolor{green}{\textit{Reg. Routine:} #1}}
+\newcommand{\situationItem}[1]{\item \textcolor{magenta}{\textit{Situation:} #1}}
+
+\newcommand{\comments}[1]{}
+
+\newcommand{\footleft}{Mgmt-WorkLife-weekPlan} % figure what this should be 
+\newcommand{\footright}{August 2015}
+%-- Main Document ------------------------------------------------- 
+\title{Month-Week-Day Plan}\author{Vivek Kale$^1$}\institute{$^1$ University of Illinois at Urbana-Champaign}\date{\today}
+
+\begin{document}
+\begin{frame}
+  \begin{columns}
+    %-- Column 1 --------------------------------------------------- 
+    \begin{column}{0.25\linewidth} %{\textbf{\underline{Week Aspects(new name)}}}
+      \begin{block}{Local Happiness}
+        % howto:Recognize emotions / recognize (precisely) what you're worried about -> methods for eliminating worry. 
+        % clean out old worries, put them in pastWorries doc.  
+        % remember to define precisely 
+        % order from top-to bottom
+        \begin{itemize}
+        \tiny \item \tiny Work: worrying about interviewing: just focus on the work. 
+        \item \tiny Worrying about gal: think about talking to others. 
+        \end{itemize}
+      \end{block}
+      \begin{block}{Stresses}
+        % howto:Recognize emotions / recognize (precisely) what you're worried about -> methods for eliminating worry. 
+        % clean out old worries, put them in pastWorries doc.  
+        % remember to define precisely 
+        % order from top-to bottom
+        \begin{itemize}
+        \tiny \item \tiny Work: worrying about interviewing: just focus on the work. 
+        \item \tiny Worrying abt Dp thinking you are stupid -->  think
+            about Todd saying you're smart, you don't apply yourself; 
+           think about Atul saying they aren't doing that
+            intentionally. 
+          \item \tiny Anger about a b  -> ...
+          \item \tiny Anger about UP -> think about the positive
+            perspective, and the original
+        \end{itemize}
+      \end{block}       
+%      \begin{block}{Real-time Confidence}
+%      \end{block}
+      %-- Block 1-3
+      \begin{block}{Life notes}
+        \begin{itemize}
+        \item \tiny TM: look at intelligence book. 
+        \item \tiny Problem: implement game of mastermind. 
+        \end{itemize}
+      \end{block}
+    \end{column} %2 
+
+    %-- Column 2 --------------------------------------------- 
+    \begin{column}{0.50\linewidth}
+      %--- Block 2-1
+      \begin{block}{Week Summary}
+        {\tiny \textbf{Week Plan:} Work: do code for OpenMP, Work:rel:
+          send message about fb to Mrinalini + Work:rel: talk to apple,
+          Mgmt:Spaces: pack + Comm: prep for situations, Mgmt:Spaces:
+          finish organization,  worklife: do organization, Comm: write
+          out comm material in wl cheatsheet, } 
+
+        {\tiny \textbf{Weekend Plan:} Comm: answer mails from
+          matrimony, Mgmt:Spaces: update work directory.} 
+      \end{block} 
+      \begin{block}{Running TODO} % find a better name 
+        \begin{enumerate} 
+          \doneTask{ Work: comm: talk to Matt about meeting} 
+          \doneTask{ Mgmt:Spaces: figure out trip to Germany +
+            Work:admin: update wiki space = Work:admin: talk to
+            someone + Work:admin: review wiki space parts.} 
+          \doneTask{ Comm: message to Anita +  Comm: look at people
+            and reply to them } \te{1 hour} \dl{Thursday} 
+          \doneTask{ Mgmt:Spaces: Zoloft} \te{1 hour}
+        \doneTask{ Mgmt:Spaces: apartment = Mgmt:Spaces: find
+          Orchard downs apartments(45-day notice) + Mgmt:Spaces:(apt):
+          talk to Kobuck and Prospect Pointe apts + Mgmt:Spaces: argue
+          reasons for apartments + Mgmt:Spaces: ask about garage} \te{1 hour} 
+        % putting hybrid static/dynamic scheduling into application
+        % code. 
+         \doneTask{Work:comm(meetGrp): send message about meeting to
+          Prof. Gropp = Work:comm(meetGrp): go through meeting times +
+          Work:comm(meetGrp): meet with him .. }
+
+\comments{
+        I've putting in theOpenMP shared memory into the XPACC code.
+
+        Next week, I'llput in hybrid static/dynamic scheduling along
+        with other OpenMP loop optimizations. 
+
+        I'm putting aside the OpenACC code for right now.  
+        General Goal: inform 
+        Specific Goal: getting main work you wanted done done. (for
+        OpenMP).  
+        
+        
+        % Below is a follow-up from the earlier message. 
+        
+        To follow-up from the earlier message: 
+        
+        With help from John Larson, I am now applying OpenMP to the loops of all the functions of the 
+        PlasComCM code, excluding the functions in the ModDeriv.fpp
+        code file that are done already. 
+
+        Also, later next week, I will apply hybrid static/dynamic scheduling to
+        these OpenMP parallel loops and also try applying other OpenMP loop
+        optimizations to these OpenMP loops. 
+
+        I want to note that I am putting aside the OpenACC stencil code
+        / OpenACC parallelization for the PlasComCM code for right
+        now - the OpenACC parallelization for the PlasComCM code should
+        follow from the OpenMP parallelization done in the code. 
+        I will focus more on the OpenACC parallelization after I come back from Germany
+        week after next, and I will keep Jon Freund posted on this. (Let
+        me know if this is ok.) 
+
+        % until after the OpenMP parallel loop optimizations
+        % are done. 
+        % Please let me know if this is a good idea, and I'll keep Jon
+        % Freund posted on this during this week. 
+
+        1. TODO: L3: Also, -done 
+        2. TODO: L2: An additional update.  - done 
+        3. TODO: L3: I will pick that up after I come back from - done 
+        Germany. 
+        
+        4. TODO: L0: OpenACC code  -done 
+        
+        5. TODO: I'm putting aside ...b -done 
+
+        6. TODO: L2: transformations follow from loop parallelization
+        --- done
+
+        7. TODO: L2: Germany next week  -done
+
+        9. TODO: L2+ L4: PlasComCM should follow from the OPenMP
+        parallelization 
+        
+        8. TODO: L3(1): working on my work = TODO:L3(1): check
+        paragrpahs + TODO:L3(1): - let me know
+        if this is ok. - done 
+
+        10. TODO: L4: pick up OpenACC again - focus more on OpenACC
+        -done  
+
+        11. TODO: L5: Let me know if this is ok in parenthesis or not?
+        -done 
+        12. TODO: L5: the OpenACC parallelization - keep to show its
+        importance , and that you want to do something
+        different. -done 
+        13. TODO: L5: try to apply --   try applying -done 
+
+        14. TODO: for right now - , since  -- for right now, since 
+
+        15. TODO(L1:,L4, L5): I'm putting aside  
+        bring that back in, seeing if I can integrate it directly into the
+        application code. 
+        % after I come back from Germany. 
+
+        While that is important, I've been putting in the OpenMP shared memory into
+        the XPACC code. Next week, I'll put in hybrid static/dynamic
+        scheduling into application code. I'm putting the OpenACC code
+        on the side burner for the moment. 
+}
+        
+         \doneTask{ worklife: toastmasters practice} \te{1 hour} 
+         \doneTask{ Work:comm: send message to Prof. Gropp} \te{30 minutes} 
+
+        \item \small worklife: finish slides for management =
+          worklife: toastmasters + worklife: finish picture. \te{2
+            hours} 
+          % curr --> 
+
+        %\item \small Work(opcm): get performance data for XPACC code =
+        %  Work(opcm): apply PAPI counters to each routine in
+        %  application. 
+        %\item \small Work(opcm): Apply OpenCL to XPACC code \te{10
+        %  hours} = Work(opcm): Apply OpenCL to each routine +
+        %  Work(opcm): 
+        %\item \small Work(opcm): Apply OpenMP to mini-miniApp \te{10
+        %  hours} = Work(opcm): Apply OpenMP to each routine +
+        %  Work(opcm):
+
+
+        \item \small Mgmt:Spaces: Book airfare \te{30 minutes}
+          \dl{Saturday} 
+
+        \item \small Comm: Delete ka + Comm: Hide Ms. I + Comm: talk
+          to Atul. \te {30 minutes} \prio{UI} \dl{Wed} +  Comm: hope I
+          was a good brother. 
+
+        \item \small Comm: gauge matrimony = Comm: message to
+          \href{mailto:earthtopratima@gmail.com}{earthtopratima@gmail.com} + Comm: look at others \pr{UI}
+          \te{1 hour}  
+
+        \item \small worklife: finish emot. int. book  on Cecil =
+          worklife: structure + worklife:integration into sheet and
+          connection with other things +
+          worklife:applications/examples\te{1 hour} 
+        \item \small Work(gpuCode): apply OpenCL to stencil. \te{10
+          hours} =  Work(gpuCode): code with OpenCL on stencil.
+        \item \small Work(opcm): Apply OpenMP to XPACC code \te{10
+          hours} = Work(opcm): Apply OpenMP to each routine +
+          Work(opcm): 
+
+
+        \item \small Comm: message to Anita = Comm: (text conv last
+          night) +  Comm: talk to Anita on skype 
+        \item \small Comm: send message to Rishi \te{30 mins}
+          \dl{Saturday} \pr{IU} 
+
+        \item \small Work: do coding practice planning \te{10 mins} 
+
+       \item \small Mgmt:Spaces: fix the wall unit \te{1 hour} 
+        \end{enumerate}
+      \end{block} 
+      \begin{block}{Week Daily Schedule} 
+        % howto: arrange items from running todo into the below
+        % sheet management document. 
+        \begin{columns} 
+          \column{0.14\textwidth}{\textbf{\small \underline{Mon}}}
+          \textbf{\small todo} \\ 
+          \begin{itemize}
+            \tiny \item \tiny 
+          \item \tiny 
+          \end{itemize} 
+          \textbf{\small schedule} \\
+          \begin{enumerate} 
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \end{enumerate} 
+          
+          \column{0.14\textwidth}{\textbf{\small \underline{Tue}}}
+          \textbf{\small todo} \\
+          \begin{itemize}
+            \tiny \item \tiny Work: start writing code \te{2 hours} 
+          \item \tiny Mgmt:Spaces: send package to Anu \te{15 minutes} 
+          \item \tiny Comm: TM prep + Comm: message to Anita  \te{30
+            minutes} 
+          \end{itemize}  
+          \textbf{\small schedule} 
+          \begin{enumerate}
+            \tiny \item \tiny 10AM - 11AM = update org 
+          \item \tiny 11AM - 12AM = make long-term goals 
+          \item \tiny 12PM - 2PM = start writing code and make the
+            framework. 
+            \tiny \item \tiny 2PM -3PM = meet for apartment showing
+            and respond about apartment. 
+          \item \tiny 6PM - 10PM = worklife + write code 
+          \end{enumerate}  
+
+          \column{0.14\textwidth}{\textbf{\small {\underline{Wed}}}}
+          \textbf{\small todo} \\
+          \begin{itemize}
+           \tiny \item \tiny 
+          \item \tiny 
+          \end{itemize}
+          \textbf{\small schedule} \\
+          \begin{enumerate}
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \item \tiny 9AM - 10AM: Send message 
+            \item \tiny 6:30PM - 7:30PM = 
+          \end{enumerate} 
+          \column{0.14\textwidth}{\textbf{\small{\underline{Thu}}}}
+          \textbf{\small todo}\\
+          \begin{itemize}  
+            \tiny \item \tiny 
+          \item \tiny 
+          \end{itemize}
+          
+          \textbf{\small schedule}\\
+          \begin{enumerate} 
+            \tiny \item \tiny 8-9AM = Regular Routines 
+            \item \tiny 12-1PM = gather notes about job org. during
+              session 
+            \item \tiny 3:30PM - 4:30PM = meeting 
+            \item \tiny 6PM - 9PM = revise emot. int. chapter and
+              structure wl-cheat based on it 
+          \end{enumerate} 
+          
+          \column{0.14\textwidth}{\textbf{\small{\underline{Fri}}}}
+          \textbf{\small todo}\\ 
+          \begin{itemize}
+            \tiny \item \tiny Work: updates on GPU \dl{} \te{} \prio{}
+          \item \tiny \te{1 hour} 
+          \end{itemize}
+          \textbf{\small schedule}\\
+          \begin{enumerate}
+            \tiny \item \tiny 8-9AM: Regular Routines 
+          \end{enumerate}
+          
+          \column{0.14\textwidth}{\textbf{\small \underline{Sat}}}
+          \textbf{\small todo}\\
+          \begin{itemize} 
+            \tiny \item \tiny
+          \end{itemize}
+          \textbf{\small schedule}\\ 
+          \begin{enumerate}
+            \tiny \item \tiny 7-7:30PM = food + organize.  
+            \tiny \item \tiny 7:30PM -8PM = 
+            \tiny \item \tiny 8PM -9PM = 
+            \tiny \item \tiny 9:45PM - 10:30PM = go out 
+            \tiny \item \tiny 2AM -3AM =  message Samir + add people
+          \end{enumerate}
+          
+          \column{0.14\textwidth}{\textbf{\small \underline{Sun}}}
+          \textbf{\small todo}\\
+          \begin{itemize} 
+           \tiny \item \tiny 
+          \end{itemize}
+
+          \textbf{\small schedule}\\
+          \begin{enumerate} 
+            \tiny \item \tiny 3PM - 4PM  = think about weekend, any
+            other tasks 
+          \item \tiny 5-7PM = Comm work 
+          \item \tiny 8PM - 10PM = worklife work. 
+          \end{enumerate} 
+        \end{columns}
+      \end{block}
+    \end{column}%2
+    
+    %-- Column 3 --------------------------------------------------- 
+    \begin{column}{0.20\linewidth}
+      %-- Block 3-1 
+      % On Sunday morn, put a quick synopsis of top news items                  
+      % here.  Categorize as Comm and Money.      
+      \begin{block}{News}
+        \begin{itemize} 
+          \tiny \item \tiny Jon Stewart's last episode. 
+        \item \tiny Mission Impossible 
+        \item \tiny 
+        \end{itemize}
+      \end{block}
+      
+      \begin{block}{Weather} 
+        \begin{itemize}
+          \tiny \item \tiny 
+        \item \tiny 
+        \end{itemize}
+      \end{block} 
+
+      \begin{block}{Clothes plan} 
+        \begin{itemize}
+          \tiny \item \tiny Monday
+        \item \tiny Tuesday
+        \item \tiny Wednesday
+        \item \tiny Thursday
+        \item \tiny Friday
+        \end{itemize} 
+      \end{block}
+      %-- Block 3-2 
+      
+      %-- Block 3-3
+      \begin{block}{Situations}
+        % Howto: the below are the situations that define one another
+
+        \begin{itemize} 
+
+          %\tiny \item \tiny \textit{Post-talk with Meghan}: Pre-: send
+          %message to wait for a month. 
+          %It's not going to move anywhere, like you were saying. 
+          %I'm busy with interviewing - we should keep in touch
+          %though. 
+          %I will let you know once things are settled where I end up.  
+          %Leaving for the airport soon. 
+          %Post-: check time - see if we can get to what we want to say
+          %more quickly   
+
+          \tiny \item \tiny \textit{Toastmasters} Post-: L2: good to prep
+          in advance, but prep even more. L1: Watch for changing at the last minute.  
+          L3: good to stay consistent L4: say thank you instead of
+          thanks. 
+
+          \tiny \item \tiny \textit{Talk to Anita} Pre-: get ready for
+          phone call by looking good. Post-: laugh less (watch for
+          "interesting" diversions. 
+        \item \tiny \item  \textit{Shwaytha dinner:} Pre-: 1. Talk to
+          Udatta Palekar (distance yourself). 2. Talk to Shwaytha about
+          how she has been doing
+
+          Back straight/ lips relaxed (like
+          TM) -  Keep it throughout if possible. 
+          don't crumple napkin, 
+
+          Post-:  
+
+        \end{itemize} 
+
+      \end{block}
+      
+\begin{block}{Rel}
+  \begin{itemize} 
+    \small \item \small Girl from SF 
+    \small \item \small Girl from L.A. 
+    \small \item \small Mamta 
+
+    %\small \item \small Ruchi 
+    %\small \item \small Neha Jambhekar 
+    %\small \item \small Meghan Joshi 
+    %\small \item \small Vinita Ghate 
+  \end{itemize} 
+\end{block} 
+\end{column}%3 
+
+\end{columns}
+
+\end{frame}
+
+
+\end{document}
+
+
+
+% -- Attic -- % 
+
+%        \begin{itemize}
+%          \tiny \item \tiny If you do something sloppy, don't
+%          think about it and don't say sorry. 
+%        \item \tiny don't think someone is trying to hurt you if
+%          they say something.
+%        \item \tiny know the paths of least stress. 
+%        \item \tiny if mom does something, don't let that bite you. 
+%        \end{itemize}
