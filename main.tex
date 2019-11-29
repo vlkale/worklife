@@ -53,8 +53,6 @@
         \immediate\write18{pandoc tmp.markdown -t latex -o tmp.tex}%
         \input{tmp.tex}}
 
-
-
 \usepackage[fencedCode, hybrid]{markdown}
 
 \markdownSetup{rendererPrototypes={
@@ -63,7 +61,6 @@
  headingFour = {\begin{block}{#1}},
  horizontalRule = {\end{block}}
 }}
-
 
 
 \usepackage{catchfilebetweentags}
@@ -236,12 +233,12 @@
 %\input{./workLifeMgr/content_year_plan.tex}
 
 \begin{frame}{Year Plan}{2019}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{ypn}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{ypn}
 \end{frame}
 
 
 \begin{frame}{Six-month Plan}{Jan through June 2019}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{spn}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{spn}
 \end{frame}
 
 
@@ -257,15 +254,15 @@
 %TODO: get rid of dependencies of Project Name here. 
 
 \begin{frame}{Project CCI}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{cci}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{cci}
 \end{frame}
 \begin{markdown}
 \begin{frame}{Project:Dmy}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{dmy}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{dmy}
 \end{frame}
 \end{markdown}
 \begin{frame}{Project:UDS}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{uds}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{uds}
 \end{frame}
 \section{Planning}
 \begin{frame}{Month Plan}
@@ -289,21 +286,21 @@
 \section{Week Plan}
 \begin{markdown}
 \begin{frame}{Week Plan Summary}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{wps}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{wps}
 \end{frame}
 \end{markdown}
 
 \begin{markdown}
 \begin{frame}[allowframebreaks]{Running To DO}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{rtd}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{rtd}
 \end{frame}
 \end{markdown}
 
 \section{Daily Plans}
 \begin{markdown} 
 \begin{frame}{Day Plans}
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{dpn}
-\end{frame} 
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{dpn}
+\end{frame}
 \end{markdown}
 
 %\section{Social Life}
@@ -323,7 +320,7 @@
 %\input{./workLifeMgr/content_my_information}
 
 \begin{markdown} %TODO: figure out how to distribute information ought to be distributed within these slides
-\ExecuteMetaData[workLifeMgr/content-planDoc.docx]{myi}
+\ExecuteMetaData[workLifeMgr/MainPlanDoc/content-planDoc.docx]{myi}
 \end{markdown}
 
 \end{document}
